@@ -13,7 +13,7 @@
     "lint": "next lint",
     "format": "prettier . --write",
     "prepare": "husky",
-    "postinstall": "prisma generate"
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "lint-staged": {
     "**/*": [
