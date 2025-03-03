@@ -1,7 +1,9 @@
 import KBar from '@/components/kbar';
 import AppSidebar from '@/components/layout/app-sidebar';
 import Header from '@/components/layout/header';
+import ReactQueryProvider from '@/components/providers/react-query-provider';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
@@ -18,6 +20,7 @@ export default function DashboardLayout({
   // Persisting the sidebar state in the cookie.
   const cookieStore = cookies();
   const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true';
+  const queryClient = new QueryClient();
   return (
     <KBar>
       <SidebarProvider defaultOpen={defaultOpen}>
@@ -25,7 +28,7 @@ export default function DashboardLayout({
         <SidebarInset>
           <Header />
           {/* page main content */}
-          {children}
+          <ReactQueryProvider>{children}</ReactQueryProvider>
           {/* page main content ends */}
         </SidebarInset>
       </SidebarProvider>

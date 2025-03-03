@@ -1,0 +1,47 @@
+### GET request to /api/banner
+GET http://localhost:3000/api/banner
+Content-Type: application/json
+
+###
+
+### POST request to /api/banner
+POST http://localhost:3000/api/banner
+Content-Type: multipart/form-data
+
+--boundary
+Content-Disposition: form-data; name="title"
+
+New Banner
+--boundary
+Content-Disposition: form-data; name="image"; filename="banner.jpg"
+Content-Type: image/jpeg
+
+< ./path/to/banner.jpg
+--boundary
+Content-Disposition: form-data; name="link"
+
+http://example.com
+--boundary--
+
+###
+
+### DELETE request to /api/banner
+DELETE http://localhost:3000/api/banner
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
+###
+
+### PUT request to /api/banner
+PUT http://localhost:3000/api/banner
+Content-Type: application/json
+
+{
+    "id": 1,
+    "title": "Updated Banner",
+    "image": "http://example.com/updated-banner.jpg",
+    "link": "http://example.com/updated"
+}

@@ -129,5 +129,40 @@ export const navItems: NavItem[] = [
     isActive: false,
     shortcut: ['d', 'd'],
     items: [] // Empty array as there are no child items for Dashboard
+  },
+  {
+    title: 'Banner',
+    url: '/dashboard/banner',
+    icon: 'media',
+    isActive: false,
+    shortcut: ['b', 'b']
+  },
+  {
+    title: 'Service',
+    url: '/dashboard/service',
+    icon: 'product',
+    isActive: false,
+    shortcut: ['s', 's']
+  },
+  {
+    title: 'Gallery',
+    url: '/dashboard/gallery',
+    icon: 'media',
+    isActive: false,
+    shortcut: ['g', 'g']
+  },
+  {
+    title: 'Talent',
+    url: '/dashboard/talent',
+    icon: 'employee',
+    isActive: false,
+    shortcut: ['t', 't']
+  },
+  {
+    title: 'Booking',
+    url: '/dashboard/booking',
+    icon: 'calendar',
+    isActive: false,
+    shortcut: ['b', 'b']
   }
 ];
