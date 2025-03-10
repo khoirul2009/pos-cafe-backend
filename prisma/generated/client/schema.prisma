@@ -1,0 +1,169 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Banner {
+  id         Int      @id @default(autoincrement())
+  title      String
+  image      String
+  link       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("banners")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(100)
+  email      String   @unique
+  password   String
+  phone      String?
+  role       String   @default("customer") // Bisa "admin", "customer", atau "photographer"
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  Booking Booking[]
+  Review  Review[]
+
+  @@map("users")
+}
+
+model Gallery {
+  id         Int      @id @default(autoincrement())
+  title      String
+  image      String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("galleries")
+}
+
+model Category {
+  id         Int       @id @default(autoincrement())
+  title      String    @db.VarChar(100)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  Service    Service[]
+
+  @@map("categories")
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(100)
+  image       String
+  price       Int
+  discount    Int? // Diskon dalam persen (opsional)
+  description String   @db.Text
+  category_id Int
+  location    String
+  available   Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  category Category  @relation(fields: [category_id], references: [id])
+  Booking  Booking[]
+  Review   Review[]
+
+  @@map("services")
+}
+
+model Talent {
+  id            Int             @id @default(autoincrement())
+  name          String          @db.VarChar(100)
+  image         String
+  position      String
+  description   String          @db.Text
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+  BookingTalent BookingTalent[]
+
+  @@map("talents")
+}
+
+model Booking {
+  id          Int      @id @default(autoincrement())
+  user_id     Int
+  service_id  Int
+  date        DateTime
+  time        String
+  location    String
+  is_accepted Boolean  @default(false)
+  status      String   @default("pending") // Bisa "pending", "confirmed", "completed", "canceled"
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  user          User            @relation(fields: [user_id], references: [id])
+  service       Service         @relation(fields: [service_id], references: [id])
+  BookingTalent BookingTalent[]
+  Payment       Payment[]
+
+  @@map("bookings")
+}
+
+model BookingTalent {
+  id         Int      @id @default(autoincrement())
+  booking_id Int
+  talent_id  Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  booking Booking @relation(fields: [booking_id], references: [id])
+  talent  Talent  @relation(fields: [talent_id], references: [id])
+
+  @@map("booking_talents")
+}
+
+model PaymentMethod {
+  id         Int      @id @default(autoincrement())
+  name       String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  Payment Payment[]
+
+  @@map("payment_methods")
+}
+
+model Payment {
+  id           Int      @id @default(autoincrement())
+  payment_uuid String
+  booking_id   Int
+  amount       Int
+  status       String
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  booking           Booking        @relation(fields: [booking_id], references: [id])
+  payment_method    PaymentMethod? @relation(fields: [payment_method_id], references: [id])
+  payment_method_id Int?
+
+  @@map("payments")
+}
+
+model Review {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  service_id Int
+  rating     Int // 1 - 5
+  comment    String?  @db.Text
+  created_at DateTime @default(now())
+
+  user    User    @relation(fields: [user_id], references: [id])
+  service Service @relation(fields: [service_id], references: [id])
+
+  @@map("reviews")
+}
