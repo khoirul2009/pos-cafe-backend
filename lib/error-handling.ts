@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { HttpException } from './http-execption';
-import { Prisma } from '@prisma/client';
 import z from 'zod';
 
 export default class ErrorHandling {

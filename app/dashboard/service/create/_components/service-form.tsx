@@ -25,7 +25,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import axios from 'axios';
-import { Category } from '@prisma/client';
+import { Category } from '@/prisma/generated/client';
 import {
   Select,
   SelectContent,

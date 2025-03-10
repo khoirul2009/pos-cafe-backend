@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/database';
 import { HttpException } from '@/lib/http-execption';
-import { Booking } from '@prisma/client';
+import { Booking } from '@/prisma/generated/client';
 
 export default class BookingService {
   async all(searchParams: URLSearchParams) {
