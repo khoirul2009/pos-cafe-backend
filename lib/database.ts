@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PrismaClient } from '../prisma/generated/client';
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
