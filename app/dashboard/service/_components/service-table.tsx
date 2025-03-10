@@ -23,7 +23,7 @@ import Link from 'next/link';
 import { useToast } from '@/components/ui/use-toast';
 import Paginations from '@/components/common/paginations';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { Service } from '@prisma/client';
+import { Service } from '@/prisma/generated/client';
 import DeleteDialog from '@/components/common/delete-dialog';
 
 type Banner = {
