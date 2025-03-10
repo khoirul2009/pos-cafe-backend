@@ -25,7 +25,7 @@ import { useToast } from '@/components/ui/use-toast';
 import Paginations from '@/components/common/paginations';
 import { useSearchParams, useRouter } from 'next/navigation';
 import DeleteDialog from '@/components/common/delete-dialog';
-import { Booking } from '@prisma/client';
+import { Booking } from '@/prisma/generated/client';
 
 const fetchBookings = async ({ page }: { page: number }) => {
   const res = await axios.get(`/api/booking?page=${page}`);
