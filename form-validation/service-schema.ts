@@ -17,7 +17,7 @@ export const serviceSchema = z.object({
     .string()
     .min(10, 'Description must be at least 10 characters long'),
   category_id: z.number(),
-  location: z.string().min(3, 'Location must be at least 3 characters long'),
+
   available: z.boolean({
     errorMap: () => ({ message: "Available must be either 'true' or 'false'" })
   })
@@ -32,7 +32,7 @@ export const serviceUpdateSchema = z.object({
     .string()
     .min(10, 'Description must be at least 10 characters long'),
   category_id: z.number(),
-  location: z.string().min(3, 'Location must be at least 3 characters long'),
+
   available: z.boolean({
     errorMap: () => ({ message: "Available must be either 'true' or 'false'" })
   })

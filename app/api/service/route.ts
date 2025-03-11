@@ -16,6 +16,9 @@ export async function GET(req: NextRequest) {
       take: pageSize,
       orderBy: {
         created_at: 'desc'
+      },
+      include: {
+        category: true
       }
     });
 
@@ -41,7 +44,6 @@ export async function POST(req: NextRequest) {
       discount: formData.get('discount'),
       description: formData.get('description'),
       category_id: formData.get('category_id'),
-      location: formData.get('location'),
       available: formData.get('available')
     };
 
@@ -54,7 +56,6 @@ export async function POST(req: NextRequest) {
         ...data,
         title: data.title?.toString() ?? '',
         description: data.description?.toString() ?? '',
-        location: data.location?.toString() ?? '',
         image: imageName,
         category_id: parseInt(data.category_id?.toString() ?? '0'),
         price: parseInt(data.price?.toString() ?? '0'),

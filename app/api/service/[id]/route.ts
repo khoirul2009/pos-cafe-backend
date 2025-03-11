@@ -20,7 +20,7 @@ export async function PUT(
       discount: formData.get('discount'),
       description: formData.get('description'),
       category_id: formData.get('category_id'),
-      location: formData.get('location'),
+
       available: formData.get('available')
     };
 
@@ -41,7 +41,7 @@ export async function PUT(
         ...data,
         title: data.title?.toString() ?? undefined,
         description: data.description?.toString() ?? undefined,
-        location: data.location?.toString() ?? undefined,
+
         image: imageName !== null ? imageName : undefined,
         category_id: parseInt(data.category_id?.toString() ?? '0'),
         price: parseInt(data.price?.toString() ?? '0'),
@@ -66,6 +66,9 @@ export async function GET(
     const service = await prisma.service.findFirst({
       where: {
         id: parseInt(params.id)
+      },
+      include: {
+        category: true
       }
     });
 

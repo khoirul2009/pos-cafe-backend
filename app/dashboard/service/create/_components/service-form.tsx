@@ -66,7 +66,7 @@ export default function ServiceForm({ id, defaultValues }: ServiceFormProps) {
           category_id: 0,
           description: '',
           discount: 0,
-          location: '',
+
           image: null
         }
   });
@@ -136,7 +136,6 @@ export default function ServiceForm({ id, defaultValues }: ServiceFormProps) {
     formData.append('description', data.description);
     formData.append('category_id', data.category_id.toString());
     formData.append('available', data.available as unknown as string);
-    formData.append('location', data.location);
 
     if (data.discount) formData.append('discount', data.discount.toString());
     if (data.image && data.image instanceof File)
@@ -336,23 +335,7 @@ export default function ServiceForm({ id, defaultValues }: ServiceFormProps) {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="location"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Location</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="JL. Pahlawan No. 1 RT xx RW XX"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
           <FormField
             control={form.control}
             name="description"

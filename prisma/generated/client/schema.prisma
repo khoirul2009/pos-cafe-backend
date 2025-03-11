@@ -69,7 +69,6 @@ model Service {
   discount    Int? // Diskon dalam persen (opsional)
   description String   @db.Text
   category_id Int
-  location    String
   available   Boolean  @default(true)
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
@@ -106,10 +105,10 @@ model Booking {
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
 
-  user          User            @relation(fields: [user_id], references: [id])
-  service       Service         @relation(fields: [service_id], references: [id])
-  BookingTalent BookingTalent[]
-  Payment       Payment[]
+  user            User            @relation(fields: [user_id], references: [id])
+  service         Service         @relation(fields: [service_id], references: [id])
+  booking_talents BookingTalent[]
+  payments        Payment[]
 
   @@map("bookings")
 }
@@ -127,29 +126,22 @@ model BookingTalent {
   @@map("booking_talents")
 }
 
-model PaymentMethod {
-  id         Int      @id @default(autoincrement())
-  name       String   @unique
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  Payment Payment[]
-
-  @@map("payment_methods")
-}
-
 model Payment {
-  id           Int      @id @default(autoincrement())
-  payment_uuid String
-  booking_id   Int
-  amount       Int
-  status       String
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
+  id             Int      @id @default(autoincrement())
+  payment_uuid   String
+  booking_id     Int
+  amount         Int
+  status         String
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  payment_method String
+  acquirer       String
+  qr_url         String?
+  redirect_url   String?
+  billing_num    String?
+  type           String   @default("dp")
 
-  booking           Booking        @relation(fields: [booking_id], references: [id])
-  payment_method    PaymentMethod? @relation(fields: [payment_method_id], references: [id])
-  payment_method_id Int?
+  booking Booking @relation(fields: [booking_id], references: [id])
 
   @@map("payments")
 }

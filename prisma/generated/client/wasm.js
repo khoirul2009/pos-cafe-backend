@@ -156,7 +156,6 @@ exports.Prisma.ServiceScalarFieldEnum = {
   discount: 'discount',
   description: 'description',
   category_id: 'category_id',
-  location: 'location',
   available: 'available',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -193,13 +192,6 @@ exports.Prisma.BookingTalentScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
-exports.Prisma.PaymentMethodScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-};
-
 exports.Prisma.PaymentScalarFieldEnum = {
   id: 'id',
   payment_uuid: 'payment_uuid',
@@ -208,7 +200,12 @@ exports.Prisma.PaymentScalarFieldEnum = {
   status: 'status',
   created_at: 'created_at',
   updated_at: 'updated_at',
-  payment_method_id: 'payment_method_id'
+  payment_method: 'payment_method',
+  acquirer: 'acquirer',
+  qr_url: 'qr_url',
+  redirect_url: 'redirect_url',
+  billing_num: 'billing_num',
+  type: 'type'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {
@@ -244,7 +241,6 @@ exports.Prisma.ModelName = {
   Talent: 'Talent',
   Booking: 'Booking',
   BookingTalent: 'BookingTalent',
-  PaymentMethod: 'PaymentMethod',
   Payment: 'Payment',
   Review: 'Review'
 };

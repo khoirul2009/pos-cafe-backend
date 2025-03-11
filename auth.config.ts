@@ -1,6 +1,7 @@
 import { NextAuthConfig } from 'next-auth';
 import CredentialProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
+import UserService from './services/user-service';
 
 const authConfig = {
   providers: [
@@ -18,19 +19,24 @@ const authConfig = {
         }
       },
       async authorize(credentials, req) {
-        const user = {
-          id: '1',
-          name: 'John',
-          email: credentials?.email as string
-        };
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
-          return null;
+        try {
+          if (!credentials?.email || !credentials?.password) return null;
 
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+          const service = new UserService();
+          const user = await service.authorize(
+            credentials.email as string,
+            credentials.password as string
+          );
+
+          return {
+            id: user.id.toString(),
+            email: user.email,
+            image: '',
+            name: user.name
+          };
+        } catch (error) {
+          console.log(error);
+          return null;
         }
       }
     })

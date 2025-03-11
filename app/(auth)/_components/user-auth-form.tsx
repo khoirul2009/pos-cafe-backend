@@ -29,8 +29,8 @@ export default function UserAuthForm() {
   const callbackUrl = searchParams.get('callbackUrl');
   const [loading, startTransition] = useTransition();
   const defaultValues = {
-    email: 'demo@gmail.com',
-    password: 'test123'
+    email: '',
+    password: ''
   };
   const form = useForm<UserFormValue>({
     resolver: zodResolver(formSchema),
@@ -38,14 +38,22 @@ export default function UserAuthForm() {
   });
 
   const onSubmit = async (data: UserFormValue) => {
-    startTransition(() => {
-      signIn('credentials', {
+    try {
+      const result = await signIn('credentials', {
         email: data.email,
         password: data.password,
-        callbackUrl: callbackUrl ?? '/dashboard'
+        redirect: false // Hindari redirect otomatis
       });
-      toast.success('Signed In Successfully!');
-    });
+
+      if (result?.error) {
+        toast.error('Login failed! Check your credentials.');
+      } else {
+        toast.success('Signed In Successfully!');
+        window.location.href = callbackUrl ?? '/dashboard';
+      }
+    } catch (error) {
+      toast.error('An unexpected error occurred.');
+    }
   };
 
   return (
@@ -94,7 +102,7 @@ export default function UserAuthForm() {
           />
 
           <Button disabled={loading} className="ml-auto w-full" type="submit">
-            Continue With Email
+            Sign In
           </Button>
         </form>
       </Form>

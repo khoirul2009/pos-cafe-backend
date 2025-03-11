@@ -2,6 +2,14 @@ import { prisma } from '@/lib/database';
 import { HttpException } from '@/lib/http-execption';
 import { Booking } from '@/prisma/generated/client';
 
+type BookingStoreRequest = {
+  date: string;
+  time: string;
+  location: string;
+  user_id: number;
+  service_id: number;
+};
+
 export default class BookingService {
   async all(searchParams: URLSearchParams) {
     const page = parseInt(searchParams.get('page') ?? '1') || 1;
@@ -24,7 +32,30 @@ export default class BookingService {
       totalItems: data.length
     };
   }
-  async create(data: Booking) {
+
+  async notAvailableDate(serviceId: number) {
+    const data = await prisma.booking.findMany({
+      where: {
+        service_id: serviceId,
+        status: 'confirmed' // Filter only confirmed bookings
+      },
+      select: {
+        date: true // Fetch only the date field
+      }
+    });
+
+    return data.map((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // Ensure 2-digit month
+      const day = String(date.getDate()).padStart(2, '0'); // Ensure 2-digit day
+
+      return `${year}-${month}-${day}`;
+    });
+    // Return only an array of dates
+  }
+
+  async create(data: BookingStoreRequest) {
     return await prisma.booking.create({
       data
     });
@@ -56,7 +87,11 @@ export default class BookingService {
   }
   async findById(id: number) {
     return await prisma.booking.findUnique({
-      where: { id }
+      where: { id },
+      include: {
+        service: true,
+        payments: true
+      }
     });
   }
 }

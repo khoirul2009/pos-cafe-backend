@@ -44,7 +44,7 @@ export default function ServiceEditView() {
 
   return (
     <PageContainer>
-      <Heading title="Edit Banner" description="Edit existing banner" />
+      <Heading title="Edit Service" description="Edit existing banner" />
       <ServiceForm defaultValues={data.data} id={id as string} />
     </PageContainer>
   );

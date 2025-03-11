@@ -1,0 +1,2 @@
+GET http://localhost:3001/api/service/39
+Accept: application/json
