@@ -83,26 +83,25 @@ export default function BookingForm({ service_id }: { service_id: string }) {
           </DialogHeader>
           <div className="w-full py-4">
             <Label className="mb-3 block">Select Date</Label>
-            {bookedDates.length > 0 ? (
-              <Calendar
-                mode="single"
-                selected={date}
-                classNames={{
-                  months:
-                    'flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1',
-                  month: 'space-y-4 w-full flex flex-col',
-                  table: 'w-full h-full border-collapse space-y-1',
-                  head_row: '',
-                  row: 'w-full mt-2',
-                  day_selected: 'bg-primary w-full hover:w-full',
-                  day_today: 'w-full bg-gray-200'
-                }}
-                onSelect={setDate}
-                className=" rounded-md border"
-                modifiers={{ disabled: [...bookedDates, new Date()] }}
-                modifiersClassNames={{ disabled: 'bg-primary w-full' }}
-              />
-            ) : null}
+            <Calendar
+              mode="single"
+              selected={date}
+              classNames={{
+                months:
+                  'flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1',
+                month: 'space-y-4 w-full flex flex-col',
+                table: 'w-full h-full border-collapse space-y-1',
+                head_row: '',
+                row: 'w-full mt-2',
+                day_selected: 'bg-primary w-full hover:w-full',
+                day_today: 'w-full bg-gray-200'
+              }}
+              onSelect={setDate}
+              className=" rounded-md border"
+              modifiers={{ disabled: [...bookedDates, new Date()] }}
+              modifiersClassNames={{ disabled: 'bg-primary w-full' }}
+            />
+
             <div className="my-5">
               <Label htmlFor="time" className="mb-3 block">
                 Time (Start and End)
