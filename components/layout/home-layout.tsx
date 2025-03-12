@@ -28,7 +28,7 @@ export default function HomeLayout({
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <CameraIcon className="h-8 w-8" />
-            <span className="text-xl font-bold">Capture Studio</span>
+            <span className="text-xl font-bold">Mozza Fotography</span>
           </div>
           <div className="hidden items-center space-x-8 md:flex">
             <a href="/#" className="text-sm font-medium hover:text-primary">

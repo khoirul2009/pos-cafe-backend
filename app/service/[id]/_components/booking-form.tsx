@@ -26,6 +26,7 @@ export default function BookingForm({ service_id }: { service_id: string }) {
   const [endTime, setEndTime] = useState('');
   const [location, setLocation] = useState('');
   const [bookedDates, setBookedDates] = useState<Date[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const { push } = useRouter();
   // Fetch booked dates from API
@@ -48,6 +49,7 @@ export default function BookingForm({ service_id }: { service_id: string }) {
   }, []);
 
   const handleSubmitBooking = async () => {
+    setLoading(true);
     try {
       const response = await axios.post('/api/booking', {
         service_id: parseInt(service_id),
@@ -61,6 +63,8 @@ export default function BookingForm({ service_id }: { service_id: string }) {
       push(`/checkout/${response.data.id}`);
     } catch (error) {
       toast.error('Failed to booking');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -134,7 +138,9 @@ export default function BookingForm({ service_id }: { service_id: string }) {
           <DialogFooter>
             <Button
               onClick={handleSubmitBooking}
-              disabled={!date || !startTime || !endTime || !location}
+              disabled={
+                !date || !startTime || !endTime || !location || !loading
+              }
             >
               Confirm Booking
             </Button>

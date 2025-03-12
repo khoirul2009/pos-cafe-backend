@@ -294,7 +294,12 @@ export default function CheckoutView() {
                   </div>
                 </CardContent>
                 <CardFooter className="flex flex-col gap-4">
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button
+                    disabled={loading}
+                    type="submit"
+                    className="w-full"
+                    size="lg"
+                  >
                     Complete Booking
                   </Button>
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
