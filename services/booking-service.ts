@@ -10,6 +10,10 @@ type BookingStoreRequest = {
   service_id: number;
 };
 
+type BookingUpdateRequest = {
+  status: string;
+};
+
 export default class BookingService {
   async all(searchParams: URLSearchParams) {
     const page = parseInt(searchParams.get('page') ?? '1') || 1;
@@ -60,7 +64,7 @@ export default class BookingService {
       data
     });
   }
-  async update(data: Booking, id: number) {
+  async update(data: BookingUpdateRequest, id: number) {
     const booking = await prisma.booking.findUnique({
       where: { id }
     });

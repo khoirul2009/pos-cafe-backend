@@ -17,3 +17,24 @@ export async function GET(
     return ErrorHandling.handle(error);
   }
 }
+
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const { status } = await req.json();
+    const service = new BookingService();
+    const data = await service.update(
+      {
+        status
+      },
+      parseInt(params.id)
+    );
+    return NextResponse.json({
+      data: 'Ok'
+    });
+  } catch (error: any) {
+    return ErrorHandling.handle(error);
+  }
+}

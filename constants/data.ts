@@ -152,13 +152,6 @@ export const navItems: NavItem[] = [
     shortcut: ['g', 'g']
   },
   {
-    title: 'Talent',
-    url: '/dashboard/talent',
-    icon: 'employee',
-    isActive: false,
-    shortcut: ['t', 't']
-  },
-  {
     title: 'Booking',
     url: '/dashboard/booking',
     icon: 'calendar',

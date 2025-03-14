@@ -26,6 +26,8 @@ import Paginations from '@/components/common/paginations';
 import { useSearchParams, useRouter } from 'next/navigation';
 import DeleteDialog from '@/components/common/delete-dialog';
 import { Booking } from '@/prisma/generated/client';
+import { Check, Eye, X } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const fetchBookings = async ({ page }: { page: number }) => {
   const res = await axios.get(`/api/booking?page=${page}`);
@@ -72,6 +74,22 @@ export default function BookingTable() {
     }
   }
 
+  // Helper function to get appropriate badge color based on status
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case 'pending':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'confirmed':
+        return 'bg-green-100 text-green-800';
+      case 'cancel':
+        return 'bg-red-100 text-red-800';
+      case 'completed':
+        return 'bg-blue-100 text-blue-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
+    }
+  };
+
   const columns: ColumnDef<Booking>[] = [
     {
       accessorKey: 'id',
@@ -91,34 +109,98 @@ export default function BookingTable() {
     },
     {
       accessorKey: 'status',
-      header: 'Status'
+      header: 'Status',
+      cell: ({ row }) => (
+        <Badge
+          className={`px-3 py-1 text-sm font-medium ${getStatusColor(
+            row.original.status
+          )}`}
+        >
+          {row.original.status}
+        </Badge>
+      )
     },
     {
       accessorKey: 'action',
       header: 'Action',
       cell: ({ row }) => (
         <div className="flex space-x-2">
-          <Button variant="secondary" size="sm">
+          <Button variant="default" size="sm">
             <Link
-              href={`/dashboard/booking/${row.original.id}/edit`}
-              className="w-full"
+              href={`/dashboard/booking/${row.original.id}`}
+              className="flex w-full items-center gap-2 text-white"
             >
-              Edit
+              <Eye /> Detail
             </Link>
           </Button>
-          <Button
-            onClick={() => {
-              setDeleteId(row.original.id);
-            }}
-            variant="destructive"
-            size="sm"
-          >
-            Delete
-          </Button>
+          {row.original.status === 'confirmed' && (
+            <>
+              <Button
+                variant="destructive"
+                size="sm"
+                className="flex items-center gap-2"
+                onClick={() => handleCancel(row.original.id)}
+              >
+                <X /> Cancel
+              </Button>
+              <Button
+                variant="success"
+                size="sm"
+                className="flex items-center gap-2"
+                onClick={() => handleComplete(row.original.id)}
+              >
+                <Check /> Completed
+              </Button>
+            </>
+          )}
         </div>
       )
     }
   ];
+
+  const handleCancel = async (id: number) => {
+    try {
+      const response = await axios.put(`/api/booking/${id}`, {
+        status: 'cancel'
+      });
+      if (response.status === 200) {
+        refetch();
+        toast({
+          title: 'Success',
+          description: 'Booking berhasil dibatalkan!',
+          variant: 'success'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Gagal membatalkan Booking.',
+        variant: 'error'
+      });
+    }
+  };
+
+  const handleComplete = async (id: number) => {
+    try {
+      const response = await axios.put(`/api/booking/${id}`, {
+        status: 'completed'
+      });
+      if (response.status === 200) {
+        refetch();
+        toast({
+          title: 'Success',
+          description: 'Booking berhasil diselesaikan!',
+          variant: 'success'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Gagal menyelesaikan Booking.',
+        variant: 'error'
+      });
+    }
+  };
 
   const table = useReactTable({
     data: data?.data || [],
