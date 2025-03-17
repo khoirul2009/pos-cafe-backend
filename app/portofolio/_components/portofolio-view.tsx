@@ -43,12 +43,10 @@ export default function PortfolioView() {
 
   return (
     <HomeLayout>
-      <div className="min-h-[80vh] bg-gray-50 px-4 py-8">
+      <div className="min-h-[80vh] px-4 py-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <h1 className="mb-4 text-4xl font-bold text-gray-900">
-              Photography Portfolio
-            </h1>
+            <h1 className="mb-4 text-4xl font-bold ">Photography Portfolio</h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
               Capturing moments, emotions, and stories through the lens
             </p>

@@ -18,14 +18,8 @@ export async function middleware(req: NextRequest) {
   }
 
   // Role-based protection
-  const isAdminRoute = req.nextUrl.pathname.startsWith('/admin');
-  const protectedUserRoutes = [
-    '/dashboard',
-    '/booking',
-    '/checkout',
-    '/payment',
-    '/profile'
-  ];
+  const isAdminRoute = req.nextUrl.pathname.startsWith('/dashboard');
+  const protectedUserRoutes = ['/booking', '/checkout', '/payment', '/profile'];
   const isUserRoute = protectedUserRoutes.some((route) =>
     req.nextUrl.pathname.startsWith(route)
   );
