@@ -24,12 +24,12 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname.startsWith(route)
   );
 
-  // Hanya admin yang bisa mengakses /admin
+  // Hanya admin yang bisa mengakses /dashboard
   if (isAdminRoute && token.role !== 'admin') {
     return NextResponse.redirect(new URL('/403', req.url));
   }
 
-  // Semua user yang login bisa mengakses /dashboard & /profile
+  // Semua user yang login bisa mengakses routes yang dilindungi
   if (isUserRoute && !token) {
     return NextResponse.redirect(new URL('/403', req.url));
   }
