@@ -29,12 +29,28 @@ import { Booking } from '@/prisma/generated/client';
 import { Check, Eye, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
-const fetchBookings = async ({ page }: { page: number }) => {
-  const res = await axios.get(`/api/booking?page=${page}`);
-  return res.data ?? [];
+const fetchBookings = async ({
+  page,
+  userId
+}: {
+  page: number;
+  userId?: number;
+}) => {
+  try {
+    const query =
+      userId && userId !== 0
+        ? `?page=${page}&user_id=${userId}`
+        : `?page=${page}`;
+    const res = await axios.get(`/api/booking${query}`);
+
+    return res.data ?? [];
+  } catch (error) {
+    console.error('Error fetching bookings:', error);
+    return [];
+  }
 };
 
-export default function BookingTable() {
+export default function BookingTable({ userId }: { userId?: number }) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -45,7 +61,7 @@ export default function BookingTable() {
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['galleries', page],
-    queryFn: () => fetchBookings({ page })
+    queryFn: () => fetchBookings({ page, userId })
   });
 
   // Sync page state with URL
@@ -127,7 +143,11 @@ export default function BookingTable() {
         <div className="flex space-x-2">
           <Button variant="default" size="sm">
             <Link
-              href={`/dashboard/booking/${row.original.id}`}
+              href={
+                userId != null
+                  ? `/booking/${row.original.id}`
+                  : `/dashboard/booking/${row.original.id}`
+              }
               className="flex w-full items-center gap-2 text-white"
             >
               <Eye /> Detail

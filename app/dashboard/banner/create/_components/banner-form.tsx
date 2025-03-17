@@ -36,7 +36,9 @@ const formSchema = z.object({
     .refine(
       (file) => {
         if (!file) return true; // Jika tidak ada file, validasi lolos (untuk Update)
-        return ['image/jpeg', 'image/png', 'image/jpg'].includes(file.type);
+        return ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'].includes(
+          file.type
+        );
       },
       {
         message: 'Format gambar harus JPEG, JPG, atau PNG'

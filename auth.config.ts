@@ -4,11 +4,14 @@ import GithubProvider from 'next-auth/providers/github';
 import UserService from './services/user-service';
 
 const authConfig = {
+  secret: process.env.NEXTAUTH_SECRET,
+  session: { strategy: 'jwt' },
   providers: [
     // GithubProvider({
     //   clientId: process.env.GITHUB_ID ?? '',
     //   clientSecret: process.env.GITHUB_SECRET ?? ''
     // }),
+
     CredentialProvider({
       credentials: {
         email: {
@@ -32,7 +35,8 @@ const authConfig = {
             id: user.id.toString(),
             email: user.email,
             image: '',
-            name: user.name
+            name: user.name,
+            role: user.role
           };
         } catch (error) {
           console.log(error);
@@ -41,6 +45,22 @@ const authConfig = {
       }
     })
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id as string;
+        token.role = user.role; // Simpan role di token
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.role = token.role as string; // Simpan role di session
+      }
+      return session;
+    }
+  },
   pages: {
     signIn: '/sigin' //sigin page
   }

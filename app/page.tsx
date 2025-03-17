@@ -1,5 +1,7 @@
 import HomeLayout from '@/components/layout/home-layout';
 import PageContainer from '@/components/layout/page-container';
+import Reviews from '@/components/reviews';
+import ServiceCard from '@/components/service-card';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -85,12 +87,14 @@ async function App() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="rounded-lg bg-background p-8 text-center shadow-sm">
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                <AwardIcon className="h-8 w-8 text-primary" />
+                <UsersIcon className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="mb-3 text-xl font-semibold">Award Winning</h3>
+              <h3 className="mb-3 text-xl font-semibold">
+                1000+ Clients Reviewed
+              </h3>
               <p className="text-muted-foreground">
-                Recognized for excellence in photography with multiple industry
-                awards.
+                Trusted by thousands of satisfied clients who have shared their
+                experiences.
               </p>
             </div>
 
@@ -131,149 +135,22 @@ async function App() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {response.data.data.map((service: ServiceType) => (
-              <Card>
-                <CardHeader>
-                  <CardTitle>{service.category.title}</CardTitle>
-                  <CardDescription>{service.title}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="mb-4 aspect-video overflow-hidden rounded-md">
-                    <img
-                      src={service.image}
-                      alt="Wedding Photography"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Foto dipotret oleh professional dengan harga yang terjangkau
-                    dan hasil yang memuaskan
-                  </p>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full">
-                    <Link href={`/service/${service.id}`} className="w-full">
-                      Learn More
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
+              <ServiceCard service={service} key={service.id} />
             ))}
+          </div>
+
+          <div className="mt-10 items-center text-center">
+            <Button className="mx-auto">
+              <Link className="w-full" href="/service">
+                See More
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="bg-muted/30 py-24">
-        <div className="container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold">What Our Clients Say</h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
-              Hear from people who have experienced our services.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <Card className="bg-background">
-              <CardContent className="pt-6">
-                <div className="mb-4 flex items-center">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <StarIcon
-                      key={star}
-                      className="h-5 w-5 fill-primary text-primary"
-                    />
-                  ))}
-                </div>
-                <p className="mb-6 italic">
-                  "The photos from our wedding day were absolutely stunning.
-                  They captured every special moment and emotion. We couldn't be
-                  happier!"
-                </p>
-                <div className="flex items-center">
-                  <div className="mr-4 h-12 w-12 overflow-hidden rounded-full">
-                    <img
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                      alt="Client"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-medium">Sarah Johnson</p>
-                    <p className="text-sm text-muted-foreground">
-                      Wedding Client
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-background">
-              <CardContent className="pt-6">
-                <div className="mb-4 flex items-center">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <StarIcon
-                      key={star}
-                      className="h-5 w-5 fill-primary text-primary"
-                    />
-                  ))}
-                </div>
-                <p className="mb-6 italic">
-                  "The commercial photos for our product line exceeded our
-                  expectations. They've significantly improved our marketing
-                  materials."
-                </p>
-                <div className="flex items-center">
-                  <div className="mr-4 h-12 w-12 overflow-hidden rounded-full">
-                    <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                      alt="Client"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-medium">Michael Chen</p>
-                    <p className="text-sm text-muted-foreground">
-                      Business Owner
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-background">
-              <CardContent className="pt-6">
-                <div className="mb-4 flex items-center">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <StarIcon
-                      key={star}
-                      className="h-5 w-5 fill-primary text-primary"
-                    />
-                  ))}
-                </div>
-                <p className="mb-6 italic">
-                  "Our family portraits are treasures we'll cherish forever. The
-                  photographer made everyone feel comfortable and captured our
-                  personalities perfectly."
-                </p>
-                <div className="flex items-center">
-                  <div className="mr-4 h-12 w-12 overflow-hidden rounded-full">
-                    <img
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
-                      alt="Client"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-medium">Emily Rodriguez</p>
-                    <p className="text-sm text-muted-foreground">
-                      Portrait Client
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <Reviews />
 
       {/* Contact Section */}
       <section id="contact" className="py-24">
@@ -294,7 +171,8 @@ async function App() {
                   <div>
                     <h3 className="font-medium">Studio Location</h3>
                     <p className="text-muted-foreground">
-                      123 Photography Lane, Artville, CA 90210
+                      Jl. Tj. 3A, Tj. Lor, Tanjung, Kec. Tirto, Kabupaten
+                      Pekalongan, Jawa Tengah 51151
                     </p>
                   </div>
                 </div>
@@ -306,7 +184,7 @@ async function App() {
                   <div>
                     <h3 className="font-medium">Email Us</h3>
                     <p className="text-muted-foreground">
-                      info@capturestudio.com
+                      saugy119471@gmail.com
                     </p>
                   </div>
                 </div>
@@ -317,7 +195,7 @@ async function App() {
                   </div>
                   <div>
                     <h3 className="font-medium">Call Us</h3>
-                    <p className="text-muted-foreground">(555) 123-4567</p>
+                    <p className="text-muted-foreground">0857-0003-1014</p>
                   </div>
                 </div>
               </div>
@@ -326,78 +204,13 @@ async function App() {
                 <h3 className="mb-4 font-medium">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href="https://www.instagram.com/mozzafotografi?igsh=aG16NHc5emhuYWEx"
                     className="rounded-full bg-muted p-3 transition-colors hover:bg-muted/80"
                   >
                     <InstagramIcon className="h-5 w-5" />
                   </a>
-                  <a
-                    href="#"
-                    className="rounded-full bg-muted p-3 transition-colors hover:bg-muted/80"
-                  >
-                    <FacebookIcon className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="rounded-full bg-muted p-3 transition-colors hover:bg-muted/80"
-                  >
-                    <TwitterIcon className="h-5 w-5" />
-                  </a>
                 </div>
               </div>
-            </div>
-
-            <div className="rounded-lg bg-muted/30 p-8">
-              <h3 className="mb-6 text-xl font-semibold">Send Us a Message</h3>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full rounded-md border border-input px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full rounded-md border border-input px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      placeholder="Your email"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    className="w-full rounded-md border border-input px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    placeholder="Subject"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full rounded-md border border-input px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    placeholder="Your message"
-                  ></textarea>
-                </div>
-                <Button className="w-full">Send Message</Button>
-              </form>
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ export default function UserAuthForm() {
         toast.error('Login failed! Check your credentials.');
       } else {
         toast.success('Signed In Successfully!');
-        window.location.href = callbackUrl ?? '/dashboard';
+        window.location.href = callbackUrl ?? '/';
       }
     } catch (error) {
       toast.error('An unexpected error occurred.');

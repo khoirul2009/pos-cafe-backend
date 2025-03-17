@@ -74,7 +74,7 @@ interface BookingData {
   payments: Payment[];
 }
 
-export default function BookingView() {
+export default function BookingDetailView() {
   const { id } = useParams();
   const appUrl = process.env.NEXTAUTH_URL;
   const [data, setData] = useState<BookingData>();

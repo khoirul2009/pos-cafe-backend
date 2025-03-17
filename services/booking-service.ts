@@ -1,6 +1,5 @@
 import { prisma } from '@/lib/database';
 import { HttpException } from '@/lib/http-execption';
-import { Booking } from '@/prisma/generated/client';
 
 type BookingStoreRequest = {
   date: string;
@@ -18,7 +17,12 @@ export default class BookingService {
   async all(searchParams: URLSearchParams) {
     const page = parseInt(searchParams.get('page') ?? '1') || 1;
     const pageSize = parseInt(searchParams.get('pageSize') ?? '10') || 10;
+    const userId = searchParams.get('user_id');
+
+    const parsedUserId = userId ? parseInt(userId) : undefined;
+
     const data = await prisma.booking.findMany({
+      where: parsedUserId ? { user_id: parsedUserId } : {}, // Hanya filter jika userId ada
       include: {
         user: true,
         service: true

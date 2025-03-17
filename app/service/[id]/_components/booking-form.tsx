@@ -68,6 +68,11 @@ export default function BookingForm({ service_id }: { service_id: string }) {
     }
   };
 
+  const now = new Date();
+  const currentDate = new Date(now.setHours(0, 0, 0, 0)); // Reset ke awal hari
+  const tomorrow = new Date(currentDate);
+  tomorrow.setDate(currentDate.getDate() + 1); // 1 hari setelah hari ini
+
   return (
     <div className="space-y-4">
       <Dialog>
@@ -90,6 +95,7 @@ export default function BookingForm({ service_id }: { service_id: string }) {
             <Calendar
               mode="single"
               selected={date}
+              onSelect={setDate}
               classNames={{
                 months:
                   'flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1',
@@ -100,10 +106,15 @@ export default function BookingForm({ service_id }: { service_id: string }) {
                 day_selected: 'bg-primary w-full hover:w-full',
                 day_today: 'w-full bg-gray-200'
               }}
-              onSelect={setDate}
-              className=" rounded-md border"
-              modifiers={{ disabled: [...bookedDates, new Date()] }}
-              modifiersClassNames={{ disabled: 'bg-primary w-full' }}
+              modifiers={{
+                disabled: (day) =>
+                  day < tomorrow ||
+                  bookedDates.some(
+                    (d) => d.toDateString() === day.toDateString()
+                  )
+              }}
+              modifiersClassNames={{ disabled: 'bg-primary w-full opacity-50' }}
+              className="rounded-md border"
             />
 
             <div className="my-5">
@@ -138,9 +149,7 @@ export default function BookingForm({ service_id }: { service_id: string }) {
           <DialogFooter>
             <Button
               onClick={handleSubmitBooking}
-              disabled={
-                !date || !startTime || !endTime || !location || !loading
-              }
+              disabled={!date || !startTime || !endTime || !location || loading}
             >
               Confirm Booking
             </Button>

@@ -24,7 +24,7 @@ export default class GalleryService {
       image: ''
     };
 
-    const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
     if (!validTypes.includes(imageFile.type)) {
       throw new Error('Invalid image type');
     }

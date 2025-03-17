@@ -1,3 +1,4 @@
+import { auth } from '@/auth';
 import { prisma } from '@/lib/database';
 import { HttpException } from '@/lib/http-execption';
 import { User } from '@/prisma/generated/client';
@@ -50,5 +51,34 @@ export default class UserService {
     }
 
     return data;
+  }
+
+  async passwordReset(email: string, password: string, newPassword: string) {
+    const data = await prisma.user.findUnique({
+      where: { email: email }
+    });
+
+    if (!data) {
+      throw new HttpException(400, 'Invalid credentials');
+    }
+
+    const comparePassword = await bcrypt.compare(password, data.password);
+
+    if (!comparePassword) {
+      throw new HttpException(400, 'Invalid credentials');
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await prisma.user.update({
+      where: {
+        email: email
+      },
+      data: {
+        password: hashedPassword
+      }
+    });
+
+    return true;
   }
 }

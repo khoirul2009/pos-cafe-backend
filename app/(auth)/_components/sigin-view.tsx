@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import UserAuthForm from './user-auth-form';
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Separator } from '@radix-ui/react-separator';
 
 export const metadata: Metadata = {
   title: 'Authentication',
@@ -21,7 +22,10 @@ export default function SignInViewPage() {
       >
         Login
       </Link>
-      <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
+      <Link
+        href="/"
+        className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r"
+      >
         <div className="absolute inset-0 bg-zinc-900" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <svg
@@ -36,9 +40,9 @@ export default function SignInViewPage() {
           >
             <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
           </svg>
-          Logo
+          Mozza Fotography
         </div>
-      </div>
+      </Link>
       <div className="flex h-full items-center p-4 lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
@@ -67,6 +71,12 @@ export default function SignInViewPage() {
             </Link>
             .
           </p>
+          <Separator />
+          <Button variant="secondary">
+            <Link className="w-full" href="/register">
+              Register
+            </Link>
+          </Button>
         </div>
       </div>
     </div>
