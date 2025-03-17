@@ -19,9 +19,16 @@ export async function middleware(req: NextRequest) {
 
   // Role-based protection
   const isAdminRoute = req.nextUrl.pathname.startsWith('/admin');
-  const isUserRoute =
-    req.nextUrl.pathname.startsWith('/dashboard') ||
-    req.nextUrl.pathname.startsWith('/profile');
+  const protectedUserRoutes = [
+    '/dashboard',
+    '/booking',
+    '/checkout',
+    '/payment',
+    '/profile'
+  ];
+  const isUserRoute = protectedUserRoutes.some((route) =>
+    req.nextUrl.pathname.startsWith(route)
+  );
 
   // Hanya admin yang bisa mengakses /admin
   if (isAdminRoute && token.role !== 'admin') {
@@ -36,7 +43,12 @@ export async function middleware(req: NextRequest) {
   return NextResponse.next(); // Lanjutkan jika memenuhi syarat
 }
 
-// Konfigurasi middleware hanya untuk halaman tertentu
 export const config = {
-  matcher: ['/dashboard/:path*', '/booking', '/profile']
+  matcher: [
+    '/dashboard/:path*',
+    '/booking/:path*',
+    '/profile',
+    '/payment/:path*',
+    '/checkout/:path*'
+  ]
 };
