@@ -23,12 +23,14 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname.startsWith('/dashboard') ||
     req.nextUrl.pathname.startsWith('/profile');
 
+  // Hanya admin yang bisa mengakses /admin
   if (isAdminRoute && token.role !== 'admin') {
-    return NextResponse.redirect(new URL('/403', req.url)); // Redirect jika bukan admin
+    return NextResponse.redirect(new URL('/403', req.url));
   }
 
-  if (isUserRoute && token.role !== 'user' && token.role !== 'admin') {
-    return NextResponse.redirect(new URL('/403', req.url)); // Redirect jika bukan user atau admin
+  // Semua user yang login bisa mengakses /dashboard & /profile
+  if (isUserRoute && !token) {
+    return NextResponse.redirect(new URL('/403', req.url));
   }
 
   return NextResponse.next(); // Lanjutkan jika memenuhi syarat
