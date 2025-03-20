@@ -61,6 +61,18 @@ const authConfig = {
       return session;
     }
   },
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production'
+      }
+    }
+    // Other cookie settings...
+  },
   pages: {
     signIn: '/sigin' //sigin page
   }

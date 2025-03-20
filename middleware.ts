@@ -4,18 +4,18 @@
 
 import NextAuth from 'next-auth';
 import authConfig from './auth.config';
-import { getToken } from 'next-auth/jwt';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 const { auth } = NextAuth(authConfig);
 
-export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+export default auth(function middleware(req) {
+  const isAuthenticated = !!req.auth;
 
-  // Jika tidak ada token, redirect ke login
-  if (!token) {
+  if (!isAuthenticated) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
+
+  const role = req.auth?.user.role;
 
   // Role-based protection
   const isAdminRoute = req.nextUrl.pathname.startsWith('/dashboard');
@@ -25,13 +25,13 @@ export async function middleware(req: NextRequest) {
   );
 
   // Hanya admin yang bisa mengakses /dashboard
-  if (isAdminRoute && token.role !== 'admin') {
+  if (isAdminRoute && role !== 'admin') {
     return NextResponse.redirect(new URL('/403', req.url));
   }
 
   // Lanjutkan jika memenuhi syarat
   return NextResponse.next();
-}
+});
 
 export const config = {
   matcher: [
