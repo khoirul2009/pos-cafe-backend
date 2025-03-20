@@ -29,12 +29,8 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/403', req.url));
   }
 
-  // Semua user yang login bisa mengakses routes yang dilindungi
-  if (isUserRoute && !token) {
-    return NextResponse.redirect(new URL('/403', req.url));
-  }
-
-  return NextResponse.next(); // Lanjutkan jika memenuhi syarat
+  // Lanjutkan jika memenuhi syarat
+  return NextResponse.next();
 }
 
 export const config = {
