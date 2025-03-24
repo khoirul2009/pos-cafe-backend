@@ -30,6 +30,50 @@ export default async function RootLayout({
       className={`${lato.className}`}
       suppressHydrationWarning={true}
     >
+      <head>
+        <title>Mozza Fotography</title>
+        <meta name="title" content="Mozza Fotography" />
+        <meta
+          name="description"
+          content="📸 Mozza Photography – Layanan fotografi profesional di Pekalongan, Jawa Tengah, melayani foto wisuda, pernikahan, pre-wedding, kelas, dan lainnya. Telah dipercaya oleh 1.000+ klien, kami siap mengabadikan momen spesial Anda dengan hasil terbaik! 📷✨
+
+          🔹 Fotografi Wisuda | Pre-Wedding | Pernikahan | Event | Kelas
+          🔹 Pekalongan, Jawa Tengah
+          🔹 1000+ Klien Puas"
+        />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://foto-web.vercel.app/" />
+        <meta property="og:title" content="Mozza Fotography" />
+        <meta
+          property="og:description"
+          content="📸 Mozza Photography – Layanan fotografi profesional di Pekalongan, Jawa Tengah, melayani foto wisuda, pernikahan, pre-wedding, kelas, dan lainnya. Telah dipercaya oleh 1.000+ klien, kami siap mengabadikan momen spesial Anda dengan hasil terbaik! 📷✨
+
+        🔹 Fotografi Wisuda | Pre-Wedding | Pernikahan | Event | Kelas
+        🔹 Pekalongan, Jawa Tengah
+        🔹 1000+ Klien Puas"
+        />
+        <meta
+          property="og:image"
+          content="https://metatags.io/images/meta-tags.png"
+        />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://foto-web.vercel.app/" />
+        <meta property="twitter:title" content="Mozza Fotography" />
+        <meta
+          property="twitter:description"
+          content="📸 Mozza Photography – Layanan fotografi profesional di Pekalongan, Jawa Tengah, melayani foto wisuda, pernikahan, pre-wedding, kelas, dan lainnya. Telah dipercaya oleh 1.000+ klien, kami siap mengabadikan momen spesial Anda dengan hasil terbaik! 📷✨
+
+        🔹 Fotografi Wisuda | Pre-Wedding | Pernikahan | Event | Kelas
+        🔹 Pekalongan, Jawa Tengah
+        🔹 1000+ Klien Puas"
+        />
+        <meta
+          property="twitter:image"
+          content="https://metatags.io/images/meta-tags.png"
+        />
+      </head>
       <body className={'overflow-auto'}>
         <NextTopLoader showSpinner={false} />
         <Providers session={session}>
