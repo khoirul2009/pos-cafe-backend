@@ -20,12 +20,13 @@ import EwalletSelection from './ewallet-selection';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { toast } from 'sonner';
-import { Booking, Service } from '@/prisma/generated/client';
+import { Booking, BookingDates, Service } from '@/prisma/generated/client';
 import { formatIDR } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
 type BookingType = Booking & {
   service: Service;
+  booking_dates: BookingDates[];
 };
 
 export default function CheckoutView() {
@@ -270,13 +271,21 @@ export default function CheckoutView() {
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
                     <span>{booking?.service.title}</span>
-                    <span>{formatIDR(booking?.service.price!)}</span>
+                    <span>
+                      {formatIDR(
+                        booking?.service.price! * booking?.booking_dates.length!
+                      )}
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm text-gray-500">
                     <span>Deposit (50%)</span>
                     <span>
                       {formatIDR(
-                        booking?.service.price! - booking?.service.price! * 0.5
+                        booking?.service.price! *
+                          booking?.booking_dates.length! -
+                          booking?.service.price! *
+                            booking?.booking_dates.length! *
+                            0.5
                       )}
                     </span>
                   </div>
@@ -285,7 +294,11 @@ export default function CheckoutView() {
                     <span>Total Due Now</span>
                     <span>
                       {formatIDR(
-                        booking?.service.price! - booking?.service.price! * 0.5
+                        booking?.service.price! *
+                          booking?.booking_dates.length! -
+                          booking?.service.price! *
+                            booking?.booking_dates.length! *
+                            0.5
                       )}
                     </span>
                   </div>

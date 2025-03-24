@@ -72,6 +72,7 @@ interface BookingData {
   updated_at: string;
   service: Service;
   payments: Payment[];
+  booking_dates: { date: string }[];
 }
 
 export default function BookingDetailView() {
@@ -166,7 +167,8 @@ export default function BookingDetailView() {
     .reduce((sum, payment) => sum + payment.amount, 0);
 
   // Calculate remaining payment
-  const remainingPayment = data.service.price - totalPaid;
+  const remainingPayment =
+    data.service.price * data.booking_dates.length - totalPaid;
 
   return (
     <PageContainer>
@@ -219,14 +221,20 @@ export default function BookingDetailView() {
                       <Calendar className="mr-2 mt-0.5 h-5 w-5 text-blue-600" />
                       <div>
                         <p className="font-medium">Tanggal</p>
-                        <p>{format(new Date(data.date), 'dd MMMM yyyy')}</p>
+                        <ul className="list-disc pl-5">
+                          {data.booking_dates.map((date, index) => (
+                            <li key={index}>
+                              {format(new Date(date.date), 'dd MMMM yyyy')}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
 
                     <div className="flex items-start">
                       <Clock className="mr-2 mt-0.5 h-5 w-5 text-blue-600" />
                       <div>
-                        <p className="font-medium">Waktu</p>
+                        <p className="font-medium">Waktu Acara</p>
                         <p>{data.time}</p>
                       </div>
                     </div>
@@ -253,7 +261,9 @@ export default function BookingDetailView() {
                   <div className="flex justify-between">
                     <span>Harga Layanan</span>
                     <span className="font-medium">
-                      {formatCurrency(data.service.price)}
+                      {formatCurrency(
+                        data.service.price * data.booking_dates.length
+                      )}
                     </span>
                   </div>
 
@@ -270,7 +280,8 @@ export default function BookingDetailView() {
                     <span>Total</span>
                     <span className="font-medium">
                       {formatCurrency(
-                        data.service.price - (data.service.discount || 0)
+                        data.service.price * data.booking_dates.length -
+                          (data.service.discount || 0)
                       )}
                     </span>
                   </div>
@@ -424,6 +435,19 @@ export default function BookingDetailView() {
                   ))}
                 </TableBody>
               </Table>
+            </CardContent>
+          </Card>
+
+          {/* Service Description */}
+          <Card className="w-full">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-xl">Deskripsi Layanan</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div
+                dangerouslySetInnerHTML={{ __html: data.service.description }}
+                className="prose max-w-none"
+              />
             </CardContent>
           </Card>
         </div>

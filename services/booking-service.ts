@@ -2,11 +2,13 @@ import { prisma } from '@/lib/database';
 import { HttpException } from '@/lib/http-execption';
 
 type BookingStoreRequest = {
-  date: string;
   time: string;
   location: string;
   user_id: number;
   service_id: number;
+  booking_dates: {
+    date: string;
+  }[];
 };
 
 type BookingUpdateRequest = {
@@ -25,7 +27,12 @@ export default class BookingService {
       where: parsedUserId ? { user_id: parsedUserId } : {}, // Hanya filter jika userId ada
       include: {
         user: true,
-        service: true
+        service: true,
+        booking_dates: {
+          select: {
+            date: true
+          }
+        }
       },
       skip: (page - 1) * pageSize,
       take: pageSize,
@@ -43,31 +50,38 @@ export default class BookingService {
 
   async notAvailableDate(serviceId: number) {
     const data = await prisma.booking.findMany({
-      where: {
-        service_id: serviceId,
-        status: 'confirmed' // Filter only confirmed bookings
-      },
-      select: {
-        date: true // Fetch only the date field
-      }
+      where: { service_id: serviceId },
+      include: { booking_dates: true }
     });
 
-    return data.map((item) => {
-      const date = new Date(item.date);
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0'); // Ensure 2-digit month
-      const day = String(date.getDate()).padStart(2, '0'); // Ensure 2-digit day
-
-      return `${year}-${month}-${day}`;
-    });
-    // Return only an array of dates
+    // Flatten the array to return a single list of dates
+    return data.flatMap((item) =>
+      item.booking_dates.map((i) => {
+        const date = new Date(i.date);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      })
+    );
   }
 
   async create(data: BookingStoreRequest) {
     return await prisma.booking.create({
-      data
+      data: {
+        time: data.time,
+        location: data.location,
+        user_id: data.user_id,
+        service_id: data.service_id,
+        booking_dates: {
+          createMany: {
+            data: data.booking_dates
+          }
+        }
+      }
     });
   }
+
   async update(data: BookingUpdateRequest, id: number) {
     const booking = await prisma.booking.findUnique({
       where: { id }
@@ -98,7 +112,8 @@ export default class BookingService {
       where: { id },
       include: {
         service: true,
-        payments: true
+        payments: true,
+        booking_dates: true
       }
     });
   }

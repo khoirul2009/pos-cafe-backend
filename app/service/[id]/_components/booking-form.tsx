@@ -19,9 +19,12 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { addDays } from 'date-fns';
+import { DateRange } from 'react-day-picker';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default function BookingForm({ service_id }: { service_id: string }) {
-  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [selectedDates, setSelectedDates] = useState<Date[]>();
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [location, setLocation] = useState('');
@@ -53,9 +56,12 @@ export default function BookingForm({ service_id }: { service_id: string }) {
     try {
       const response = await axios.post('/api/booking', {
         service_id: parseInt(service_id),
-        date,
+
         time: `${startTime} - ${endTime}`,
-        location: location
+        location: location,
+        booking_dates: selectedDates?.map((date) => ({
+          date: date.toISOString()
+        }))
       });
 
       toast.success('Success booking');
@@ -82,7 +88,7 @@ export default function BookingForm({ service_id }: { service_id: string }) {
             Book Now
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="w-full max-w-[525px]">
           <DialogHeader>
             <DialogTitle>Book Your Session</DialogTitle>
             <DialogDescription>
@@ -90,66 +96,85 @@ export default function BookingForm({ service_id }: { service_id: string }) {
               booked.
             </DialogDescription>
           </DialogHeader>
-          <div className="w-full py-4">
-            <Label className="mb-3 block">Select Date</Label>
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              classNames={{
-                months:
-                  'flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1',
-                month: 'space-y-4 w-full flex flex-col',
-                table: 'w-full h-full border-collapse space-y-1',
-                head_row: '',
-                row: 'w-full mt-2',
-                day_selected: 'bg-primary w-full hover:w-full',
-                day_today: 'w-full bg-gray-200'
-              }}
-              modifiers={{
-                disabled: (day) =>
-                  day < tomorrow ||
-                  bookedDates.some(
-                    (d) => d.toDateString() === day.toDateString()
-                  )
-              }}
-              modifiersClassNames={{ disabled: 'bg-primary w-full opacity-50' }}
-              className="rounded-md border"
-            />
+          <ScrollArea>
+            <div className="w-full py-4">
+              <Label className="mb-3 block">Select Date</Label>
 
-            <div className="my-5">
-              <Label htmlFor="time" className="mb-3 block">
-                Time (Start and End)
-              </Label>
-              <div className="flex">
+              <Calendar
+                initialFocus
+                mode="multiple"
+                className="flex h-full w-full"
+                classNames={{
+                  months:
+                    'flex w-full flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 flex-1',
+                  month: 'space-y-4 w-full flex flex-col',
+                  table: 'w-full h-full border-collapse space-y-1',
+                  head_row: '',
+                  row: 'w-full mt-2',
+                  cell: 'w-8 h-8 text-center rounded-full'
+                }}
+                modifiers={{
+                  disabled: (day) => {
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Set ke awal hari untuk perbandingan yang akurat
+
+                    return (
+                      day < today ||
+                      bookedDates.some((bookedDate) => {
+                        // Pastikan bookedDate adalah objek Date
+                        const booked = new Date(bookedDate);
+                        booked.setHours(0, 0, 0, 0); // Hilangkan efek zona waktu
+
+                        return day.getTime() === booked.getTime();
+                      })
+                    );
+                  }
+                }}
+                defaultMonth={new Date()}
+                selected={selectedDates}
+                onSelect={setSelectedDates}
+                modifiersClassNames={{
+                  disabled: 'bg-gray-300 opacity-50 cursor-not-allowed'
+                }}
+              />
+
+              <div className="my-5">
+                <Label htmlFor="time" className="mb-3 block">
+                  Time (Start and End)
+                </Label>
+                <div className="flex">
+                  <Input
+                    type="time"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                  />
+                  <Input
+                    type="time"
+                    value={endTime}
+                    onChange={(e) => setEndTime(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="my-5">
+                <Label htmlFor="location" className="mb-3 block">
+                  Location
+                </Label>
                 <Input
-                  type="time"
-                  value={startTime}
-                  onChange={(e) => setStartTime(e.target.value)}
-                />
-                <Input
-                  type="time"
-                  value={endTime}
-                  onChange={(e) => setEndTime(e.target.value)}
+                  type="text"
+                  name="location"
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="JL. Madu Manis No 99 Desa Hutan 1"
                 />
               </div>
             </div>
-            <div className="my-5">
-              <Label htmlFor="location" className="mb-3 block">
-                Location
-              </Label>
-              <Input
-                type="text"
-                name="location"
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="JL. Madu Manis No 99 Desa Hutan 1"
-              />
-            </div>
-          </div>
+          </ScrollArea>
+
           <DialogFooter>
             <Button
               onClick={handleSubmitBooking}
-              disabled={!date || !startTime || !endTime || !location || loading}
+              disabled={
+                !selectedDates || !startTime || !endTime || !location || loading
+              }
             >
               Confirm Booking
             </Button>

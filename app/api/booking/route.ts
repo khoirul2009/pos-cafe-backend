@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       throw new HttpException(401, 'Unauthorized');
     }
 
-    const { date, time, location, service_id } = await req.json();
+    const { booking_dates, time, location, service_id } = await req.json();
     const user = await prisma.user.findUnique({
       where: { email: session.user.email }
     });
@@ -37,13 +37,12 @@ export async function POST(req: NextRequest) {
     }
 
     const booking = await bookingService.create({
-      date,
       time,
       location,
       service_id,
-      user_id: user.id
+      user_id: user.id,
+      booking_dates: booking_dates
     });
-
     return NextResponse.json(booking);
   } catch (error: any) {
     return ErrorHandling.handle(error);

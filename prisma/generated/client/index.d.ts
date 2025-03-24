@@ -37,31 +37,21 @@ export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>;
  */
 export type Service = $Result.DefaultSelection<Prisma.$ServicePayload>;
 /**
- * Model Talent
- *
- */
-export type Talent = $Result.DefaultSelection<Prisma.$TalentPayload>;
-/**
  * Model Booking
  *
  */
 export type Booking = $Result.DefaultSelection<Prisma.$BookingPayload>;
 /**
- * Model BookingTalent
+ * Model BookingDates
  *
  */
-export type BookingTalent =
-  $Result.DefaultSelection<Prisma.$BookingTalentPayload>;
+export type BookingDates =
+  $Result.DefaultSelection<Prisma.$BookingDatesPayload>;
 /**
  * Model Payment
  *
  */
 export type Payment = $Result.DefaultSelection<Prisma.$PaymentPayload>;
-/**
- * Model Review
- *
- */
-export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -281,16 +271,6 @@ export class PrismaClient<
   get service(): Prisma.ServiceDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.talent`: Exposes CRUD operations for the **Talent** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more Talents
-   * const talents = await prisma.talent.findMany()
-   * ```
-   */
-  get talent(): Prisma.TalentDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.booking`: Exposes CRUD operations for the **Booking** model.
    * Example usage:
    * ```ts
@@ -301,14 +281,14 @@ export class PrismaClient<
   get booking(): Prisma.BookingDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.bookingTalent`: Exposes CRUD operations for the **BookingTalent** model.
+   * `prisma.bookingDates`: Exposes CRUD operations for the **BookingDates** model.
    * Example usage:
    * ```ts
-   * // Fetch zero or more BookingTalents
-   * const bookingTalents = await prisma.bookingTalent.findMany()
+   * // Fetch zero or more BookingDates
+   * const bookingDates = await prisma.bookingDates.findMany()
    * ```
    */
-  get bookingTalent(): Prisma.BookingTalentDelegate<ExtArgs, ClientOptions>;
+  get bookingDates(): Prisma.BookingDatesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.payment`: Exposes CRUD operations for the **Payment** model.
@@ -319,16 +299,6 @@ export class PrismaClient<
    * ```
    */
   get payment(): Prisma.PaymentDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.review`: Exposes CRUD operations for the **Review** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more Reviews
-   * const reviews = await prisma.review.findMany()
-   * ```
-   */
-  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -794,11 +764,9 @@ export namespace Prisma {
     Gallery: 'Gallery';
     Category: 'Category';
     Service: 'Service';
-    Talent: 'Talent';
     Booking: 'Booking';
-    BookingTalent: 'BookingTalent';
+    BookingDates: 'BookingDates';
     Payment: 'Payment';
-    Review: 'Review';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -829,11 +797,9 @@ export namespace Prisma {
         | 'gallery'
         | 'category'
         | 'service'
-        | 'talent'
         | 'booking'
-        | 'bookingTalent'
-        | 'payment'
-        | 'review';
+        | 'bookingDates'
+        | 'payment';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
@@ -1207,80 +1173,6 @@ export namespace Prisma {
           };
         };
       };
-      Talent: {
-        payload: Prisma.$TalentPayload<ExtArgs>;
-        fields: Prisma.TalentFieldRefs;
-        operations: {
-          findUnique: {
-            args: Prisma.TalentFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload> | null;
-          };
-          findUniqueOrThrow: {
-            args: Prisma.TalentFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>;
-          };
-          findFirst: {
-            args: Prisma.TalentFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload> | null;
-          };
-          findFirstOrThrow: {
-            args: Prisma.TalentFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>;
-          };
-          findMany: {
-            args: Prisma.TalentFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>[];
-          };
-          create: {
-            args: Prisma.TalentCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>;
-          };
-          createMany: {
-            args: Prisma.TalentCreateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          createManyAndReturn: {
-            args: Prisma.TalentCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>[];
-          };
-          delete: {
-            args: Prisma.TalentDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>;
-          };
-          update: {
-            args: Prisma.TalentUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>;
-          };
-          deleteMany: {
-            args: Prisma.TalentDeleteManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateMany: {
-            args: Prisma.TalentUpdateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateManyAndReturn: {
-            args: Prisma.TalentUpdateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>[];
-          };
-          upsert: {
-            args: Prisma.TalentUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$TalentPayload>;
-          };
-          aggregate: {
-            args: Prisma.TalentAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateTalent>;
-          };
-          groupBy: {
-            args: Prisma.TalentGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<TalentGroupByOutputType>[];
-          };
-          count: {
-            args: Prisma.TalentCountArgs<ExtArgs>;
-            result: $Utils.Optional<TalentCountAggregateOutputType> | number;
-          };
-        };
-      };
       Booking: {
         payload: Prisma.$BookingPayload<ExtArgs>;
         fields: Prisma.BookingFieldRefs;
@@ -1355,78 +1247,78 @@ export namespace Prisma {
           };
         };
       };
-      BookingTalent: {
-        payload: Prisma.$BookingTalentPayload<ExtArgs>;
-        fields: Prisma.BookingTalentFieldRefs;
+      BookingDates: {
+        payload: Prisma.$BookingDatesPayload<ExtArgs>;
+        fields: Prisma.BookingDatesFieldRefs;
         operations: {
           findUnique: {
-            args: Prisma.BookingTalentFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload> | null;
+            args: Prisma.BookingDatesFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload> | null;
           };
           findUniqueOrThrow: {
-            args: Prisma.BookingTalentFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>;
+            args: Prisma.BookingDatesFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>;
           };
           findFirst: {
-            args: Prisma.BookingTalentFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload> | null;
+            args: Prisma.BookingDatesFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload> | null;
           };
           findFirstOrThrow: {
-            args: Prisma.BookingTalentFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>;
+            args: Prisma.BookingDatesFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>;
           };
           findMany: {
-            args: Prisma.BookingTalentFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>[];
+            args: Prisma.BookingDatesFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>[];
           };
           create: {
-            args: Prisma.BookingTalentCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>;
+            args: Prisma.BookingDatesCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>;
           };
           createMany: {
-            args: Prisma.BookingTalentCreateManyArgs<ExtArgs>;
+            args: Prisma.BookingDatesCreateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           createManyAndReturn: {
-            args: Prisma.BookingTalentCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>[];
+            args: Prisma.BookingDatesCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>[];
           };
           delete: {
-            args: Prisma.BookingTalentDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>;
+            args: Prisma.BookingDatesDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>;
           };
           update: {
-            args: Prisma.BookingTalentUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>;
+            args: Prisma.BookingDatesUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>;
           };
           deleteMany: {
-            args: Prisma.BookingTalentDeleteManyArgs<ExtArgs>;
+            args: Prisma.BookingDatesDeleteManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           updateMany: {
-            args: Prisma.BookingTalentUpdateManyArgs<ExtArgs>;
+            args: Prisma.BookingDatesUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           updateManyAndReturn: {
-            args: Prisma.BookingTalentUpdateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>[];
+            args: Prisma.BookingDatesUpdateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>[];
           };
           upsert: {
-            args: Prisma.BookingTalentUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$BookingTalentPayload>;
+            args: Prisma.BookingDatesUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$BookingDatesPayload>;
           };
           aggregate: {
-            args: Prisma.BookingTalentAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateBookingTalent>;
+            args: Prisma.BookingDatesAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateBookingDates>;
           };
           groupBy: {
-            args: Prisma.BookingTalentGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<BookingTalentGroupByOutputType>[];
+            args: Prisma.BookingDatesGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<BookingDatesGroupByOutputType>[];
           };
           count: {
-            args: Prisma.BookingTalentCountArgs<ExtArgs>;
+            args: Prisma.BookingDatesCountArgs<ExtArgs>;
             result:
-              | $Utils.Optional<BookingTalentCountAggregateOutputType>
+              | $Utils.Optional<BookingDatesCountAggregateOutputType>
               | number;
           };
         };
@@ -1502,80 +1394,6 @@ export namespace Prisma {
           count: {
             args: Prisma.PaymentCountArgs<ExtArgs>;
             result: $Utils.Optional<PaymentCountAggregateOutputType> | number;
-          };
-        };
-      };
-      Review: {
-        payload: Prisma.$ReviewPayload<ExtArgs>;
-        fields: Prisma.ReviewFieldRefs;
-        operations: {
-          findUnique: {
-            args: Prisma.ReviewFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null;
-          };
-          findUniqueOrThrow: {
-            args: Prisma.ReviewFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>;
-          };
-          findFirst: {
-            args: Prisma.ReviewFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null;
-          };
-          findFirstOrThrow: {
-            args: Prisma.ReviewFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>;
-          };
-          findMany: {
-            args: Prisma.ReviewFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[];
-          };
-          create: {
-            args: Prisma.ReviewCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>;
-          };
-          createMany: {
-            args: Prisma.ReviewCreateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          createManyAndReturn: {
-            args: Prisma.ReviewCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[];
-          };
-          delete: {
-            args: Prisma.ReviewDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>;
-          };
-          update: {
-            args: Prisma.ReviewUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>;
-          };
-          deleteMany: {
-            args: Prisma.ReviewDeleteManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateMany: {
-            args: Prisma.ReviewUpdateManyArgs<ExtArgs>;
-            result: BatchPayload;
-          };
-          updateManyAndReturn: {
-            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[];
-          };
-          upsert: {
-            args: Prisma.ReviewUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>;
-          };
-          aggregate: {
-            args: Prisma.ReviewAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateReview>;
-          };
-          groupBy: {
-            args: Prisma.ReviewGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<ReviewGroupByOutputType>[];
-          };
-          count: {
-            args: Prisma.ReviewCountArgs<ExtArgs>;
-            result: $Utils.Optional<ReviewCountAggregateOutputType> | number;
           };
         };
       };
@@ -1672,11 +1490,9 @@ export namespace Prisma {
     gallery?: GalleryOmit;
     category?: CategoryOmit;
     service?: ServiceOmit;
-    talent?: TalentOmit;
     booking?: BookingOmit;
-    bookingTalent?: BookingTalentOmit;
+    bookingDates?: BookingDatesOmit;
     payment?: PaymentOmit;
-    review?: ReviewOmit;
   };
 
   /* Types for Logging */
@@ -1782,14 +1598,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     Booking: number;
-    Review: number;
   };
 
   export type UserCountOutputTypeSelect<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     Booking?: boolean | UserCountOutputTypeCountBookingArgs;
-    Review?: boolean | UserCountOutputTypeCountReviewArgs;
   };
 
   // Custom InputTypes
@@ -1812,15 +1626,6 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     where?: BookingWhereInput;
-  };
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountReviewArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: ReviewWhereInput;
   };
 
   /**
@@ -1865,14 +1670,12 @@ export namespace Prisma {
 
   export type ServiceCountOutputType = {
     Booking: number;
-    Review: number;
   };
 
   export type ServiceCountOutputTypeSelect<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     Booking?: boolean | ServiceCountOutputTypeCountBookingArgs;
-    Review?: boolean | ServiceCountOutputTypeCountReviewArgs;
   };
 
   // Custom InputTypes
@@ -1898,64 +1701,19 @@ export namespace Prisma {
   };
 
   /**
-   * ServiceCountOutputType without action
-   */
-  export type ServiceCountOutputTypeCountReviewArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: ReviewWhereInput;
-  };
-
-  /**
-   * Count Type TalentCountOutputType
-   */
-
-  export type TalentCountOutputType = {
-    BookingTalent: number;
-  };
-
-  export type TalentCountOutputTypeSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    BookingTalent?: boolean | TalentCountOutputTypeCountBookingTalentArgs;
-  };
-
-  // Custom InputTypes
-  /**
-   * TalentCountOutputType without action
-   */
-  export type TalentCountOutputTypeDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the TalentCountOutputType
-     */
-    select?: TalentCountOutputTypeSelect<ExtArgs> | null;
-  };
-
-  /**
-   * TalentCountOutputType without action
-   */
-  export type TalentCountOutputTypeCountBookingTalentArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: BookingTalentWhereInput;
-  };
-
-  /**
    * Count Type BookingCountOutputType
    */
 
   export type BookingCountOutputType = {
-    booking_talents: number;
     payments: number;
+    booking_dates: number;
   };
 
   export type BookingCountOutputTypeSelect<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    booking_talents?: boolean | BookingCountOutputTypeCountBooking_talentsArgs;
     payments?: boolean | BookingCountOutputTypeCountPaymentsArgs;
+    booking_dates?: boolean | BookingCountOutputTypeCountBooking_datesArgs;
   };
 
   // Custom InputTypes
@@ -1974,19 +1732,19 @@ export namespace Prisma {
   /**
    * BookingCountOutputType without action
    */
-  export type BookingCountOutputTypeCountBooking_talentsArgs<
+  export type BookingCountOutputTypeCountPaymentsArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    where?: BookingTalentWhereInput;
+    where?: PaymentWhereInput;
   };
 
   /**
    * BookingCountOutputType without action
    */
-  export type BookingCountOutputTypeCountPaymentsArgs<
+  export type BookingCountOutputTypeCountBooking_datesArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    where?: PaymentWhereInput;
+    where?: BookingDatesWhereInput;
   };
 
   /**
@@ -3476,7 +3234,6 @@ export namespace Prisma {
       created_at?: boolean;
       updated_at?: boolean;
       Booking?: boolean | User$BookingArgs<ExtArgs>;
-      Review?: boolean | User$ReviewArgs<ExtArgs>;
       _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>;
     },
     ExtArgs['result']['user']
@@ -3542,7 +3299,6 @@ export namespace Prisma {
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     Booking?: boolean | User$BookingArgs<ExtArgs>;
-    Review?: boolean | User$ReviewArgs<ExtArgs>;
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>;
   };
   export type UserIncludeCreateManyAndReturn<
@@ -3558,7 +3314,6 @@ export namespace Prisma {
     name: 'User';
     objects: {
       Booking: Prisma.$BookingPayload<ExtArgs>[];
-      Review: Prisma.$ReviewPayload<ExtArgs>[];
     };
     scalars: $Extensions.GetPayloadResult<
       {
@@ -4126,17 +3881,6 @@ export namespace Prisma {
         >
       | Null
     >;
-    Review<T extends User$ReviewArgs<ExtArgs> = {}>(
-      args?: Subset<T, User$ReviewArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      | $Result.GetResult<
-          Prisma.$ReviewPayload<ExtArgs>,
-          T,
-          'findMany',
-          ClientOptions
-        >
-      | Null
-    >;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4625,32 +4369,6 @@ export namespace Prisma {
     take?: number;
     skip?: number;
     distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[];
-  };
-
-  /**
-   * User.Review
-   */
-  export type User$ReviewArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    where?: ReviewWhereInput;
-    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[];
-    cursor?: ReviewWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[];
   };
 
   /**
@@ -7523,7 +7241,6 @@ export namespace Prisma {
       updated_at?: boolean;
       category?: boolean | CategoryDefaultArgs<ExtArgs>;
       Booking?: boolean | Service$BookingArgs<ExtArgs>;
-      Review?: boolean | Service$ReviewArgs<ExtArgs>;
       _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>;
     },
     ExtArgs['result']['service']
@@ -7600,7 +7317,6 @@ export namespace Prisma {
   > = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>;
     Booking?: boolean | Service$BookingArgs<ExtArgs>;
-    Review?: boolean | Service$ReviewArgs<ExtArgs>;
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>;
   };
   export type ServiceIncludeCreateManyAndReturn<
@@ -7621,7 +7337,6 @@ export namespace Prisma {
     objects: {
       category: Prisma.$CategoryPayload<ExtArgs>;
       Booking: Prisma.$BookingPayload<ExtArgs>[];
-      Review: Prisma.$ReviewPayload<ExtArgs>[];
     };
     scalars: $Extensions.GetPayloadResult<
       {
@@ -8206,17 +7921,6 @@ export namespace Prisma {
         >
       | Null
     >;
-    Review<T extends Service$ReviewArgs<ExtArgs> = {}>(
-      args?: Subset<T, Service$ReviewArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      | $Result.GetResult<
-          Prisma.$ReviewPayload<ExtArgs>,
-          T,
-          'findMany',
-          ClientOptions
-        >
-      | Null
-    >;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8724,32 +8428,6 @@ export namespace Prisma {
   };
 
   /**
-   * Service.Review
-   */
-  export type Service$ReviewArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    where?: ReviewWhereInput;
-    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[];
-    cursor?: ReviewWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[];
-  };
-
-  /**
    * Service without action
    */
   export type ServiceDefaultArgs<
@@ -8767,1377 +8445,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ServiceInclude<ExtArgs> | null;
-  };
-
-  /**
-   * Model Talent
-   */
-
-  export type AggregateTalent = {
-    _count: TalentCountAggregateOutputType | null;
-    _avg: TalentAvgAggregateOutputType | null;
-    _sum: TalentSumAggregateOutputType | null;
-    _min: TalentMinAggregateOutputType | null;
-    _max: TalentMaxAggregateOutputType | null;
-  };
-
-  export type TalentAvgAggregateOutputType = {
-    id: number | null;
-  };
-
-  export type TalentSumAggregateOutputType = {
-    id: number | null;
-  };
-
-  export type TalentMinAggregateOutputType = {
-    id: number | null;
-    name: string | null;
-    image: string | null;
-    position: string | null;
-    description: string | null;
-    created_at: Date | null;
-    updated_at: Date | null;
-  };
-
-  export type TalentMaxAggregateOutputType = {
-    id: number | null;
-    name: string | null;
-    image: string | null;
-    position: string | null;
-    description: string | null;
-    created_at: Date | null;
-    updated_at: Date | null;
-  };
-
-  export type TalentCountAggregateOutputType = {
-    id: number;
-    name: number;
-    image: number;
-    position: number;
-    description: number;
-    created_at: number;
-    updated_at: number;
-    _all: number;
-  };
-
-  export type TalentAvgAggregateInputType = {
-    id?: true;
-  };
-
-  export type TalentSumAggregateInputType = {
-    id?: true;
-  };
-
-  export type TalentMinAggregateInputType = {
-    id?: true;
-    name?: true;
-    image?: true;
-    position?: true;
-    description?: true;
-    created_at?: true;
-    updated_at?: true;
-  };
-
-  export type TalentMaxAggregateInputType = {
-    id?: true;
-    name?: true;
-    image?: true;
-    position?: true;
-    description?: true;
-    created_at?: true;
-    updated_at?: true;
-  };
-
-  export type TalentCountAggregateInputType = {
-    id?: true;
-    name?: true;
-    image?: true;
-    position?: true;
-    description?: true;
-    created_at?: true;
-    updated_at?: true;
-    _all?: true;
-  };
-
-  export type TalentAggregateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which Talent to aggregate.
-     */
-    where?: TalentWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Talents to fetch.
-     */
-    orderBy?: TalentOrderByWithRelationInput | TalentOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the start position
-     */
-    cursor?: TalentWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Talents from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Talents.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Count returned Talents
-     **/
-    _count?: true | TalentCountAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to average
-     **/
-    _avg?: TalentAvgAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to sum
-     **/
-    _sum?: TalentSumAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the minimum value
-     **/
-    _min?: TalentMinAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the maximum value
-     **/
-    _max?: TalentMaxAggregateInputType;
-  };
-
-  export type GetTalentAggregateType<T extends TalentAggregateArgs> = {
-    [P in keyof T & keyof AggregateTalent]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTalent[P]>
-      : GetScalarType<T[P], AggregateTalent[P]>;
-  };
-
-  export type TalentGroupByArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: TalentWhereInput;
-    orderBy?:
-      | TalentOrderByWithAggregationInput
-      | TalentOrderByWithAggregationInput[];
-    by: TalentScalarFieldEnum[] | TalentScalarFieldEnum;
-    having?: TalentScalarWhereWithAggregatesInput;
-    take?: number;
-    skip?: number;
-    _count?: TalentCountAggregateInputType | true;
-    _avg?: TalentAvgAggregateInputType;
-    _sum?: TalentSumAggregateInputType;
-    _min?: TalentMinAggregateInputType;
-    _max?: TalentMaxAggregateInputType;
-  };
-
-  export type TalentGroupByOutputType = {
-    id: number;
-    name: string;
-    image: string;
-    position: string;
-    description: string;
-    created_at: Date;
-    updated_at: Date;
-    _count: TalentCountAggregateOutputType | null;
-    _avg: TalentAvgAggregateOutputType | null;
-    _sum: TalentSumAggregateOutputType | null;
-    _min: TalentMinAggregateOutputType | null;
-    _max: TalentMaxAggregateOutputType | null;
-  };
-
-  type GetTalentGroupByPayload<T extends TalentGroupByArgs> =
-    Prisma.PrismaPromise<
-      Array<
-        PickEnumerable<TalentGroupByOutputType, T['by']> & {
-          [P in keyof T & keyof TalentGroupByOutputType]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TalentGroupByOutputType[P]>
-            : GetScalarType<T[P], TalentGroupByOutputType[P]>;
-        }
-      >
-    >;
-
-  export type TalentSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      name?: boolean;
-      image?: boolean;
-      position?: boolean;
-      description?: boolean;
-      created_at?: boolean;
-      updated_at?: boolean;
-      BookingTalent?: boolean | Talent$BookingTalentArgs<ExtArgs>;
-      _count?: boolean | TalentCountOutputTypeDefaultArgs<ExtArgs>;
-    },
-    ExtArgs['result']['talent']
-  >;
-
-  export type TalentSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      name?: boolean;
-      image?: boolean;
-      position?: boolean;
-      description?: boolean;
-      created_at?: boolean;
-      updated_at?: boolean;
-    },
-    ExtArgs['result']['talent']
-  >;
-
-  export type TalentSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      name?: boolean;
-      image?: boolean;
-      position?: boolean;
-      description?: boolean;
-      created_at?: boolean;
-      updated_at?: boolean;
-    },
-    ExtArgs['result']['talent']
-  >;
-
-  export type TalentSelectScalar = {
-    id?: boolean;
-    name?: boolean;
-    image?: boolean;
-    position?: boolean;
-    description?: boolean;
-    created_at?: boolean;
-    updated_at?: boolean;
-  };
-
-  export type TalentOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    | 'id'
-    | 'name'
-    | 'image'
-    | 'position'
-    | 'description'
-    | 'created_at'
-    | 'updated_at',
-    ExtArgs['result']['talent']
-  >;
-  export type TalentInclude<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    BookingTalent?: boolean | Talent$BookingTalentArgs<ExtArgs>;
-    _count?: boolean | TalentCountOutputTypeDefaultArgs<ExtArgs>;
-  };
-  export type TalentIncludeCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {};
-  export type TalentIncludeUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {};
-
-  export type $TalentPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'Talent';
-    objects: {
-      BookingTalent: Prisma.$BookingTalentPayload<ExtArgs>[];
-    };
-    scalars: $Extensions.GetPayloadResult<
-      {
-        id: number;
-        name: string;
-        image: string;
-        position: string;
-        description: string;
-        created_at: Date;
-        updated_at: Date;
-      },
-      ExtArgs['result']['talent']
-    >;
-    composites: {};
-  };
-
-  type TalentGetPayload<
-    S extends boolean | null | undefined | TalentDefaultArgs
-  > = $Result.GetResult<Prisma.$TalentPayload, S>;
-
-  type TalentCountArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<TalentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-    select?: TalentCountAggregateInputType | true;
-  };
-
-  export interface TalentDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['Talent'];
-      meta: { name: 'Talent' };
-    };
-    /**
-     * Find zero or one Talent that matches the filter.
-     * @param {TalentFindUniqueArgs} args - Arguments to find a Talent
-     * @example
-     * // Get one Talent
-     * const talent = await prisma.talent.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends TalentFindUniqueArgs>(
-      args: SelectSubset<T, TalentFindUniqueArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'findUnique',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find one Talent that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {TalentFindUniqueOrThrowArgs} args - Arguments to find a Talent
-     * @example
-     * // Get one Talent
-     * const talent = await prisma.talent.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends TalentFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, TalentFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'findUniqueOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Talent that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TalentFindFirstArgs} args - Arguments to find a Talent
-     * @example
-     * // Get one Talent
-     * const talent = await prisma.talent.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends TalentFindFirstArgs>(
-      args?: SelectSubset<T, TalentFindFirstArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'findFirst',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Talent that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TalentFindFirstOrThrowArgs} args - Arguments to find a Talent
-     * @example
-     * // Get one Talent
-     * const talent = await prisma.talent.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends TalentFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, TalentFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'findFirstOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find zero or more Talents that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TalentFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Talents
-     * const talents = await prisma.talent.findMany()
-     *
-     * // Get first 10 Talents
-     * const talents = await prisma.talent.findMany({ take: 10 })
-     *
-     * // Only select the `id`
-     * const talentWithIdOnly = await prisma.talent.findMany({ select: { id: true } })
-     *
-     */
-    findMany<T extends TalentFindManyArgs>(
-      args?: SelectSubset<T, TalentFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'findMany',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create a Talent.
-     * @param {TalentCreateArgs} args - Arguments to create a Talent.
-     * @example
-     * // Create one Talent
-     * const Talent = await prisma.talent.create({
-     *   data: {
-     *     // ... data to create a Talent
-     *   }
-     * })
-     *
-     */
-    create<T extends TalentCreateArgs>(
-      args: SelectSubset<T, TalentCreateArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'create',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Create many Talents.
-     * @param {TalentCreateManyArgs} args - Arguments to create many Talents.
-     * @example
-     * // Create many Talents
-     * const talent = await prisma.talent.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     */
-    createMany<T extends TalentCreateManyArgs>(
-      args?: SelectSubset<T, TalentCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create many Talents and returns the data saved in the database.
-     * @param {TalentCreateManyAndReturnArgs} args - Arguments to create many Talents.
-     * @example
-     * // Create many Talents
-     * const talent = await prisma.talent.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Create many Talents and only return the `id`
-     * const talentWithIdOnly = await prisma.talent.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    createManyAndReturn<T extends TalentCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, TalentCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'createManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Delete a Talent.
-     * @param {TalentDeleteArgs} args - Arguments to delete one Talent.
-     * @example
-     * // Delete one Talent
-     * const Talent = await prisma.talent.delete({
-     *   where: {
-     *     // ... filter to delete one Talent
-     *   }
-     * })
-     *
-     */
-    delete<T extends TalentDeleteArgs>(
-      args: SelectSubset<T, TalentDeleteArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'delete',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Update one Talent.
-     * @param {TalentUpdateArgs} args - Arguments to update one Talent.
-     * @example
-     * // Update one Talent
-     * const talent = await prisma.talent.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    update<T extends TalentUpdateArgs>(
-      args: SelectSubset<T, TalentUpdateArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'update',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Delete zero or more Talents.
-     * @param {TalentDeleteManyArgs} args - Arguments to filter Talents to delete.
-     * @example
-     * // Delete a few Talents
-     * const { count } = await prisma.talent.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     *
-     */
-    deleteMany<T extends TalentDeleteManyArgs>(
-      args?: SelectSubset<T, TalentDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Talents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TalentUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Talents
-     * const talent = await prisma.talent.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    updateMany<T extends TalentUpdateManyArgs>(
-      args: SelectSubset<T, TalentUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Talents and returns the data updated in the database.
-     * @param {TalentUpdateManyAndReturnArgs} args - Arguments to update many Talents.
-     * @example
-     * // Update many Talents
-     * const talent = await prisma.talent.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Update zero or more Talents and only return the `id`
-     * const talentWithIdOnly = await prisma.talent.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    updateManyAndReturn<T extends TalentUpdateManyAndReturnArgs>(
-      args: SelectSubset<T, TalentUpdateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'updateManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create or update one Talent.
-     * @param {TalentUpsertArgs} args - Arguments to update or create a Talent.
-     * @example
-     * // Update or create a Talent
-     * const talent = await prisma.talent.upsert({
-     *   create: {
-     *     // ... data to create a Talent
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Talent we want to update
-     *   }
-     * })
-     */
-    upsert<T extends TalentUpsertArgs>(
-      args: SelectSubset<T, TalentUpsertArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      $Result.GetResult<
-        Prisma.$TalentPayload<ExtArgs>,
-        T,
-        'upsert',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Count the number of Talents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TalentCountArgs} args - Arguments to filter Talents to count.
-     * @example
-     * // Count the number of Talents
-     * const count = await prisma.talent.count({
-     *   where: {
-     *     // ... the filter for the Talents we want to count
-     *   }
-     * })
-     **/
-    count<T extends TalentCountArgs>(
-      args?: Subset<T, TalentCountArgs>
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], TalentCountAggregateOutputType>
-        : number
-    >;
-
-    /**
-     * Allows you to perform aggregations operations on a Talent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TalentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-     **/
-    aggregate<T extends TalentAggregateArgs>(
-      args: Subset<T, TalentAggregateArgs>
-    ): Prisma.PrismaPromise<GetTalentAggregateType<T>>;
-
-    /**
-     * Group by Talent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TalentGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     *
-     **/
-    groupBy<
-      T extends TalentGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TalentGroupByArgs['orderBy'] }
-        : { orderBy?: TalentGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<
-        Keys<MaybeTupleToUnion<T['orderBy']>>
-      >,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-        ? `Error: "by" must not be empty.`
-        : HavingValid extends False
-        ? {
-            [P in HavingFields]: P extends ByFields
-              ? never
-              : P extends string
-              ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-              : [
-                  Error,
-                  'Field ',
-                  P,
-                  ` in "having" needs to be provided in "by"`
-                ];
-          }[HavingFields]
-        : 'take' extends Keys<T>
-        ? 'orderBy' extends Keys<T>
-          ? ByValid extends True
-            ? {}
-            : {
-                [P in OrderFields]: P extends ByFields
-                  ? never
-                  : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-              }[OrderFields]
-          : 'Error: If you provide "take", you also need to provide "orderBy"'
-        : 'skip' extends Keys<T>
-        ? 'orderBy' extends Keys<T>
-          ? ByValid extends True
-            ? {}
-            : {
-                [P in OrderFields]: P extends ByFields
-                  ? never
-                  : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-              }[OrderFields]
-          : 'Error: If you provide "skip", you also need to provide "orderBy"'
-        : ByValid extends True
-        ? {}
-        : {
-            [P in OrderFields]: P extends ByFields
-              ? never
-              : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-          }[OrderFields]
-    >(
-      args: SubsetIntersection<T, TalentGroupByArgs, OrderByArg> & InputErrors
-    ): {} extends InputErrors
-      ? GetTalentGroupByPayload<T>
-      : Prisma.PrismaPromise<InputErrors>;
-    /**
-     * Fields of the Talent model
-     */
-    readonly fields: TalentFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Talent.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__TalentClient<
-    T,
-    Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    BookingTalent<T extends Talent$BookingTalentArgs<ExtArgs> = {}>(
-      args?: Subset<T, Talent$BookingTalentArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      | $Result.GetResult<
-          Prisma.$BookingTalentPayload<ExtArgs>,
-          T,
-          'findMany',
-          ClientOptions
-        >
-      | Null
-    >;
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(
-      onfulfilled?:
-        | ((value: T) => TResult1 | PromiseLike<TResult1>)
-        | undefined
-        | null,
-      onrejected?:
-        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(
-      onrejected?:
-        | ((reason: any) => TResult | PromiseLike<TResult>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-  /**
-   * Fields of the Talent model
-   */
-  interface TalentFieldRefs {
-    readonly id: FieldRef<'Talent', 'Int'>;
-    readonly name: FieldRef<'Talent', 'String'>;
-    readonly image: FieldRef<'Talent', 'String'>;
-    readonly position: FieldRef<'Talent', 'String'>;
-    readonly description: FieldRef<'Talent', 'String'>;
-    readonly created_at: FieldRef<'Talent', 'DateTime'>;
-    readonly updated_at: FieldRef<'Talent', 'DateTime'>;
-  }
-
-  // Custom InputTypes
-  /**
-   * Talent findUnique
-   */
-  export type TalentFindUniqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * Filter, which Talent to fetch.
-     */
-    where: TalentWhereUniqueInput;
-  };
-
-  /**
-   * Talent findUniqueOrThrow
-   */
-  export type TalentFindUniqueOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * Filter, which Talent to fetch.
-     */
-    where: TalentWhereUniqueInput;
-  };
-
-  /**
-   * Talent findFirst
-   */
-  export type TalentFindFirstArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * Filter, which Talent to fetch.
-     */
-    where?: TalentWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Talents to fetch.
-     */
-    orderBy?: TalentOrderByWithRelationInput | TalentOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for Talents.
-     */
-    cursor?: TalentWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Talents from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Talents.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of Talents.
-     */
-    distinct?: TalentScalarFieldEnum | TalentScalarFieldEnum[];
-  };
-
-  /**
-   * Talent findFirstOrThrow
-   */
-  export type TalentFindFirstOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * Filter, which Talent to fetch.
-     */
-    where?: TalentWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Talents to fetch.
-     */
-    orderBy?: TalentOrderByWithRelationInput | TalentOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for Talents.
-     */
-    cursor?: TalentWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Talents from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Talents.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of Talents.
-     */
-    distinct?: TalentScalarFieldEnum | TalentScalarFieldEnum[];
-  };
-
-  /**
-   * Talent findMany
-   */
-  export type TalentFindManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * Filter, which Talents to fetch.
-     */
-    where?: TalentWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Talents to fetch.
-     */
-    orderBy?: TalentOrderByWithRelationInput | TalentOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for listing Talents.
-     */
-    cursor?: TalentWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Talents from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Talents.
-     */
-    skip?: number;
-    distinct?: TalentScalarFieldEnum | TalentScalarFieldEnum[];
-  };
-
-  /**
-   * Talent create
-   */
-  export type TalentCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * The data needed to create a Talent.
-     */
-    data: XOR<TalentCreateInput, TalentUncheckedCreateInput>;
-  };
-
-  /**
-   * Talent createMany
-   */
-  export type TalentCreateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to create many Talents.
-     */
-    data: TalentCreateManyInput | TalentCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * Talent createManyAndReturn
-   */
-  export type TalentCreateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelectCreateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * The data used to create many Talents.
-     */
-    data: TalentCreateManyInput | TalentCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * Talent update
-   */
-  export type TalentUpdateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * The data needed to update a Talent.
-     */
-    data: XOR<TalentUpdateInput, TalentUncheckedUpdateInput>;
-    /**
-     * Choose, which Talent to update.
-     */
-    where: TalentWhereUniqueInput;
-  };
-
-  /**
-   * Talent updateMany
-   */
-  export type TalentUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to update Talents.
-     */
-    data: XOR<TalentUpdateManyMutationInput, TalentUncheckedUpdateManyInput>;
-    /**
-     * Filter which Talents to update
-     */
-    where?: TalentWhereInput;
-    /**
-     * Limit how many Talents to update.
-     */
-    limit?: number;
-  };
-
-  /**
-   * Talent updateManyAndReturn
-   */
-  export type TalentUpdateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelectUpdateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * The data used to update Talents.
-     */
-    data: XOR<TalentUpdateManyMutationInput, TalentUncheckedUpdateManyInput>;
-    /**
-     * Filter which Talents to update
-     */
-    where?: TalentWhereInput;
-    /**
-     * Limit how many Talents to update.
-     */
-    limit?: number;
-  };
-
-  /**
-   * Talent upsert
-   */
-  export type TalentUpsertArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * The filter to search for the Talent to update in case it exists.
-     */
-    where: TalentWhereUniqueInput;
-    /**
-     * In case the Talent found by the `where` argument doesn't exist, create a new Talent with this data.
-     */
-    create: XOR<TalentCreateInput, TalentUncheckedCreateInput>;
-    /**
-     * In case the Talent was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<TalentUpdateInput, TalentUncheckedUpdateInput>;
-  };
-
-  /**
-   * Talent delete
-   */
-  export type TalentDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
-    /**
-     * Filter which Talent to delete.
-     */
-    where: TalentWhereUniqueInput;
-  };
-
-  /**
-   * Talent deleteMany
-   */
-  export type TalentDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which Talents to delete
-     */
-    where?: TalentWhereInput;
-    /**
-     * Limit how many Talents to delete.
-     */
-    limit?: number;
-  };
-
-  /**
-   * Talent.BookingTalent
-   */
-  export type Talent$BookingTalentArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the BookingTalent
-     */
-    select?: BookingTalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the BookingTalent
-     */
-    omit?: BookingTalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingTalentInclude<ExtArgs> | null;
-    where?: BookingTalentWhereInput;
-    orderBy?:
-      | BookingTalentOrderByWithRelationInput
-      | BookingTalentOrderByWithRelationInput[];
-    cursor?: BookingTalentWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: BookingTalentScalarFieldEnum | BookingTalentScalarFieldEnum[];
-  };
-
-  /**
-   * Talent without action
-   */
-  export type TalentDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Talent
-     */
-    select?: TalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Talent
-     */
-    omit?: TalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TalentInclude<ExtArgs> | null;
   };
 
   /**
@@ -10168,7 +8475,6 @@ export namespace Prisma {
     id: number | null;
     user_id: number | null;
     service_id: number | null;
-    date: Date | null;
     time: string | null;
     location: string | null;
     is_accepted: boolean | null;
@@ -10181,7 +8487,6 @@ export namespace Prisma {
     id: number | null;
     user_id: number | null;
     service_id: number | null;
-    date: Date | null;
     time: string | null;
     location: string | null;
     is_accepted: boolean | null;
@@ -10194,7 +8499,6 @@ export namespace Prisma {
     id: number;
     user_id: number;
     service_id: number;
-    date: number;
     time: number;
     location: number;
     is_accepted: number;
@@ -10220,7 +8524,6 @@ export namespace Prisma {
     id?: true;
     user_id?: true;
     service_id?: true;
-    date?: true;
     time?: true;
     location?: true;
     is_accepted?: true;
@@ -10233,7 +8536,6 @@ export namespace Prisma {
     id?: true;
     user_id?: true;
     service_id?: true;
-    date?: true;
     time?: true;
     location?: true;
     is_accepted?: true;
@@ -10246,7 +8548,6 @@ export namespace Prisma {
     id?: true;
     user_id?: true;
     service_id?: true;
-    date?: true;
     time?: true;
     location?: true;
     is_accepted?: true;
@@ -10351,7 +8652,6 @@ export namespace Prisma {
     id: number;
     user_id: number;
     service_id: number;
-    date: Date;
     time: string;
     location: string;
     is_accepted: boolean;
@@ -10385,7 +8685,6 @@ export namespace Prisma {
       id?: boolean;
       user_id?: boolean;
       service_id?: boolean;
-      date?: boolean;
       time?: boolean;
       location?: boolean;
       is_accepted?: boolean;
@@ -10394,8 +8693,8 @@ export namespace Prisma {
       updated_at?: boolean;
       user?: boolean | UserDefaultArgs<ExtArgs>;
       service?: boolean | ServiceDefaultArgs<ExtArgs>;
-      booking_talents?: boolean | Booking$booking_talentsArgs<ExtArgs>;
       payments?: boolean | Booking$paymentsArgs<ExtArgs>;
+      booking_dates?: boolean | Booking$booking_datesArgs<ExtArgs>;
       _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>;
     },
     ExtArgs['result']['booking']
@@ -10408,7 +8707,6 @@ export namespace Prisma {
       id?: boolean;
       user_id?: boolean;
       service_id?: boolean;
-      date?: boolean;
       time?: boolean;
       location?: boolean;
       is_accepted?: boolean;
@@ -10428,7 +8726,6 @@ export namespace Prisma {
       id?: boolean;
       user_id?: boolean;
       service_id?: boolean;
-      date?: boolean;
       time?: boolean;
       location?: boolean;
       is_accepted?: boolean;
@@ -10445,7 +8742,6 @@ export namespace Prisma {
     id?: boolean;
     user_id?: boolean;
     service_id?: boolean;
-    date?: boolean;
     time?: boolean;
     location?: boolean;
     is_accepted?: boolean;
@@ -10460,7 +8756,6 @@ export namespace Prisma {
     | 'id'
     | 'user_id'
     | 'service_id'
-    | 'date'
     | 'time'
     | 'location'
     | 'is_accepted'
@@ -10474,8 +8769,8 @@ export namespace Prisma {
   > = {
     user?: boolean | UserDefaultArgs<ExtArgs>;
     service?: boolean | ServiceDefaultArgs<ExtArgs>;
-    booking_talents?: boolean | Booking$booking_talentsArgs<ExtArgs>;
     payments?: boolean | Booking$paymentsArgs<ExtArgs>;
+    booking_dates?: boolean | Booking$booking_datesArgs<ExtArgs>;
     _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>;
   };
   export type BookingIncludeCreateManyAndReturn<
@@ -10498,15 +8793,14 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>;
       service: Prisma.$ServicePayload<ExtArgs>;
-      booking_talents: Prisma.$BookingTalentPayload<ExtArgs>[];
       payments: Prisma.$PaymentPayload<ExtArgs>[];
+      booking_dates: Prisma.$BookingDatesPayload<ExtArgs>[];
     };
     scalars: $Extensions.GetPayloadResult<
       {
         id: number;
         user_id: number;
         service_id: number;
-        date: Date;
         time: string;
         location: string;
         is_accepted: boolean;
@@ -11087,22 +9381,22 @@ export namespace Prisma {
       ExtArgs,
       ClientOptions
     >;
-    booking_talents<T extends Booking$booking_talentsArgs<ExtArgs> = {}>(
-      args?: Subset<T, Booking$booking_talentsArgs<ExtArgs>>
+    payments<T extends Booking$paymentsArgs<ExtArgs> = {}>(
+      args?: Subset<T, Booking$paymentsArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
       | $Result.GetResult<
-          Prisma.$BookingTalentPayload<ExtArgs>,
+          Prisma.$PaymentPayload<ExtArgs>,
           T,
           'findMany',
           ClientOptions
         >
       | Null
     >;
-    payments<T extends Booking$paymentsArgs<ExtArgs> = {}>(
-      args?: Subset<T, Booking$paymentsArgs<ExtArgs>>
+    booking_dates<T extends Booking$booking_datesArgs<ExtArgs> = {}>(
+      args?: Subset<T, Booking$booking_datesArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
       | $Result.GetResult<
-          Prisma.$PaymentPayload<ExtArgs>,
+          Prisma.$BookingDatesPayload<ExtArgs>,
           T,
           'findMany',
           ClientOptions
@@ -11152,7 +9446,6 @@ export namespace Prisma {
     readonly id: FieldRef<'Booking', 'Int'>;
     readonly user_id: FieldRef<'Booking', 'Int'>;
     readonly service_id: FieldRef<'Booking', 'Int'>;
-    readonly date: FieldRef<'Booking', 'DateTime'>;
     readonly time: FieldRef<'Booking', 'String'>;
     readonly location: FieldRef<'Booking', 'String'>;
     readonly is_accepted: FieldRef<'Booking', 'Boolean'>;
@@ -11588,34 +9881,6 @@ export namespace Prisma {
   };
 
   /**
-   * Booking.booking_talents
-   */
-  export type Booking$booking_talentsArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the BookingTalent
-     */
-    select?: BookingTalentSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the BookingTalent
-     */
-    omit?: BookingTalentOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingTalentInclude<ExtArgs> | null;
-    where?: BookingTalentWhereInput;
-    orderBy?:
-      | BookingTalentOrderByWithRelationInput
-      | BookingTalentOrderByWithRelationInput[];
-    cursor?: BookingTalentWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: BookingTalentScalarFieldEnum | BookingTalentScalarFieldEnum[];
-  };
-
-  /**
    * Booking.payments
    */
   export type Booking$paymentsArgs<
@@ -11644,6 +9909,34 @@ export namespace Prisma {
   };
 
   /**
+   * Booking.booking_dates
+   */
+  export type Booking$booking_datesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the BookingDates
+     */
+    select?: BookingDatesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BookingDates
+     */
+    omit?: BookingDatesOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingDatesInclude<ExtArgs> | null;
+    where?: BookingDatesWhereInput;
+    orderBy?:
+      | BookingDatesOrderByWithRelationInput
+      | BookingDatesOrderByWithRelationInput[];
+    cursor?: BookingDatesWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: BookingDatesScalarFieldEnum | BookingDatesScalarFieldEnum[];
+  };
+
+  /**
    * Booking without action
    */
   export type BookingDefaultArgs<
@@ -11664,347 +9957,336 @@ export namespace Prisma {
   };
 
   /**
-   * Model BookingTalent
+   * Model BookingDates
    */
 
-  export type AggregateBookingTalent = {
-    _count: BookingTalentCountAggregateOutputType | null;
-    _avg: BookingTalentAvgAggregateOutputType | null;
-    _sum: BookingTalentSumAggregateOutputType | null;
-    _min: BookingTalentMinAggregateOutputType | null;
-    _max: BookingTalentMaxAggregateOutputType | null;
+  export type AggregateBookingDates = {
+    _count: BookingDatesCountAggregateOutputType | null;
+    _avg: BookingDatesAvgAggregateOutputType | null;
+    _sum: BookingDatesSumAggregateOutputType | null;
+    _min: BookingDatesMinAggregateOutputType | null;
+    _max: BookingDatesMaxAggregateOutputType | null;
   };
 
-  export type BookingTalentAvgAggregateOutputType = {
+  export type BookingDatesAvgAggregateOutputType = {
     id: number | null;
     booking_id: number | null;
-    talent_id: number | null;
   };
 
-  export type BookingTalentSumAggregateOutputType = {
+  export type BookingDatesSumAggregateOutputType = {
     id: number | null;
     booking_id: number | null;
-    talent_id: number | null;
   };
 
-  export type BookingTalentMinAggregateOutputType = {
+  export type BookingDatesMinAggregateOutputType = {
     id: number | null;
-    booking_id: number | null;
-    talent_id: number | null;
+    date: Date | null;
     created_at: Date | null;
     updated_at: Date | null;
+    booking_id: number | null;
   };
 
-  export type BookingTalentMaxAggregateOutputType = {
+  export type BookingDatesMaxAggregateOutputType = {
     id: number | null;
-    booking_id: number | null;
-    talent_id: number | null;
+    date: Date | null;
     created_at: Date | null;
     updated_at: Date | null;
+    booking_id: number | null;
   };
 
-  export type BookingTalentCountAggregateOutputType = {
+  export type BookingDatesCountAggregateOutputType = {
     id: number;
-    booking_id: number;
-    talent_id: number;
+    date: number;
     created_at: number;
     updated_at: number;
+    booking_id: number;
     _all: number;
   };
 
-  export type BookingTalentAvgAggregateInputType = {
+  export type BookingDatesAvgAggregateInputType = {
     id?: true;
     booking_id?: true;
-    talent_id?: true;
   };
 
-  export type BookingTalentSumAggregateInputType = {
+  export type BookingDatesSumAggregateInputType = {
     id?: true;
     booking_id?: true;
-    talent_id?: true;
   };
 
-  export type BookingTalentMinAggregateInputType = {
+  export type BookingDatesMinAggregateInputType = {
     id?: true;
-    booking_id?: true;
-    talent_id?: true;
+    date?: true;
     created_at?: true;
     updated_at?: true;
+    booking_id?: true;
   };
 
-  export type BookingTalentMaxAggregateInputType = {
+  export type BookingDatesMaxAggregateInputType = {
     id?: true;
-    booking_id?: true;
-    talent_id?: true;
+    date?: true;
     created_at?: true;
     updated_at?: true;
+    booking_id?: true;
   };
 
-  export type BookingTalentCountAggregateInputType = {
+  export type BookingDatesCountAggregateInputType = {
     id?: true;
-    booking_id?: true;
-    talent_id?: true;
+    date?: true;
     created_at?: true;
     updated_at?: true;
+    booking_id?: true;
     _all?: true;
   };
 
-  export type BookingTalentAggregateArgs<
+  export type BookingDatesAggregateArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Filter which BookingTalent to aggregate.
+     * Filter which BookingDates to aggregate.
      */
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of BookingTalents to fetch.
+     * Determine the order of BookingDates to fetch.
      */
     orderBy?:
-      | BookingTalentOrderByWithRelationInput
-      | BookingTalentOrderByWithRelationInput[];
+      | BookingDatesOrderByWithRelationInput
+      | BookingDatesOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
      * Sets the start position
      */
-    cursor?: BookingTalentWhereUniqueInput;
+    cursor?: BookingDatesWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` BookingTalents from the position of the cursor.
+     * Take `±n` BookingDates from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` BookingTalents.
+     * Skip the first `n` BookingDates.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
-     * Count returned BookingTalents
+     * Count returned BookingDates
      **/
-    _count?: true | BookingTalentCountAggregateInputType;
+    _count?: true | BookingDatesCountAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to average
      **/
-    _avg?: BookingTalentAvgAggregateInputType;
+    _avg?: BookingDatesAvgAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to sum
      **/
-    _sum?: BookingTalentSumAggregateInputType;
+    _sum?: BookingDatesSumAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to find the minimum value
      **/
-    _min?: BookingTalentMinAggregateInputType;
+    _min?: BookingDatesMinAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to find the maximum value
      **/
-    _max?: BookingTalentMaxAggregateInputType;
+    _max?: BookingDatesMaxAggregateInputType;
   };
 
-  export type GetBookingTalentAggregateType<
-    T extends BookingTalentAggregateArgs
+  export type GetBookingDatesAggregateType<
+    T extends BookingDatesAggregateArgs
   > = {
-    [P in keyof T & keyof AggregateBookingTalent]: P extends '_count' | 'count'
+    [P in keyof T & keyof AggregateBookingDates]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateBookingTalent[P]>
-      : GetScalarType<T[P], AggregateBookingTalent[P]>;
+        : GetScalarType<T[P], AggregateBookingDates[P]>
+      : GetScalarType<T[P], AggregateBookingDates[P]>;
   };
 
-  export type BookingTalentGroupByArgs<
+  export type BookingDatesGroupByArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     orderBy?:
-      | BookingTalentOrderByWithAggregationInput
-      | BookingTalentOrderByWithAggregationInput[];
-    by: BookingTalentScalarFieldEnum[] | BookingTalentScalarFieldEnum;
-    having?: BookingTalentScalarWhereWithAggregatesInput;
+      | BookingDatesOrderByWithAggregationInput
+      | BookingDatesOrderByWithAggregationInput[];
+    by: BookingDatesScalarFieldEnum[] | BookingDatesScalarFieldEnum;
+    having?: BookingDatesScalarWhereWithAggregatesInput;
     take?: number;
     skip?: number;
-    _count?: BookingTalentCountAggregateInputType | true;
-    _avg?: BookingTalentAvgAggregateInputType;
-    _sum?: BookingTalentSumAggregateInputType;
-    _min?: BookingTalentMinAggregateInputType;
-    _max?: BookingTalentMaxAggregateInputType;
+    _count?: BookingDatesCountAggregateInputType | true;
+    _avg?: BookingDatesAvgAggregateInputType;
+    _sum?: BookingDatesSumAggregateInputType;
+    _min?: BookingDatesMinAggregateInputType;
+    _max?: BookingDatesMaxAggregateInputType;
   };
 
-  export type BookingTalentGroupByOutputType = {
+  export type BookingDatesGroupByOutputType = {
     id: number;
-    booking_id: number;
-    talent_id: number;
+    date: Date;
     created_at: Date;
     updated_at: Date;
-    _count: BookingTalentCountAggregateOutputType | null;
-    _avg: BookingTalentAvgAggregateOutputType | null;
-    _sum: BookingTalentSumAggregateOutputType | null;
-    _min: BookingTalentMinAggregateOutputType | null;
-    _max: BookingTalentMaxAggregateOutputType | null;
+    booking_id: number;
+    _count: BookingDatesCountAggregateOutputType | null;
+    _avg: BookingDatesAvgAggregateOutputType | null;
+    _sum: BookingDatesSumAggregateOutputType | null;
+    _min: BookingDatesMinAggregateOutputType | null;
+    _max: BookingDatesMaxAggregateOutputType | null;
   };
 
-  type GetBookingTalentGroupByPayload<T extends BookingTalentGroupByArgs> =
+  type GetBookingDatesGroupByPayload<T extends BookingDatesGroupByArgs> =
     Prisma.PrismaPromise<
       Array<
-        PickEnumerable<BookingTalentGroupByOutputType, T['by']> & {
+        PickEnumerable<BookingDatesGroupByOutputType, T['by']> & {
           [P in keyof T &
-            keyof BookingTalentGroupByOutputType]: P extends '_count'
+            keyof BookingDatesGroupByOutputType]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], BookingTalentGroupByOutputType[P]>
-            : GetScalarType<T[P], BookingTalentGroupByOutputType[P]>;
+              : GetScalarType<T[P], BookingDatesGroupByOutputType[P]>
+            : GetScalarType<T[P], BookingDatesGroupByOutputType[P]>;
         }
       >
     >;
 
-  export type BookingTalentSelect<
+  export type BookingDatesSelect<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = $Extensions.GetSelect<
     {
       id?: boolean;
-      booking_id?: boolean;
-      talent_id?: boolean;
+      date?: boolean;
       created_at?: boolean;
       updated_at?: boolean;
-      booking?: boolean | BookingDefaultArgs<ExtArgs>;
-      talent?: boolean | TalentDefaultArgs<ExtArgs>;
+      booking_id?: boolean;
+      booking?: boolean | BookingDates$bookingArgs<ExtArgs>;
     },
-    ExtArgs['result']['bookingTalent']
+    ExtArgs['result']['bookingDates']
   >;
 
-  export type BookingTalentSelectCreateManyAndReturn<
+  export type BookingDatesSelectCreateManyAndReturn<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = $Extensions.GetSelect<
     {
       id?: boolean;
-      booking_id?: boolean;
-      talent_id?: boolean;
+      date?: boolean;
       created_at?: boolean;
       updated_at?: boolean;
-      booking?: boolean | BookingDefaultArgs<ExtArgs>;
-      talent?: boolean | TalentDefaultArgs<ExtArgs>;
+      booking_id?: boolean;
+      booking?: boolean | BookingDates$bookingArgs<ExtArgs>;
     },
-    ExtArgs['result']['bookingTalent']
+    ExtArgs['result']['bookingDates']
   >;
 
-  export type BookingTalentSelectUpdateManyAndReturn<
+  export type BookingDatesSelectUpdateManyAndReturn<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = $Extensions.GetSelect<
     {
       id?: boolean;
-      booking_id?: boolean;
-      talent_id?: boolean;
+      date?: boolean;
       created_at?: boolean;
       updated_at?: boolean;
-      booking?: boolean | BookingDefaultArgs<ExtArgs>;
-      talent?: boolean | TalentDefaultArgs<ExtArgs>;
+      booking_id?: boolean;
+      booking?: boolean | BookingDates$bookingArgs<ExtArgs>;
     },
-    ExtArgs['result']['bookingTalent']
+    ExtArgs['result']['bookingDates']
   >;
 
-  export type BookingTalentSelectScalar = {
+  export type BookingDatesSelectScalar = {
     id?: boolean;
-    booking_id?: boolean;
-    talent_id?: boolean;
+    date?: boolean;
     created_at?: boolean;
     updated_at?: boolean;
+    booking_id?: boolean;
   };
 
-  export type BookingTalentOmit<
+  export type BookingDatesOmit<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = $Extensions.GetOmit<
-    'id' | 'booking_id' | 'talent_id' | 'created_at' | 'updated_at',
-    ExtArgs['result']['bookingTalent']
+    'id' | 'date' | 'created_at' | 'updated_at' | 'booking_id',
+    ExtArgs['result']['bookingDates']
   >;
-  export type BookingTalentInclude<
+  export type BookingDatesInclude<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    booking?: boolean | BookingDefaultArgs<ExtArgs>;
-    talent?: boolean | TalentDefaultArgs<ExtArgs>;
+    booking?: boolean | BookingDates$bookingArgs<ExtArgs>;
   };
-  export type BookingTalentIncludeCreateManyAndReturn<
+  export type BookingDatesIncludeCreateManyAndReturn<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    booking?: boolean | BookingDefaultArgs<ExtArgs>;
-    talent?: boolean | TalentDefaultArgs<ExtArgs>;
+    booking?: boolean | BookingDates$bookingArgs<ExtArgs>;
   };
-  export type BookingTalentIncludeUpdateManyAndReturn<
+  export type BookingDatesIncludeUpdateManyAndReturn<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    booking?: boolean | BookingDefaultArgs<ExtArgs>;
-    talent?: boolean | TalentDefaultArgs<ExtArgs>;
+    booking?: boolean | BookingDates$bookingArgs<ExtArgs>;
   };
 
-  export type $BookingTalentPayload<
+  export type $BookingDatesPayload<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
-    name: 'BookingTalent';
+    name: 'BookingDates';
     objects: {
-      booking: Prisma.$BookingPayload<ExtArgs>;
-      talent: Prisma.$TalentPayload<ExtArgs>;
+      booking: Prisma.$BookingPayload<ExtArgs> | null;
     };
     scalars: $Extensions.GetPayloadResult<
       {
         id: number;
-        booking_id: number;
-        talent_id: number;
+        date: Date;
         created_at: Date;
         updated_at: Date;
+        booking_id: number;
       },
-      ExtArgs['result']['bookingTalent']
+      ExtArgs['result']['bookingDates']
     >;
     composites: {};
   };
 
-  type BookingTalentGetPayload<
-    S extends boolean | null | undefined | BookingTalentDefaultArgs
-  > = $Result.GetResult<Prisma.$BookingTalentPayload, S>;
+  type BookingDatesGetPayload<
+    S extends boolean | null | undefined | BookingDatesDefaultArgs
+  > = $Result.GetResult<Prisma.$BookingDatesPayload, S>;
 
-  type BookingTalentCountArgs<
+  type BookingDatesCountArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = Omit<
-    BookingTalentFindManyArgs,
+    BookingDatesFindManyArgs,
     'select' | 'include' | 'distinct' | 'omit'
   > & {
-    select?: BookingTalentCountAggregateInputType | true;
+    select?: BookingDatesCountAggregateInputType | true;
   };
 
-  export interface BookingTalentDelegate<
+  export interface BookingDatesDelegate<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
     ClientOptions = {}
   > {
     [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['BookingTalent'];
-      meta: { name: 'BookingTalent' };
+      types: Prisma.TypeMap<ExtArgs>['model']['BookingDates'];
+      meta: { name: 'BookingDates' };
     };
     /**
-     * Find zero or one BookingTalent that matches the filter.
-     * @param {BookingTalentFindUniqueArgs} args - Arguments to find a BookingTalent
+     * Find zero or one BookingDates that matches the filter.
+     * @param {BookingDatesFindUniqueArgs} args - Arguments to find a BookingDates
      * @example
-     * // Get one BookingTalent
-     * const bookingTalent = await prisma.bookingTalent.findUnique({
+     * // Get one BookingDates
+     * const bookingDates = await prisma.bookingDates.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends BookingTalentFindUniqueArgs>(
-      args: SelectSubset<T, BookingTalentFindUniqueArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    findUnique<T extends BookingDatesFindUniqueArgs>(
+      args: SelectSubset<T, BookingDatesFindUniqueArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'findUnique',
         ClientOptions
@@ -12015,22 +10297,22 @@ export namespace Prisma {
     >;
 
     /**
-     * Find one BookingTalent that matches the filter or throw an error with `error.code='P2025'`
+     * Find one BookingDates that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {BookingTalentFindUniqueOrThrowArgs} args - Arguments to find a BookingTalent
+     * @param {BookingDatesFindUniqueOrThrowArgs} args - Arguments to find a BookingDates
      * @example
-     * // Get one BookingTalent
-     * const bookingTalent = await prisma.bookingTalent.findUniqueOrThrow({
+     * // Get one BookingDates
+     * const bookingDates = await prisma.bookingDates.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends BookingTalentFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, BookingTalentFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    findUniqueOrThrow<T extends BookingDatesFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, BookingDatesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'findUniqueOrThrow',
         ClientOptions
@@ -12041,23 +10323,23 @@ export namespace Prisma {
     >;
 
     /**
-     * Find the first BookingTalent that matches the filter.
+     * Find the first BookingDates that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingTalentFindFirstArgs} args - Arguments to find a BookingTalent
+     * @param {BookingDatesFindFirstArgs} args - Arguments to find a BookingDates
      * @example
-     * // Get one BookingTalent
-     * const bookingTalent = await prisma.bookingTalent.findFirst({
+     * // Get one BookingDates
+     * const bookingDates = await prisma.bookingDates.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends BookingTalentFindFirstArgs>(
-      args?: SelectSubset<T, BookingTalentFindFirstArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    findFirst<T extends BookingDatesFindFirstArgs>(
+      args?: SelectSubset<T, BookingDatesFindFirstArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'findFirst',
         ClientOptions
@@ -12068,24 +10350,24 @@ export namespace Prisma {
     >;
 
     /**
-     * Find the first BookingTalent that matches the filter or
+     * Find the first BookingDates that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingTalentFindFirstOrThrowArgs} args - Arguments to find a BookingTalent
+     * @param {BookingDatesFindFirstOrThrowArgs} args - Arguments to find a BookingDates
      * @example
-     * // Get one BookingTalent
-     * const bookingTalent = await prisma.bookingTalent.findFirstOrThrow({
+     * // Get one BookingDates
+     * const bookingDates = await prisma.bookingDates.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends BookingTalentFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, BookingTalentFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    findFirstOrThrow<T extends BookingDatesFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, BookingDatesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'findFirstOrThrow',
         ClientOptions
@@ -12096,26 +10378,26 @@ export namespace Prisma {
     >;
 
     /**
-     * Find zero or more BookingTalents that matches the filter.
+     * Find zero or more BookingDates that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingTalentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {BookingDatesFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all BookingTalents
-     * const bookingTalents = await prisma.bookingTalent.findMany()
+     * // Get all BookingDates
+     * const bookingDates = await prisma.bookingDates.findMany()
      *
-     * // Get first 10 BookingTalents
-     * const bookingTalents = await prisma.bookingTalent.findMany({ take: 10 })
+     * // Get first 10 BookingDates
+     * const bookingDates = await prisma.bookingDates.findMany({ take: 10 })
      *
      * // Only select the `id`
-     * const bookingTalentWithIdOnly = await prisma.bookingTalent.findMany({ select: { id: true } })
+     * const bookingDatesWithIdOnly = await prisma.bookingDates.findMany({ select: { id: true } })
      *
      */
-    findMany<T extends BookingTalentFindManyArgs>(
-      args?: SelectSubset<T, BookingTalentFindManyArgs<ExtArgs>>
+    findMany<T extends BookingDatesFindManyArgs>(
+      args?: SelectSubset<T, BookingDatesFindManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'findMany',
         ClientOptions
@@ -12123,22 +10405,22 @@ export namespace Prisma {
     >;
 
     /**
-     * Create a BookingTalent.
-     * @param {BookingTalentCreateArgs} args - Arguments to create a BookingTalent.
+     * Create a BookingDates.
+     * @param {BookingDatesCreateArgs} args - Arguments to create a BookingDates.
      * @example
-     * // Create one BookingTalent
-     * const BookingTalent = await prisma.bookingTalent.create({
+     * // Create one BookingDates
+     * const BookingDates = await prisma.bookingDates.create({
      *   data: {
-     *     // ... data to create a BookingTalent
+     *     // ... data to create a BookingDates
      *   }
      * })
      *
      */
-    create<T extends BookingTalentCreateArgs>(
-      args: SelectSubset<T, BookingTalentCreateArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    create<T extends BookingDatesCreateArgs>(
+      args: SelectSubset<T, BookingDatesCreateArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'create',
         ClientOptions
@@ -12149,34 +10431,34 @@ export namespace Prisma {
     >;
 
     /**
-     * Create many BookingTalents.
-     * @param {BookingTalentCreateManyArgs} args - Arguments to create many BookingTalents.
+     * Create many BookingDates.
+     * @param {BookingDatesCreateManyArgs} args - Arguments to create many BookingDates.
      * @example
-     * // Create many BookingTalents
-     * const bookingTalent = await prisma.bookingTalent.createMany({
+     * // Create many BookingDates
+     * const bookingDates = await prisma.bookingDates.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *
      */
-    createMany<T extends BookingTalentCreateManyArgs>(
-      args?: SelectSubset<T, BookingTalentCreateManyArgs<ExtArgs>>
+    createMany<T extends BookingDatesCreateManyArgs>(
+      args?: SelectSubset<T, BookingDatesCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Create many BookingTalents and returns the data saved in the database.
-     * @param {BookingTalentCreateManyAndReturnArgs} args - Arguments to create many BookingTalents.
+     * Create many BookingDates and returns the data saved in the database.
+     * @param {BookingDatesCreateManyAndReturnArgs} args - Arguments to create many BookingDates.
      * @example
-     * // Create many BookingTalents
-     * const bookingTalent = await prisma.bookingTalent.createManyAndReturn({
+     * // Create many BookingDates
+     * const bookingDates = await prisma.bookingDates.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *
-     * // Create many BookingTalents and only return the `id`
-     * const bookingTalentWithIdOnly = await prisma.bookingTalent.createManyAndReturn({
+     * // Create many BookingDates and only return the `id`
+     * const bookingDatesWithIdOnly = await prisma.bookingDates.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -12186,11 +10468,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      *
      */
-    createManyAndReturn<T extends BookingTalentCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, BookingTalentCreateManyAndReturnArgs<ExtArgs>>
+    createManyAndReturn<T extends BookingDatesCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, BookingDatesCreateManyAndReturnArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'createManyAndReturn',
         ClientOptions
@@ -12198,22 +10480,22 @@ export namespace Prisma {
     >;
 
     /**
-     * Delete a BookingTalent.
-     * @param {BookingTalentDeleteArgs} args - Arguments to delete one BookingTalent.
+     * Delete a BookingDates.
+     * @param {BookingDatesDeleteArgs} args - Arguments to delete one BookingDates.
      * @example
-     * // Delete one BookingTalent
-     * const BookingTalent = await prisma.bookingTalent.delete({
+     * // Delete one BookingDates
+     * const BookingDates = await prisma.bookingDates.delete({
      *   where: {
-     *     // ... filter to delete one BookingTalent
+     *     // ... filter to delete one BookingDates
      *   }
      * })
      *
      */
-    delete<T extends BookingTalentDeleteArgs>(
-      args: SelectSubset<T, BookingTalentDeleteArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    delete<T extends BookingDatesDeleteArgs>(
+      args: SelectSubset<T, BookingDatesDeleteArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'delete',
         ClientOptions
@@ -12224,11 +10506,11 @@ export namespace Prisma {
     >;
 
     /**
-     * Update one BookingTalent.
-     * @param {BookingTalentUpdateArgs} args - Arguments to update one BookingTalent.
+     * Update one BookingDates.
+     * @param {BookingDatesUpdateArgs} args - Arguments to update one BookingDates.
      * @example
-     * // Update one BookingTalent
-     * const bookingTalent = await prisma.bookingTalent.update({
+     * // Update one BookingDates
+     * const bookingDates = await prisma.bookingDates.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12238,11 +10520,11 @@ export namespace Prisma {
      * })
      *
      */
-    update<T extends BookingTalentUpdateArgs>(
-      args: SelectSubset<T, BookingTalentUpdateArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    update<T extends BookingDatesUpdateArgs>(
+      args: SelectSubset<T, BookingDatesUpdateArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'update',
         ClientOptions
@@ -12253,29 +10535,29 @@ export namespace Prisma {
     >;
 
     /**
-     * Delete zero or more BookingTalents.
-     * @param {BookingTalentDeleteManyArgs} args - Arguments to filter BookingTalents to delete.
+     * Delete zero or more BookingDates.
+     * @param {BookingDatesDeleteManyArgs} args - Arguments to filter BookingDates to delete.
      * @example
-     * // Delete a few BookingTalents
-     * const { count } = await prisma.bookingTalent.deleteMany({
+     * // Delete a few BookingDates
+     * const { count } = await prisma.bookingDates.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      *
      */
-    deleteMany<T extends BookingTalentDeleteManyArgs>(
-      args?: SelectSubset<T, BookingTalentDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends BookingDatesDeleteManyArgs>(
+      args?: SelectSubset<T, BookingDatesDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Update zero or more BookingTalents.
+     * Update zero or more BookingDates.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingTalentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {BookingDatesUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many BookingTalents
-     * const bookingTalent = await prisma.bookingTalent.updateMany({
+     * // Update many BookingDates
+     * const bookingDates = await prisma.bookingDates.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12285,16 +10567,16 @@ export namespace Prisma {
      * })
      *
      */
-    updateMany<T extends BookingTalentUpdateManyArgs>(
-      args: SelectSubset<T, BookingTalentUpdateManyArgs<ExtArgs>>
+    updateMany<T extends BookingDatesUpdateManyArgs>(
+      args: SelectSubset<T, BookingDatesUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Update zero or more BookingTalents and returns the data updated in the database.
-     * @param {BookingTalentUpdateManyAndReturnArgs} args - Arguments to update many BookingTalents.
+     * Update zero or more BookingDates and returns the data updated in the database.
+     * @param {BookingDatesUpdateManyAndReturnArgs} args - Arguments to update many BookingDates.
      * @example
-     * // Update many BookingTalents
-     * const bookingTalent = await prisma.bookingTalent.updateManyAndReturn({
+     * // Update many BookingDates
+     * const bookingDates = await prisma.bookingDates.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12303,8 +10585,8 @@ export namespace Prisma {
      *   ]
      * })
      *
-     * // Update zero or more BookingTalents and only return the `id`
-     * const bookingTalentWithIdOnly = await prisma.bookingTalent.updateManyAndReturn({
+     * // Update zero or more BookingDates and only return the `id`
+     * const bookingDatesWithIdOnly = await prisma.bookingDates.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -12317,11 +10599,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      *
      */
-    updateManyAndReturn<T extends BookingTalentUpdateManyAndReturnArgs>(
-      args: SelectSubset<T, BookingTalentUpdateManyAndReturnArgs<ExtArgs>>
+    updateManyAndReturn<T extends BookingDatesUpdateManyAndReturnArgs>(
+      args: SelectSubset<T, BookingDatesUpdateManyAndReturnArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'updateManyAndReturn',
         ClientOptions
@@ -12329,27 +10611,27 @@ export namespace Prisma {
     >;
 
     /**
-     * Create or update one BookingTalent.
-     * @param {BookingTalentUpsertArgs} args - Arguments to update or create a BookingTalent.
+     * Create or update one BookingDates.
+     * @param {BookingDatesUpsertArgs} args - Arguments to update or create a BookingDates.
      * @example
-     * // Update or create a BookingTalent
-     * const bookingTalent = await prisma.bookingTalent.upsert({
+     * // Update or create a BookingDates
+     * const bookingDates = await prisma.bookingDates.upsert({
      *   create: {
-     *     // ... data to create a BookingTalent
+     *     // ... data to create a BookingDates
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the BookingTalent we want to update
+     *     // ... the filter for the BookingDates we want to update
      *   }
      * })
      */
-    upsert<T extends BookingTalentUpsertArgs>(
-      args: SelectSubset<T, BookingTalentUpsertArgs<ExtArgs>>
-    ): Prisma__BookingTalentClient<
+    upsert<T extends BookingDatesUpsertArgs>(
+      args: SelectSubset<T, BookingDatesUpsertArgs<ExtArgs>>
+    ): Prisma__BookingDatesClient<
       $Result.GetResult<
-        Prisma.$BookingTalentPayload<ExtArgs>,
+        Prisma.$BookingDatesPayload<ExtArgs>,
         T,
         'upsert',
         ClientOptions
@@ -12360,33 +10642,33 @@ export namespace Prisma {
     >;
 
     /**
-     * Count the number of BookingTalents.
+     * Count the number of BookingDates.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingTalentCountArgs} args - Arguments to filter BookingTalents to count.
+     * @param {BookingDatesCountArgs} args - Arguments to filter BookingDates to count.
      * @example
-     * // Count the number of BookingTalents
-     * const count = await prisma.bookingTalent.count({
+     * // Count the number of BookingDates
+     * const count = await prisma.bookingDates.count({
      *   where: {
-     *     // ... the filter for the BookingTalents we want to count
+     *     // ... the filter for the BookingDates we want to count
      *   }
      * })
      **/
-    count<T extends BookingTalentCountArgs>(
-      args?: Subset<T, BookingTalentCountArgs>
+    count<T extends BookingDatesCountArgs>(
+      args?: Subset<T, BookingDatesCountArgs>
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], BookingTalentCountAggregateOutputType>
+          : GetScalarType<T['select'], BookingDatesCountAggregateOutputType>
         : number
     >;
 
     /**
-     * Allows you to perform aggregations operations on a BookingTalent.
+     * Allows you to perform aggregations operations on a BookingDates.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingTalentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {BookingDatesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -12406,15 +10688,15 @@ export namespace Prisma {
      *   take: 10,
      * })
      **/
-    aggregate<T extends BookingTalentAggregateArgs>(
-      args: Subset<T, BookingTalentAggregateArgs>
-    ): Prisma.PrismaPromise<GetBookingTalentAggregateType<T>>;
+    aggregate<T extends BookingDatesAggregateArgs>(
+      args: Subset<T, BookingDatesAggregateArgs>
+    ): Prisma.PrismaPromise<GetBookingDatesAggregateType<T>>;
 
     /**
-     * Group by BookingTalent.
+     * Group by BookingDates.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingTalentGroupByArgs} args - Group by arguments.
+     * @param {BookingDatesGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -12429,14 +10711,14 @@ export namespace Prisma {
      *
      **/
     groupBy<
-      T extends BookingTalentGroupByArgs,
+      T extends BookingDatesGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BookingTalentGroupByArgs['orderBy'] }
-        : { orderBy?: BookingTalentGroupByArgs['orderBy'] },
+        ? { orderBy: BookingDatesGroupByArgs['orderBy'] }
+        : { orderBy?: BookingDatesGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<
         Keys<MaybeTupleToUnion<T['orderBy']>>
       >,
@@ -12488,55 +10770,40 @@ export namespace Prisma {
               : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
           }[OrderFields]
     >(
-      args: SubsetIntersection<T, BookingTalentGroupByArgs, OrderByArg> &
+      args: SubsetIntersection<T, BookingDatesGroupByArgs, OrderByArg> &
         InputErrors
     ): {} extends InputErrors
-      ? GetBookingTalentGroupByPayload<T>
+      ? GetBookingDatesGroupByPayload<T>
       : Prisma.PrismaPromise<InputErrors>;
     /**
-     * Fields of the BookingTalent model
+     * Fields of the BookingDates model
      */
-    readonly fields: BookingTalentFieldRefs;
+    readonly fields: BookingDatesFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for BookingTalent.
+   * The delegate class that acts as a "Promise-like" for BookingDates.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__BookingTalentClient<
+  export interface Prisma__BookingDatesClient<
     T,
     Null = never,
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
     ClientOptions = {}
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
-    booking<T extends BookingDefaultArgs<ExtArgs> = {}>(
-      args?: Subset<T, BookingDefaultArgs<ExtArgs>>
+    booking<T extends BookingDates$bookingArgs<ExtArgs> = {}>(
+      args?: Subset<T, BookingDates$bookingArgs<ExtArgs>>
     ): Prisma__BookingClient<
-      | $Result.GetResult<
-          Prisma.$BookingPayload<ExtArgs>,
-          T,
-          'findUniqueOrThrow',
-          ClientOptions
-        >
-      | Null,
-      Null,
-      ExtArgs,
-      ClientOptions
-    >;
-    talent<T extends TalentDefaultArgs<ExtArgs> = {}>(
-      args?: Subset<T, TalentDefaultArgs<ExtArgs>>
-    ): Prisma__TalentClient<
-      | $Result.GetResult<
-          Prisma.$TalentPayload<ExtArgs>,
-          T,
-          'findUniqueOrThrow',
-          ClientOptions
-        >
-      | Null,
-      Null,
+      $Result.GetResult<
+        Prisma.$BookingPayload<ExtArgs>,
+        T,
+        'findUniqueOrThrow',
+        ClientOptions
+      > | null,
+      null,
       ExtArgs,
       ClientOptions
     >;
@@ -12577,466 +10844,487 @@ export namespace Prisma {
   }
 
   /**
-   * Fields of the BookingTalent model
+   * Fields of the BookingDates model
    */
-  interface BookingTalentFieldRefs {
-    readonly id: FieldRef<'BookingTalent', 'Int'>;
-    readonly booking_id: FieldRef<'BookingTalent', 'Int'>;
-    readonly talent_id: FieldRef<'BookingTalent', 'Int'>;
-    readonly created_at: FieldRef<'BookingTalent', 'DateTime'>;
-    readonly updated_at: FieldRef<'BookingTalent', 'DateTime'>;
+  interface BookingDatesFieldRefs {
+    readonly id: FieldRef<'BookingDates', 'Int'>;
+    readonly date: FieldRef<'BookingDates', 'DateTime'>;
+    readonly created_at: FieldRef<'BookingDates', 'DateTime'>;
+    readonly updated_at: FieldRef<'BookingDates', 'DateTime'>;
+    readonly booking_id: FieldRef<'BookingDates', 'Int'>;
   }
 
   // Custom InputTypes
   /**
-   * BookingTalent findUnique
+   * BookingDates findUnique
    */
-  export type BookingTalentFindUniqueArgs<
+  export type BookingDatesFindUniqueArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * Filter, which BookingTalent to fetch.
+     * Filter, which BookingDates to fetch.
      */
-    where: BookingTalentWhereUniqueInput;
+    where: BookingDatesWhereUniqueInput;
   };
 
   /**
-   * BookingTalent findUniqueOrThrow
+   * BookingDates findUniqueOrThrow
    */
-  export type BookingTalentFindUniqueOrThrowArgs<
+  export type BookingDatesFindUniqueOrThrowArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * Filter, which BookingTalent to fetch.
+     * Filter, which BookingDates to fetch.
      */
-    where: BookingTalentWhereUniqueInput;
+    where: BookingDatesWhereUniqueInput;
   };
 
   /**
-   * BookingTalent findFirst
+   * BookingDates findFirst
    */
-  export type BookingTalentFindFirstArgs<
+  export type BookingDatesFindFirstArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * Filter, which BookingTalent to fetch.
+     * Filter, which BookingDates to fetch.
      */
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of BookingTalents to fetch.
+     * Determine the order of BookingDates to fetch.
      */
     orderBy?:
-      | BookingTalentOrderByWithRelationInput
-      | BookingTalentOrderByWithRelationInput[];
+      | BookingDatesOrderByWithRelationInput
+      | BookingDatesOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for searching for BookingTalents.
+     * Sets the position for searching for BookingDates.
      */
-    cursor?: BookingTalentWhereUniqueInput;
+    cursor?: BookingDatesWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` BookingTalents from the position of the cursor.
+     * Take `±n` BookingDates from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` BookingTalents.
+     * Skip the first `n` BookingDates.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      *
-     * Filter by unique combinations of BookingTalents.
+     * Filter by unique combinations of BookingDates.
      */
-    distinct?: BookingTalentScalarFieldEnum | BookingTalentScalarFieldEnum[];
+    distinct?: BookingDatesScalarFieldEnum | BookingDatesScalarFieldEnum[];
   };
 
   /**
-   * BookingTalent findFirstOrThrow
+   * BookingDates findFirstOrThrow
    */
-  export type BookingTalentFindFirstOrThrowArgs<
+  export type BookingDatesFindFirstOrThrowArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * Filter, which BookingTalent to fetch.
+     * Filter, which BookingDates to fetch.
      */
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of BookingTalents to fetch.
+     * Determine the order of BookingDates to fetch.
      */
     orderBy?:
-      | BookingTalentOrderByWithRelationInput
-      | BookingTalentOrderByWithRelationInput[];
+      | BookingDatesOrderByWithRelationInput
+      | BookingDatesOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for searching for BookingTalents.
+     * Sets the position for searching for BookingDates.
      */
-    cursor?: BookingTalentWhereUniqueInput;
+    cursor?: BookingDatesWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` BookingTalents from the position of the cursor.
+     * Take `±n` BookingDates from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` BookingTalents.
+     * Skip the first `n` BookingDates.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      *
-     * Filter by unique combinations of BookingTalents.
+     * Filter by unique combinations of BookingDates.
      */
-    distinct?: BookingTalentScalarFieldEnum | BookingTalentScalarFieldEnum[];
+    distinct?: BookingDatesScalarFieldEnum | BookingDatesScalarFieldEnum[];
   };
 
   /**
-   * BookingTalent findMany
+   * BookingDates findMany
    */
-  export type BookingTalentFindManyArgs<
+  export type BookingDatesFindManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * Filter, which BookingTalents to fetch.
+     * Filter, which BookingDates to fetch.
      */
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of BookingTalents to fetch.
+     * Determine the order of BookingDates to fetch.
      */
     orderBy?:
-      | BookingTalentOrderByWithRelationInput
-      | BookingTalentOrderByWithRelationInput[];
+      | BookingDatesOrderByWithRelationInput
+      | BookingDatesOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for listing BookingTalents.
+     * Sets the position for listing BookingDates.
      */
-    cursor?: BookingTalentWhereUniqueInput;
+    cursor?: BookingDatesWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` BookingTalents from the position of the cursor.
+     * Take `±n` BookingDates from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` BookingTalents.
+     * Skip the first `n` BookingDates.
      */
     skip?: number;
-    distinct?: BookingTalentScalarFieldEnum | BookingTalentScalarFieldEnum[];
+    distinct?: BookingDatesScalarFieldEnum | BookingDatesScalarFieldEnum[];
   };
 
   /**
-   * BookingTalent create
+   * BookingDates create
    */
-  export type BookingTalentCreateArgs<
+  export type BookingDatesCreateArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * The data needed to create a BookingTalent.
+     * The data needed to create a BookingDates.
      */
-    data: XOR<BookingTalentCreateInput, BookingTalentUncheckedCreateInput>;
+    data: XOR<BookingDatesCreateInput, BookingDatesUncheckedCreateInput>;
   };
 
   /**
-   * BookingTalent createMany
+   * BookingDates createMany
    */
-  export type BookingTalentCreateManyArgs<
+  export type BookingDatesCreateManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * The data used to create many BookingTalents.
+     * The data used to create many BookingDates.
      */
-    data: BookingTalentCreateManyInput | BookingTalentCreateManyInput[];
+    data: BookingDatesCreateManyInput | BookingDatesCreateManyInput[];
     skipDuplicates?: boolean;
   };
 
   /**
-   * BookingTalent createManyAndReturn
+   * BookingDates createManyAndReturn
    */
-  export type BookingTalentCreateManyAndReturnArgs<
+  export type BookingDatesCreateManyAndReturnArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelectCreateManyAndReturn<ExtArgs> | null;
+    select?: BookingDatesSelectCreateManyAndReturn<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
-     * The data used to create many BookingTalents.
+     * The data used to create many BookingDates.
      */
-    data: BookingTalentCreateManyInput | BookingTalentCreateManyInput[];
+    data: BookingDatesCreateManyInput | BookingDatesCreateManyInput[];
     skipDuplicates?: boolean;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentIncludeCreateManyAndReturn<ExtArgs> | null;
+    include?: BookingDatesIncludeCreateManyAndReturn<ExtArgs> | null;
   };
 
   /**
-   * BookingTalent update
+   * BookingDates update
    */
-  export type BookingTalentUpdateArgs<
+  export type BookingDatesUpdateArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * The data needed to update a BookingTalent.
+     * The data needed to update a BookingDates.
      */
-    data: XOR<BookingTalentUpdateInput, BookingTalentUncheckedUpdateInput>;
+    data: XOR<BookingDatesUpdateInput, BookingDatesUncheckedUpdateInput>;
     /**
-     * Choose, which BookingTalent to update.
+     * Choose, which BookingDates to update.
      */
-    where: BookingTalentWhereUniqueInput;
+    where: BookingDatesWhereUniqueInput;
   };
 
   /**
-   * BookingTalent updateMany
+   * BookingDates updateMany
    */
-  export type BookingTalentUpdateManyArgs<
+  export type BookingDatesUpdateManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * The data used to update BookingTalents.
+     * The data used to update BookingDates.
      */
     data: XOR<
-      BookingTalentUpdateManyMutationInput,
-      BookingTalentUncheckedUpdateManyInput
+      BookingDatesUpdateManyMutationInput,
+      BookingDatesUncheckedUpdateManyInput
     >;
     /**
-     * Filter which BookingTalents to update
+     * Filter which BookingDates to update
      */
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     /**
-     * Limit how many BookingTalents to update.
+     * Limit how many BookingDates to update.
      */
     limit?: number;
   };
 
   /**
-   * BookingTalent updateManyAndReturn
+   * BookingDates updateManyAndReturn
    */
-  export type BookingTalentUpdateManyAndReturnArgs<
+  export type BookingDatesUpdateManyAndReturnArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelectUpdateManyAndReturn<ExtArgs> | null;
+    select?: BookingDatesSelectUpdateManyAndReturn<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
-     * The data used to update BookingTalents.
+     * The data used to update BookingDates.
      */
     data: XOR<
-      BookingTalentUpdateManyMutationInput,
-      BookingTalentUncheckedUpdateManyInput
+      BookingDatesUpdateManyMutationInput,
+      BookingDatesUncheckedUpdateManyInput
     >;
     /**
-     * Filter which BookingTalents to update
+     * Filter which BookingDates to update
      */
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     /**
-     * Limit how many BookingTalents to update.
+     * Limit how many BookingDates to update.
      */
     limit?: number;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentIncludeUpdateManyAndReturn<ExtArgs> | null;
+    include?: BookingDatesIncludeUpdateManyAndReturn<ExtArgs> | null;
   };
 
   /**
-   * BookingTalent upsert
+   * BookingDates upsert
    */
-  export type BookingTalentUpsertArgs<
+  export type BookingDatesUpsertArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * The filter to search for the BookingTalent to update in case it exists.
+     * The filter to search for the BookingDates to update in case it exists.
      */
-    where: BookingTalentWhereUniqueInput;
+    where: BookingDatesWhereUniqueInput;
     /**
-     * In case the BookingTalent found by the `where` argument doesn't exist, create a new BookingTalent with this data.
+     * In case the BookingDates found by the `where` argument doesn't exist, create a new BookingDates with this data.
      */
-    create: XOR<BookingTalentCreateInput, BookingTalentUncheckedCreateInput>;
+    create: XOR<BookingDatesCreateInput, BookingDatesUncheckedCreateInput>;
     /**
-     * In case the BookingTalent was found with the provided `where` argument, update it with this data.
+     * In case the BookingDates was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<BookingTalentUpdateInput, BookingTalentUncheckedUpdateInput>;
+    update: XOR<BookingDatesUpdateInput, BookingDatesUncheckedUpdateInput>;
   };
 
   /**
-   * BookingTalent delete
+   * BookingDates delete
    */
-  export type BookingTalentDeleteArgs<
+  export type BookingDatesDeleteArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the BookingDates
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingDatesSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the BookingDates
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingDatesOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingDatesInclude<ExtArgs> | null;
     /**
-     * Filter which BookingTalent to delete.
+     * Filter which BookingDates to delete.
      */
-    where: BookingTalentWhereUniqueInput;
+    where: BookingDatesWhereUniqueInput;
   };
 
   /**
-   * BookingTalent deleteMany
+   * BookingDates deleteMany
    */
-  export type BookingTalentDeleteManyArgs<
+  export type BookingDatesDeleteManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Filter which BookingTalents to delete
+     * Filter which BookingDates to delete
      */
-    where?: BookingTalentWhereInput;
+    where?: BookingDatesWhereInput;
     /**
-     * Limit how many BookingTalents to delete.
+     * Limit how many BookingDates to delete.
      */
     limit?: number;
   };
 
   /**
-   * BookingTalent without action
+   * BookingDates.booking
    */
-  export type BookingTalentDefaultArgs<
+  export type BookingDates$bookingArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
   > = {
     /**
-     * Select specific fields to fetch from the BookingTalent
+     * Select specific fields to fetch from the Booking
      */
-    select?: BookingTalentSelect<ExtArgs> | null;
+    select?: BookingSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the BookingTalent
+     * Omit specific fields from the Booking
      */
-    omit?: BookingTalentOmit<ExtArgs> | null;
+    omit?: BookingOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingTalentInclude<ExtArgs> | null;
+    include?: BookingInclude<ExtArgs> | null;
+    where?: BookingWhereInput;
+  };
+
+  /**
+   * BookingDates without action
+   */
+  export type BookingDatesDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
+  > = {
+    /**
+     * Select specific fields to fetch from the BookingDates
+     */
+    select?: BookingDatesSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BookingDates
+     */
+    omit?: BookingDatesOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingDatesInclude<ExtArgs> | null;
   };
 
   /**
@@ -14498,1378 +12786,6 @@ export namespace Prisma {
   };
 
   /**
-   * Model Review
-   */
-
-  export type AggregateReview = {
-    _count: ReviewCountAggregateOutputType | null;
-    _avg: ReviewAvgAggregateOutputType | null;
-    _sum: ReviewSumAggregateOutputType | null;
-    _min: ReviewMinAggregateOutputType | null;
-    _max: ReviewMaxAggregateOutputType | null;
-  };
-
-  export type ReviewAvgAggregateOutputType = {
-    id: number | null;
-    user_id: number | null;
-    service_id: number | null;
-    rating: number | null;
-  };
-
-  export type ReviewSumAggregateOutputType = {
-    id: number | null;
-    user_id: number | null;
-    service_id: number | null;
-    rating: number | null;
-  };
-
-  export type ReviewMinAggregateOutputType = {
-    id: number | null;
-    user_id: number | null;
-    service_id: number | null;
-    rating: number | null;
-    comment: string | null;
-    created_at: Date | null;
-  };
-
-  export type ReviewMaxAggregateOutputType = {
-    id: number | null;
-    user_id: number | null;
-    service_id: number | null;
-    rating: number | null;
-    comment: string | null;
-    created_at: Date | null;
-  };
-
-  export type ReviewCountAggregateOutputType = {
-    id: number;
-    user_id: number;
-    service_id: number;
-    rating: number;
-    comment: number;
-    created_at: number;
-    _all: number;
-  };
-
-  export type ReviewAvgAggregateInputType = {
-    id?: true;
-    user_id?: true;
-    service_id?: true;
-    rating?: true;
-  };
-
-  export type ReviewSumAggregateInputType = {
-    id?: true;
-    user_id?: true;
-    service_id?: true;
-    rating?: true;
-  };
-
-  export type ReviewMinAggregateInputType = {
-    id?: true;
-    user_id?: true;
-    service_id?: true;
-    rating?: true;
-    comment?: true;
-    created_at?: true;
-  };
-
-  export type ReviewMaxAggregateInputType = {
-    id?: true;
-    user_id?: true;
-    service_id?: true;
-    rating?: true;
-    comment?: true;
-    created_at?: true;
-  };
-
-  export type ReviewCountAggregateInputType = {
-    id?: true;
-    user_id?: true;
-    service_id?: true;
-    rating?: true;
-    comment?: true;
-    created_at?: true;
-    _all?: true;
-  };
-
-  export type ReviewAggregateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which Review to aggregate.
-     */
-    where?: ReviewWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Reviews to fetch.
-     */
-    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the start position
-     */
-    cursor?: ReviewWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Reviews from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Reviews.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Count returned Reviews
-     **/
-    _count?: true | ReviewCountAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to average
-     **/
-    _avg?: ReviewAvgAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to sum
-     **/
-    _sum?: ReviewSumAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the minimum value
-     **/
-    _min?: ReviewMinAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the maximum value
-     **/
-    _max?: ReviewMaxAggregateInputType;
-  };
-
-  export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
-    [P in keyof T & keyof AggregateReview]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateReview[P]>
-      : GetScalarType<T[P], AggregateReview[P]>;
-  };
-
-  export type ReviewGroupByArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    where?: ReviewWhereInput;
-    orderBy?:
-      | ReviewOrderByWithAggregationInput
-      | ReviewOrderByWithAggregationInput[];
-    by: ReviewScalarFieldEnum[] | ReviewScalarFieldEnum;
-    having?: ReviewScalarWhereWithAggregatesInput;
-    take?: number;
-    skip?: number;
-    _count?: ReviewCountAggregateInputType | true;
-    _avg?: ReviewAvgAggregateInputType;
-    _sum?: ReviewSumAggregateInputType;
-    _min?: ReviewMinAggregateInputType;
-    _max?: ReviewMaxAggregateInputType;
-  };
-
-  export type ReviewGroupByOutputType = {
-    id: number;
-    user_id: number;
-    service_id: number;
-    rating: number;
-    comment: string | null;
-    created_at: Date;
-    _count: ReviewCountAggregateOutputType | null;
-    _avg: ReviewAvgAggregateOutputType | null;
-    _sum: ReviewSumAggregateOutputType | null;
-    _min: ReviewMinAggregateOutputType | null;
-    _max: ReviewMaxAggregateOutputType | null;
-  };
-
-  type GetReviewGroupByPayload<T extends ReviewGroupByArgs> =
-    Prisma.PrismaPromise<
-      Array<
-        PickEnumerable<ReviewGroupByOutputType, T['by']> & {
-          [P in keyof T & keyof ReviewGroupByOutputType]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ReviewGroupByOutputType[P]>
-            : GetScalarType<T[P], ReviewGroupByOutputType[P]>;
-        }
-      >
-    >;
-
-  export type ReviewSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      user_id?: boolean;
-      service_id?: boolean;
-      rating?: boolean;
-      comment?: boolean;
-      created_at?: boolean;
-      user?: boolean | UserDefaultArgs<ExtArgs>;
-      service?: boolean | ServiceDefaultArgs<ExtArgs>;
-    },
-    ExtArgs['result']['review']
-  >;
-
-  export type ReviewSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      user_id?: boolean;
-      service_id?: boolean;
-      rating?: boolean;
-      comment?: boolean;
-      created_at?: boolean;
-      user?: boolean | UserDefaultArgs<ExtArgs>;
-      service?: boolean | ServiceDefaultArgs<ExtArgs>;
-    },
-    ExtArgs['result']['review']
-  >;
-
-  export type ReviewSelectUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      user_id?: boolean;
-      service_id?: boolean;
-      rating?: boolean;
-      comment?: boolean;
-      created_at?: boolean;
-      user?: boolean | UserDefaultArgs<ExtArgs>;
-      service?: boolean | ServiceDefaultArgs<ExtArgs>;
-    },
-    ExtArgs['result']['review']
-  >;
-
-  export type ReviewSelectScalar = {
-    id?: boolean;
-    user_id?: boolean;
-    service_id?: boolean;
-    rating?: boolean;
-    comment?: boolean;
-    created_at?: boolean;
-  };
-
-  export type ReviewOmit<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = $Extensions.GetOmit<
-    'id' | 'user_id' | 'service_id' | 'rating' | 'comment' | 'created_at',
-    ExtArgs['result']['review']
-  >;
-  export type ReviewInclude<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    user?: boolean | UserDefaultArgs<ExtArgs>;
-    service?: boolean | ServiceDefaultArgs<ExtArgs>;
-  };
-  export type ReviewIncludeCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    user?: boolean | UserDefaultArgs<ExtArgs>;
-    service?: boolean | ServiceDefaultArgs<ExtArgs>;
-  };
-  export type ReviewIncludeUpdateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    user?: boolean | UserDefaultArgs<ExtArgs>;
-    service?: boolean | ServiceDefaultArgs<ExtArgs>;
-  };
-
-  export type $ReviewPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    name: 'Review';
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>;
-      service: Prisma.$ServicePayload<ExtArgs>;
-    };
-    scalars: $Extensions.GetPayloadResult<
-      {
-        id: number;
-        user_id: number;
-        service_id: number;
-        rating: number;
-        comment: string | null;
-        created_at: Date;
-      },
-      ExtArgs['result']['review']
-    >;
-    composites: {};
-  };
-
-  type ReviewGetPayload<
-    S extends boolean | null | undefined | ReviewDefaultArgs
-  > = $Result.GetResult<Prisma.$ReviewPayload, S>;
-
-  type ReviewCountArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-    select?: ReviewCountAggregateInputType | true;
-  };
-
-  export interface ReviewDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['Review'];
-      meta: { name: 'Review' };
-    };
-    /**
-     * Find zero or one Review that matches the filter.
-     * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
-     * @example
-     * // Get one Review
-     * const review = await prisma.review.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ReviewFindUniqueArgs>(
-      args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'findUnique',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
-     * @example
-     * // Get one Review
-     * const review = await prisma.review.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'findUniqueOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Review that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReviewFindFirstArgs} args - Arguments to find a Review
-     * @example
-     * // Get one Review
-     * const review = await prisma.review.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ReviewFindFirstArgs>(
-      args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'findFirst',
-        ClientOptions
-      > | null,
-      null,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find the first Review that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
-     * @example
-     * // Get one Review
-     * const review = await prisma.review.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'findFirstOrThrow',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Find zero or more Reviews that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Reviews
-     * const reviews = await prisma.review.findMany()
-     *
-     * // Get first 10 Reviews
-     * const reviews = await prisma.review.findMany({ take: 10 })
-     *
-     * // Only select the `id`
-     * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
-     *
-     */
-    findMany<T extends ReviewFindManyArgs>(
-      args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'findMany',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create a Review.
-     * @param {ReviewCreateArgs} args - Arguments to create a Review.
-     * @example
-     * // Create one Review
-     * const Review = await prisma.review.create({
-     *   data: {
-     *     // ... data to create a Review
-     *   }
-     * })
-     *
-     */
-    create<T extends ReviewCreateArgs>(
-      args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'create',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Create many Reviews.
-     * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
-     * @example
-     * // Create many Reviews
-     * const review = await prisma.review.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     */
-    createMany<T extends ReviewCreateManyArgs>(
-      args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create many Reviews and returns the data saved in the database.
-     * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
-     * @example
-     * // Create many Reviews
-     * const review = await prisma.review.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Create many Reviews and only return the `id`
-     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'createManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Delete a Review.
-     * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
-     * @example
-     * // Delete one Review
-     * const Review = await prisma.review.delete({
-     *   where: {
-     *     // ... filter to delete one Review
-     *   }
-     * })
-     *
-     */
-    delete<T extends ReviewDeleteArgs>(
-      args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'delete',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Update one Review.
-     * @param {ReviewUpdateArgs} args - Arguments to update one Review.
-     * @example
-     * // Update one Review
-     * const review = await prisma.review.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    update<T extends ReviewUpdateArgs>(
-      args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'update',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Delete zero or more Reviews.
-     * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
-     * @example
-     * // Delete a few Reviews
-     * const { count } = await prisma.review.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     *
-     */
-    deleteMany<T extends ReviewDeleteManyArgs>(
-      args?: SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Reviews.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Reviews
-     * const review = await prisma.review.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    updateMany<T extends ReviewUpdateManyArgs>(
-      args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more Reviews and returns the data updated in the database.
-     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
-     * @example
-     * // Update many Reviews
-     * const review = await prisma.review.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Update zero or more Reviews and only return the `id`
-     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(
-      args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'updateManyAndReturn',
-        ClientOptions
-      >
-    >;
-
-    /**
-     * Create or update one Review.
-     * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
-     * @example
-     * // Update or create a Review
-     * const review = await prisma.review.upsert({
-     *   create: {
-     *     // ... data to create a Review
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Review we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ReviewUpsertArgs>(
-      args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>
-    ): Prisma__ReviewClient<
-      $Result.GetResult<
-        Prisma.$ReviewPayload<ExtArgs>,
-        T,
-        'upsert',
-        ClientOptions
-      >,
-      never,
-      ExtArgs,
-      ClientOptions
-    >;
-
-    /**
-     * Count the number of Reviews.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
-     * @example
-     * // Count the number of Reviews
-     * const count = await prisma.review.count({
-     *   where: {
-     *     // ... the filter for the Reviews we want to count
-     *   }
-     * })
-     **/
-    count<T extends ReviewCountArgs>(
-      args?: Subset<T, ReviewCountArgs>
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ReviewCountAggregateOutputType>
-        : number
-    >;
-
-    /**
-     * Allows you to perform aggregations operations on a Review.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-     **/
-    aggregate<T extends ReviewAggregateArgs>(
-      args: Subset<T, ReviewAggregateArgs>
-    ): Prisma.PrismaPromise<GetReviewAggregateType<T>>;
-
-    /**
-     * Group by Review.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReviewGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     *
-     **/
-    groupBy<
-      T extends ReviewGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ReviewGroupByArgs['orderBy'] }
-        : { orderBy?: ReviewGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<
-        Keys<MaybeTupleToUnion<T['orderBy']>>
-      >,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-        ? `Error: "by" must not be empty.`
-        : HavingValid extends False
-        ? {
-            [P in HavingFields]: P extends ByFields
-              ? never
-              : P extends string
-              ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-              : [
-                  Error,
-                  'Field ',
-                  P,
-                  ` in "having" needs to be provided in "by"`
-                ];
-          }[HavingFields]
-        : 'take' extends Keys<T>
-        ? 'orderBy' extends Keys<T>
-          ? ByValid extends True
-            ? {}
-            : {
-                [P in OrderFields]: P extends ByFields
-                  ? never
-                  : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-              }[OrderFields]
-          : 'Error: If you provide "take", you also need to provide "orderBy"'
-        : 'skip' extends Keys<T>
-        ? 'orderBy' extends Keys<T>
-          ? ByValid extends True
-            ? {}
-            : {
-                [P in OrderFields]: P extends ByFields
-                  ? never
-                  : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-              }[OrderFields]
-          : 'Error: If you provide "skip", you also need to provide "orderBy"'
-        : ByValid extends True
-        ? {}
-        : {
-            [P in OrderFields]: P extends ByFields
-              ? never
-              : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-          }[OrderFields]
-    >(
-      args: SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors
-    ): {} extends InputErrors
-      ? GetReviewGroupByPayload<T>
-      : Prisma.PrismaPromise<InputErrors>;
-    /**
-     * Fields of the Review model
-     */
-    readonly fields: ReviewFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Review.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ReviewClient<
-    T,
-    Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    ClientOptions = {}
-  > extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(
-      args?: Subset<T, UserDefaultArgs<ExtArgs>>
-    ): Prisma__UserClient<
-      | $Result.GetResult<
-          Prisma.$UserPayload<ExtArgs>,
-          T,
-          'findUniqueOrThrow',
-          ClientOptions
-        >
-      | Null,
-      Null,
-      ExtArgs,
-      ClientOptions
-    >;
-    service<T extends ServiceDefaultArgs<ExtArgs> = {}>(
-      args?: Subset<T, ServiceDefaultArgs<ExtArgs>>
-    ): Prisma__ServiceClient<
-      | $Result.GetResult<
-          Prisma.$ServicePayload<ExtArgs>,
-          T,
-          'findUniqueOrThrow',
-          ClientOptions
-        >
-      | Null,
-      Null,
-      ExtArgs,
-      ClientOptions
-    >;
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(
-      onfulfilled?:
-        | ((value: T) => TResult1 | PromiseLike<TResult1>)
-        | undefined
-        | null,
-      onrejected?:
-        | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(
-      onrejected?:
-        | ((reason: any) => TResult | PromiseLike<TResult>)
-        | undefined
-        | null
-    ): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-  /**
-   * Fields of the Review model
-   */
-  interface ReviewFieldRefs {
-    readonly id: FieldRef<'Review', 'Int'>;
-    readonly user_id: FieldRef<'Review', 'Int'>;
-    readonly service_id: FieldRef<'Review', 'Int'>;
-    readonly rating: FieldRef<'Review', 'Int'>;
-    readonly comment: FieldRef<'Review', 'String'>;
-    readonly created_at: FieldRef<'Review', 'DateTime'>;
-  }
-
-  // Custom InputTypes
-  /**
-   * Review findUnique
-   */
-  export type ReviewFindUniqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * Filter, which Review to fetch.
-     */
-    where: ReviewWhereUniqueInput;
-  };
-
-  /**
-   * Review findUniqueOrThrow
-   */
-  export type ReviewFindUniqueOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * Filter, which Review to fetch.
-     */
-    where: ReviewWhereUniqueInput;
-  };
-
-  /**
-   * Review findFirst
-   */
-  export type ReviewFindFirstArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * Filter, which Review to fetch.
-     */
-    where?: ReviewWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Reviews to fetch.
-     */
-    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for Reviews.
-     */
-    cursor?: ReviewWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Reviews from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Reviews.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of Reviews.
-     */
-    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[];
-  };
-
-  /**
-   * Review findFirstOrThrow
-   */
-  export type ReviewFindFirstOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * Filter, which Review to fetch.
-     */
-    where?: ReviewWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Reviews to fetch.
-     */
-    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for Reviews.
-     */
-    cursor?: ReviewWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Reviews from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Reviews.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of Reviews.
-     */
-    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[];
-  };
-
-  /**
-   * Review findMany
-   */
-  export type ReviewFindManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * Filter, which Reviews to fetch.
-     */
-    where?: ReviewWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of Reviews to fetch.
-     */
-    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for listing Reviews.
-     */
-    cursor?: ReviewWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` Reviews from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` Reviews.
-     */
-    skip?: number;
-    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[];
-  };
-
-  /**
-   * Review create
-   */
-  export type ReviewCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * The data needed to create a Review.
-     */
-    data: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>;
-  };
-
-  /**
-   * Review createMany
-   */
-  export type ReviewCreateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to create many Reviews.
-     */
-    data: ReviewCreateManyInput | ReviewCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * Review createManyAndReturn
-   */
-  export type ReviewCreateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * The data used to create many Reviews.
-     */
-    data: ReviewCreateManyInput | ReviewCreateManyInput[];
-    skipDuplicates?: boolean;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewIncludeCreateManyAndReturn<ExtArgs> | null;
-  };
-
-  /**
-   * Review update
-   */
-  export type ReviewUpdateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * The data needed to update a Review.
-     */
-    data: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>;
-    /**
-     * Choose, which Review to update.
-     */
-    where: ReviewWhereUniqueInput;
-  };
-
-  /**
-   * Review updateMany
-   */
-  export type ReviewUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * The data used to update Reviews.
-     */
-    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>;
-    /**
-     * Filter which Reviews to update
-     */
-    where?: ReviewWhereInput;
-    /**
-     * Limit how many Reviews to update.
-     */
-    limit?: number;
-  };
-
-  /**
-   * Review updateManyAndReturn
-   */
-  export type ReviewUpdateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * The data used to update Reviews.
-     */
-    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>;
-    /**
-     * Filter which Reviews to update
-     */
-    where?: ReviewWhereInput;
-    /**
-     * Limit how many Reviews to update.
-     */
-    limit?: number;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewIncludeUpdateManyAndReturn<ExtArgs> | null;
-  };
-
-  /**
-   * Review upsert
-   */
-  export type ReviewUpsertArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * The filter to search for the Review to update in case it exists.
-     */
-    where: ReviewWhereUniqueInput;
-    /**
-     * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
-     */
-    create: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>;
-    /**
-     * In case the Review was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>;
-  };
-
-  /**
-   * Review delete
-   */
-  export type ReviewDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-    /**
-     * Filter which Review to delete.
-     */
-    where: ReviewWhereUniqueInput;
-  };
-
-  /**
-   * Review deleteMany
-   */
-  export type ReviewDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Filter which Reviews to delete
-     */
-    where?: ReviewWhereInput;
-    /**
-     * Limit how many Reviews to delete.
-     */
-    limit?: number;
-  };
-
-  /**
-   * Review without action
-   */
-  export type ReviewDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
-  > = {
-    /**
-     * Select specific fields to fetch from the Review
-     */
-    select?: ReviewSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the Review
-     */
-    omit?: ReviewOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ReviewInclude<ExtArgs> | null;
-  };
-
-  /**
    * Enums
    */
 
@@ -15946,24 +12862,10 @@ export namespace Prisma {
   export type ServiceScalarFieldEnum =
     (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum];
 
-  export const TalentScalarFieldEnum: {
-    id: 'id';
-    name: 'name';
-    image: 'image';
-    position: 'position';
-    description: 'description';
-    created_at: 'created_at';
-    updated_at: 'updated_at';
-  };
-
-  export type TalentScalarFieldEnum =
-    (typeof TalentScalarFieldEnum)[keyof typeof TalentScalarFieldEnum];
-
   export const BookingScalarFieldEnum: {
     id: 'id';
     user_id: 'user_id';
     service_id: 'service_id';
-    date: 'date';
     time: 'time';
     location: 'location';
     is_accepted: 'is_accepted';
@@ -15975,16 +12877,16 @@ export namespace Prisma {
   export type BookingScalarFieldEnum =
     (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum];
 
-  export const BookingTalentScalarFieldEnum: {
+  export const BookingDatesScalarFieldEnum: {
     id: 'id';
-    booking_id: 'booking_id';
-    talent_id: 'talent_id';
+    date: 'date';
     created_at: 'created_at';
     updated_at: 'updated_at';
+    booking_id: 'booking_id';
   };
 
-  export type BookingTalentScalarFieldEnum =
-    (typeof BookingTalentScalarFieldEnum)[keyof typeof BookingTalentScalarFieldEnum];
+  export type BookingDatesScalarFieldEnum =
+    (typeof BookingDatesScalarFieldEnum)[keyof typeof BookingDatesScalarFieldEnum];
 
   export const PaymentScalarFieldEnum: {
     id: 'id';
@@ -16004,18 +12906,6 @@ export namespace Prisma {
 
   export type PaymentScalarFieldEnum =
     (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum];
-
-  export const ReviewScalarFieldEnum: {
-    id: 'id';
-    user_id: 'user_id';
-    service_id: 'service_id';
-    rating: 'rating';
-    comment: 'comment';
-    created_at: 'created_at';
-  };
-
-  export type ReviewScalarFieldEnum =
-    (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -16197,7 +13087,6 @@ export namespace Prisma {
     created_at?: DateTimeFilter<'User'> | Date | string;
     updated_at?: DateTimeFilter<'User'> | Date | string;
     Booking?: BookingListRelationFilter;
-    Review?: ReviewListRelationFilter;
   };
 
   export type UserOrderByWithRelationInput = {
@@ -16210,7 +13099,6 @@ export namespace Prisma {
     created_at?: SortOrder;
     updated_at?: SortOrder;
     Booking?: BookingOrderByRelationAggregateInput;
-    Review?: ReviewOrderByRelationAggregateInput;
   };
 
   export type UserWhereUniqueInput = Prisma.AtLeast<
@@ -16227,7 +13115,6 @@ export namespace Prisma {
       created_at?: DateTimeFilter<'User'> | Date | string;
       updated_at?: DateTimeFilter<'User'> | Date | string;
       Booking?: BookingListRelationFilter;
-      Review?: ReviewListRelationFilter;
     },
     'id' | 'email'
   >;
@@ -16402,7 +13289,6 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<'Service'> | Date | string;
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>;
     Booking?: BookingListRelationFilter;
-    Review?: ReviewListRelationFilter;
   };
 
   export type ServiceOrderByWithRelationInput = {
@@ -16418,7 +13304,6 @@ export namespace Prisma {
     updated_at?: SortOrder;
     category?: CategoryOrderByWithRelationInput;
     Booking?: BookingOrderByRelationAggregateInput;
-    Review?: ReviewOrderByRelationAggregateInput;
   };
 
   export type ServiceWhereUniqueInput = Prisma.AtLeast<
@@ -16438,7 +13323,6 @@ export namespace Prisma {
       updated_at?: DateTimeFilter<'Service'> | Date | string;
       category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>;
       Booking?: BookingListRelationFilter;
-      Review?: ReviewListRelationFilter;
     },
     'id'
   >;
@@ -16481,80 +13365,6 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<'Service'> | Date | string;
   };
 
-  export type TalentWhereInput = {
-    AND?: TalentWhereInput | TalentWhereInput[];
-    OR?: TalentWhereInput[];
-    NOT?: TalentWhereInput | TalentWhereInput[];
-    id?: IntFilter<'Talent'> | number;
-    name?: StringFilter<'Talent'> | string;
-    image?: StringFilter<'Talent'> | string;
-    position?: StringFilter<'Talent'> | string;
-    description?: StringFilter<'Talent'> | string;
-    created_at?: DateTimeFilter<'Talent'> | Date | string;
-    updated_at?: DateTimeFilter<'Talent'> | Date | string;
-    BookingTalent?: BookingTalentListRelationFilter;
-  };
-
-  export type TalentOrderByWithRelationInput = {
-    id?: SortOrder;
-    name?: SortOrder;
-    image?: SortOrder;
-    position?: SortOrder;
-    description?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-    BookingTalent?: BookingTalentOrderByRelationAggregateInput;
-  };
-
-  export type TalentWhereUniqueInput = Prisma.AtLeast<
-    {
-      id?: number;
-      AND?: TalentWhereInput | TalentWhereInput[];
-      OR?: TalentWhereInput[];
-      NOT?: TalentWhereInput | TalentWhereInput[];
-      name?: StringFilter<'Talent'> | string;
-      image?: StringFilter<'Talent'> | string;
-      position?: StringFilter<'Talent'> | string;
-      description?: StringFilter<'Talent'> | string;
-      created_at?: DateTimeFilter<'Talent'> | Date | string;
-      updated_at?: DateTimeFilter<'Talent'> | Date | string;
-      BookingTalent?: BookingTalentListRelationFilter;
-    },
-    'id'
-  >;
-
-  export type TalentOrderByWithAggregationInput = {
-    id?: SortOrder;
-    name?: SortOrder;
-    image?: SortOrder;
-    position?: SortOrder;
-    description?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-    _count?: TalentCountOrderByAggregateInput;
-    _avg?: TalentAvgOrderByAggregateInput;
-    _max?: TalentMaxOrderByAggregateInput;
-    _min?: TalentMinOrderByAggregateInput;
-    _sum?: TalentSumOrderByAggregateInput;
-  };
-
-  export type TalentScalarWhereWithAggregatesInput = {
-    AND?:
-      | TalentScalarWhereWithAggregatesInput
-      | TalentScalarWhereWithAggregatesInput[];
-    OR?: TalentScalarWhereWithAggregatesInput[];
-    NOT?:
-      | TalentScalarWhereWithAggregatesInput
-      | TalentScalarWhereWithAggregatesInput[];
-    id?: IntWithAggregatesFilter<'Talent'> | number;
-    name?: StringWithAggregatesFilter<'Talent'> | string;
-    image?: StringWithAggregatesFilter<'Talent'> | string;
-    position?: StringWithAggregatesFilter<'Talent'> | string;
-    description?: StringWithAggregatesFilter<'Talent'> | string;
-    created_at?: DateTimeWithAggregatesFilter<'Talent'> | Date | string;
-    updated_at?: DateTimeWithAggregatesFilter<'Talent'> | Date | string;
-  };
-
   export type BookingWhereInput = {
     AND?: BookingWhereInput | BookingWhereInput[];
     OR?: BookingWhereInput[];
@@ -16562,7 +13372,6 @@ export namespace Prisma {
     id?: IntFilter<'Booking'> | number;
     user_id?: IntFilter<'Booking'> | number;
     service_id?: IntFilter<'Booking'> | number;
-    date?: DateTimeFilter<'Booking'> | Date | string;
     time?: StringFilter<'Booking'> | string;
     location?: StringFilter<'Booking'> | string;
     is_accepted?: BoolFilter<'Booking'> | boolean;
@@ -16571,15 +13380,14 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<'Booking'> | Date | string;
     user?: XOR<UserScalarRelationFilter, UserWhereInput>;
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>;
-    booking_talents?: BookingTalentListRelationFilter;
     payments?: PaymentListRelationFilter;
+    booking_dates?: BookingDatesListRelationFilter;
   };
 
   export type BookingOrderByWithRelationInput = {
     id?: SortOrder;
     user_id?: SortOrder;
     service_id?: SortOrder;
-    date?: SortOrder;
     time?: SortOrder;
     location?: SortOrder;
     is_accepted?: SortOrder;
@@ -16588,8 +13396,8 @@ export namespace Prisma {
     updated_at?: SortOrder;
     user?: UserOrderByWithRelationInput;
     service?: ServiceOrderByWithRelationInput;
-    booking_talents?: BookingTalentOrderByRelationAggregateInput;
     payments?: PaymentOrderByRelationAggregateInput;
+    booking_dates?: BookingDatesOrderByRelationAggregateInput;
   };
 
   export type BookingWhereUniqueInput = Prisma.AtLeast<
@@ -16600,7 +13408,6 @@ export namespace Prisma {
       NOT?: BookingWhereInput | BookingWhereInput[];
       user_id?: IntFilter<'Booking'> | number;
       service_id?: IntFilter<'Booking'> | number;
-      date?: DateTimeFilter<'Booking'> | Date | string;
       time?: StringFilter<'Booking'> | string;
       location?: StringFilter<'Booking'> | string;
       is_accepted?: BoolFilter<'Booking'> | boolean;
@@ -16609,8 +13416,8 @@ export namespace Prisma {
       updated_at?: DateTimeFilter<'Booking'> | Date | string;
       user?: XOR<UserScalarRelationFilter, UserWhereInput>;
       service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>;
-      booking_talents?: BookingTalentListRelationFilter;
       payments?: PaymentListRelationFilter;
+      booking_dates?: BookingDatesListRelationFilter;
     },
     'id'
   >;
@@ -16619,7 +13426,6 @@ export namespace Prisma {
     id?: SortOrder;
     user_id?: SortOrder;
     service_id?: SortOrder;
-    date?: SortOrder;
     time?: SortOrder;
     location?: SortOrder;
     is_accepted?: SortOrder;
@@ -16644,7 +13450,6 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<'Booking'> | number;
     user_id?: IntWithAggregatesFilter<'Booking'> | number;
     service_id?: IntWithAggregatesFilter<'Booking'> | number;
-    date?: DateTimeWithAggregatesFilter<'Booking'> | Date | string;
     time?: StringWithAggregatesFilter<'Booking'> | string;
     location?: StringWithAggregatesFilter<'Booking'> | string;
     is_accepted?: BoolWithAggregatesFilter<'Booking'> | boolean;
@@ -16653,71 +13458,74 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<'Booking'> | Date | string;
   };
 
-  export type BookingTalentWhereInput = {
-    AND?: BookingTalentWhereInput | BookingTalentWhereInput[];
-    OR?: BookingTalentWhereInput[];
-    NOT?: BookingTalentWhereInput | BookingTalentWhereInput[];
-    id?: IntFilter<'BookingTalent'> | number;
-    booking_id?: IntFilter<'BookingTalent'> | number;
-    talent_id?: IntFilter<'BookingTalent'> | number;
-    created_at?: DateTimeFilter<'BookingTalent'> | Date | string;
-    updated_at?: DateTimeFilter<'BookingTalent'> | Date | string;
-    booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>;
-    talent?: XOR<TalentScalarRelationFilter, TalentWhereInput>;
+  export type BookingDatesWhereInput = {
+    AND?: BookingDatesWhereInput | BookingDatesWhereInput[];
+    OR?: BookingDatesWhereInput[];
+    NOT?: BookingDatesWhereInput | BookingDatesWhereInput[];
+    id?: IntFilter<'BookingDates'> | number;
+    date?: DateTimeFilter<'BookingDates'> | Date | string;
+    created_at?: DateTimeFilter<'BookingDates'> | Date | string;
+    updated_at?: DateTimeFilter<'BookingDates'> | Date | string;
+    booking_id?: IntFilter<'BookingDates'> | number;
+    booking?: XOR<
+      BookingNullableScalarRelationFilter,
+      BookingWhereInput
+    > | null;
   };
 
-  export type BookingTalentOrderByWithRelationInput = {
+  export type BookingDatesOrderByWithRelationInput = {
     id?: SortOrder;
-    booking_id?: SortOrder;
-    talent_id?: SortOrder;
+    date?: SortOrder;
     created_at?: SortOrder;
     updated_at?: SortOrder;
+    booking_id?: SortOrder;
     booking?: BookingOrderByWithRelationInput;
-    talent?: TalentOrderByWithRelationInput;
   };
 
-  export type BookingTalentWhereUniqueInput = Prisma.AtLeast<
+  export type BookingDatesWhereUniqueInput = Prisma.AtLeast<
     {
       id?: number;
-      AND?: BookingTalentWhereInput | BookingTalentWhereInput[];
-      OR?: BookingTalentWhereInput[];
-      NOT?: BookingTalentWhereInput | BookingTalentWhereInput[];
-      booking_id?: IntFilter<'BookingTalent'> | number;
-      talent_id?: IntFilter<'BookingTalent'> | number;
-      created_at?: DateTimeFilter<'BookingTalent'> | Date | string;
-      updated_at?: DateTimeFilter<'BookingTalent'> | Date | string;
-      booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>;
-      talent?: XOR<TalentScalarRelationFilter, TalentWhereInput>;
+      AND?: BookingDatesWhereInput | BookingDatesWhereInput[];
+      OR?: BookingDatesWhereInput[];
+      NOT?: BookingDatesWhereInput | BookingDatesWhereInput[];
+      date?: DateTimeFilter<'BookingDates'> | Date | string;
+      created_at?: DateTimeFilter<'BookingDates'> | Date | string;
+      updated_at?: DateTimeFilter<'BookingDates'> | Date | string;
+      booking_id?: IntFilter<'BookingDates'> | number;
+      booking?: XOR<
+        BookingNullableScalarRelationFilter,
+        BookingWhereInput
+      > | null;
     },
     'id'
   >;
 
-  export type BookingTalentOrderByWithAggregationInput = {
+  export type BookingDatesOrderByWithAggregationInput = {
     id?: SortOrder;
-    booking_id?: SortOrder;
-    talent_id?: SortOrder;
+    date?: SortOrder;
     created_at?: SortOrder;
     updated_at?: SortOrder;
-    _count?: BookingTalentCountOrderByAggregateInput;
-    _avg?: BookingTalentAvgOrderByAggregateInput;
-    _max?: BookingTalentMaxOrderByAggregateInput;
-    _min?: BookingTalentMinOrderByAggregateInput;
-    _sum?: BookingTalentSumOrderByAggregateInput;
+    booking_id?: SortOrder;
+    _count?: BookingDatesCountOrderByAggregateInput;
+    _avg?: BookingDatesAvgOrderByAggregateInput;
+    _max?: BookingDatesMaxOrderByAggregateInput;
+    _min?: BookingDatesMinOrderByAggregateInput;
+    _sum?: BookingDatesSumOrderByAggregateInput;
   };
 
-  export type BookingTalentScalarWhereWithAggregatesInput = {
+  export type BookingDatesScalarWhereWithAggregatesInput = {
     AND?:
-      | BookingTalentScalarWhereWithAggregatesInput
-      | BookingTalentScalarWhereWithAggregatesInput[];
-    OR?: BookingTalentScalarWhereWithAggregatesInput[];
+      | BookingDatesScalarWhereWithAggregatesInput
+      | BookingDatesScalarWhereWithAggregatesInput[];
+    OR?: BookingDatesScalarWhereWithAggregatesInput[];
     NOT?:
-      | BookingTalentScalarWhereWithAggregatesInput
-      | BookingTalentScalarWhereWithAggregatesInput[];
-    id?: IntWithAggregatesFilter<'BookingTalent'> | number;
-    booking_id?: IntWithAggregatesFilter<'BookingTalent'> | number;
-    talent_id?: IntWithAggregatesFilter<'BookingTalent'> | number;
-    created_at?: DateTimeWithAggregatesFilter<'BookingTalent'> | Date | string;
-    updated_at?: DateTimeWithAggregatesFilter<'BookingTalent'> | Date | string;
+      | BookingDatesScalarWhereWithAggregatesInput
+      | BookingDatesScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'BookingDates'> | number;
+    date?: DateTimeWithAggregatesFilter<'BookingDates'> | Date | string;
+    created_at?: DateTimeWithAggregatesFilter<'BookingDates'> | Date | string;
+    updated_at?: DateTimeWithAggregatesFilter<'BookingDates'> | Date | string;
+    booking_id?: IntWithAggregatesFilter<'BookingDates'> | number;
   };
 
   export type PaymentWhereInput = {
@@ -16827,78 +13635,6 @@ export namespace Prisma {
     type?: StringWithAggregatesFilter<'Payment'> | string;
   };
 
-  export type ReviewWhereInput = {
-    AND?: ReviewWhereInput | ReviewWhereInput[];
-    OR?: ReviewWhereInput[];
-    NOT?: ReviewWhereInput | ReviewWhereInput[];
-    id?: IntFilter<'Review'> | number;
-    user_id?: IntFilter<'Review'> | number;
-    service_id?: IntFilter<'Review'> | number;
-    rating?: IntFilter<'Review'> | number;
-    comment?: StringNullableFilter<'Review'> | string | null;
-    created_at?: DateTimeFilter<'Review'> | Date | string;
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>;
-    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>;
-  };
-
-  export type ReviewOrderByWithRelationInput = {
-    id?: SortOrder;
-    user_id?: SortOrder;
-    service_id?: SortOrder;
-    rating?: SortOrder;
-    comment?: SortOrderInput | SortOrder;
-    created_at?: SortOrder;
-    user?: UserOrderByWithRelationInput;
-    service?: ServiceOrderByWithRelationInput;
-  };
-
-  export type ReviewWhereUniqueInput = Prisma.AtLeast<
-    {
-      id?: number;
-      AND?: ReviewWhereInput | ReviewWhereInput[];
-      OR?: ReviewWhereInput[];
-      NOT?: ReviewWhereInput | ReviewWhereInput[];
-      user_id?: IntFilter<'Review'> | number;
-      service_id?: IntFilter<'Review'> | number;
-      rating?: IntFilter<'Review'> | number;
-      comment?: StringNullableFilter<'Review'> | string | null;
-      created_at?: DateTimeFilter<'Review'> | Date | string;
-      user?: XOR<UserScalarRelationFilter, UserWhereInput>;
-      service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>;
-    },
-    'id'
-  >;
-
-  export type ReviewOrderByWithAggregationInput = {
-    id?: SortOrder;
-    user_id?: SortOrder;
-    service_id?: SortOrder;
-    rating?: SortOrder;
-    comment?: SortOrderInput | SortOrder;
-    created_at?: SortOrder;
-    _count?: ReviewCountOrderByAggregateInput;
-    _avg?: ReviewAvgOrderByAggregateInput;
-    _max?: ReviewMaxOrderByAggregateInput;
-    _min?: ReviewMinOrderByAggregateInput;
-    _sum?: ReviewSumOrderByAggregateInput;
-  };
-
-  export type ReviewScalarWhereWithAggregatesInput = {
-    AND?:
-      | ReviewScalarWhereWithAggregatesInput
-      | ReviewScalarWhereWithAggregatesInput[];
-    OR?: ReviewScalarWhereWithAggregatesInput[];
-    NOT?:
-      | ReviewScalarWhereWithAggregatesInput
-      | ReviewScalarWhereWithAggregatesInput[];
-    id?: IntWithAggregatesFilter<'Review'> | number;
-    user_id?: IntWithAggregatesFilter<'Review'> | number;
-    service_id?: IntWithAggregatesFilter<'Review'> | number;
-    rating?: IntWithAggregatesFilter<'Review'> | number;
-    comment?: StringNullableWithAggregatesFilter<'Review'> | string | null;
-    created_at?: DateTimeWithAggregatesFilter<'Review'> | Date | string;
-  };
-
   export type BannerCreateInput = {
     title: string;
     image: string;
@@ -16968,7 +13704,6 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     Booking?: BookingCreateNestedManyWithoutUserInput;
-    Review?: ReviewCreateNestedManyWithoutUserInput;
   };
 
   export type UserUncheckedCreateInput = {
@@ -16981,7 +13716,6 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     Booking?: BookingUncheckedCreateNestedManyWithoutUserInput;
-    Review?: ReviewUncheckedCreateNestedManyWithoutUserInput;
   };
 
   export type UserUpdateInput = {
@@ -16993,7 +13727,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     Booking?: BookingUpdateManyWithoutUserNestedInput;
-    Review?: ReviewUpdateManyWithoutUserNestedInput;
   };
 
   export type UserUncheckedUpdateInput = {
@@ -17006,7 +13739,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     Booking?: BookingUncheckedUpdateManyWithoutUserNestedInput;
-    Review?: ReviewUncheckedUpdateManyWithoutUserNestedInput;
   };
 
   export type UserCreateManyInput = {
@@ -17155,7 +13887,6 @@ export namespace Prisma {
     updated_at?: Date | string;
     category: CategoryCreateNestedOneWithoutServiceInput;
     Booking?: BookingCreateNestedManyWithoutServiceInput;
-    Review?: ReviewCreateNestedManyWithoutServiceInput;
   };
 
   export type ServiceUncheckedCreateInput = {
@@ -17170,7 +13901,6 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     Booking?: BookingUncheckedCreateNestedManyWithoutServiceInput;
-    Review?: ReviewUncheckedCreateNestedManyWithoutServiceInput;
   };
 
   export type ServiceUpdateInput = {
@@ -17184,7 +13914,6 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     category?: CategoryUpdateOneRequiredWithoutServiceNestedInput;
     Booking?: BookingUpdateManyWithoutServiceNestedInput;
-    Review?: ReviewUpdateManyWithoutServiceNestedInput;
   };
 
   export type ServiceUncheckedUpdateInput = {
@@ -17199,7 +13928,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     Booking?: BookingUncheckedUpdateManyWithoutServiceNestedInput;
-    Review?: ReviewUncheckedUpdateManyWithoutServiceNestedInput;
   };
 
   export type ServiceCreateManyInput = {
@@ -17239,79 +13967,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
   };
 
-  export type TalentCreateInput = {
-    name: string;
-    image: string;
-    position: string;
-    description: string;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    BookingTalent?: BookingTalentCreateNestedManyWithoutTalentInput;
-  };
-
-  export type TalentUncheckedCreateInput = {
-    id?: number;
-    name: string;
-    image: string;
-    position: string;
-    description: string;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    BookingTalent?: BookingTalentUncheckedCreateNestedManyWithoutTalentInput;
-  };
-
-  export type TalentUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    position?: StringFieldUpdateOperationsInput | string;
-    description?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    BookingTalent?: BookingTalentUpdateManyWithoutTalentNestedInput;
-  };
-
-  export type TalentUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    name?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    position?: StringFieldUpdateOperationsInput | string;
-    description?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    BookingTalent?: BookingTalentUncheckedUpdateManyWithoutTalentNestedInput;
-  };
-
-  export type TalentCreateManyInput = {
-    id?: number;
-    name: string;
-    image: string;
-    position: string;
-    description: string;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-  };
-
-  export type TalentUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    position?: StringFieldUpdateOperationsInput | string;
-    description?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type TalentUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    name?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    position?: StringFieldUpdateOperationsInput | string;
-    description?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
   export type BookingCreateInput = {
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -17320,27 +13976,25 @@ export namespace Prisma {
     updated_at?: Date | string;
     user: UserCreateNestedOneWithoutBookingInput;
     service: ServiceCreateNestedOneWithoutBookingInput;
-    booking_talents?: BookingTalentCreateNestedManyWithoutBookingInput;
     payments?: PaymentCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingUncheckedCreateInput = {
     id?: number;
     user_id: number;
     service_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
     status?: string;
     created_at?: Date | string;
     updated_at?: Date | string;
-    booking_talents?: BookingTalentUncheckedCreateNestedManyWithoutBookingInput;
     payments?: PaymentUncheckedCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesUncheckedCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingUpdateInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -17349,30 +14003,28 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     user?: UserUpdateOneRequiredWithoutBookingNestedInput;
     service?: ServiceUpdateOneRequiredWithoutBookingNestedInput;
-    booking_talents?: BookingTalentUpdateManyWithoutBookingNestedInput;
     payments?: PaymentUpdateManyWithoutBookingNestedInput;
+    booking_dates?: BookingDatesUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number;
     user_id?: IntFieldUpdateOperationsInput | number;
     service_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
     status?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    booking_talents?: BookingTalentUncheckedUpdateManyWithoutBookingNestedInput;
     payments?: PaymentUncheckedUpdateManyWithoutBookingNestedInput;
+    booking_dates?: BookingDatesUncheckedUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingCreateManyInput = {
     id?: number;
     user_id: number;
     service_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -17382,7 +14034,6 @@ export namespace Prisma {
   };
 
   export type BookingUpdateManyMutationInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -17395,7 +14046,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number;
     user_id?: IntFieldUpdateOperationsInput | number;
     service_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -17404,55 +14054,56 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
   };
 
-  export type BookingTalentCreateInput = {
+  export type BookingDatesCreateInput = {
+    date: Date | string;
     created_at?: Date | string;
     updated_at?: Date | string;
-    booking: BookingCreateNestedOneWithoutBooking_talentsInput;
-    talent: TalentCreateNestedOneWithoutBookingTalentInput;
+    booking?: BookingCreateNestedOneWithoutBooking_datesInput;
   };
 
-  export type BookingTalentUncheckedCreateInput = {
+  export type BookingDatesUncheckedCreateInput = {
     id?: number;
-    booking_id: number;
-    talent_id: number;
+    date: Date | string;
     created_at?: Date | string;
     updated_at?: Date | string;
+    booking_id: number;
   };
 
-  export type BookingTalentUpdateInput = {
+  export type BookingDatesUpdateInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    booking?: BookingUpdateOneRequiredWithoutBooking_talentsNestedInput;
-    talent?: TalentUpdateOneRequiredWithoutBookingTalentNestedInput;
+    booking?: BookingUpdateOneWithoutBooking_datesNestedInput;
   };
 
-  export type BookingTalentUncheckedUpdateInput = {
+  export type BookingDatesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number;
-    booking_id?: IntFieldUpdateOperationsInput | number;
-    talent_id?: IntFieldUpdateOperationsInput | number;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+    booking_id?: IntFieldUpdateOperationsInput | number;
   };
 
-  export type BookingTalentCreateManyInput = {
+  export type BookingDatesCreateManyInput = {
     id?: number;
-    booking_id: number;
-    talent_id: number;
+    date: Date | string;
     created_at?: Date | string;
     updated_at?: Date | string;
+    booking_id: number;
   };
 
-  export type BookingTalentUpdateManyMutationInput = {
+  export type BookingDatesUpdateManyMutationInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
   };
 
-  export type BookingTalentUncheckedUpdateManyInput = {
+  export type BookingDatesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number;
-    booking_id?: IntFieldUpdateOperationsInput | number;
-    talent_id?: IntFieldUpdateOperationsInput | number;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+    booking_id?: IntFieldUpdateOperationsInput | number;
   };
 
   export type PaymentCreateInput = {
@@ -17561,64 +14212,6 @@ export namespace Prisma {
     redirect_url?: NullableStringFieldUpdateOperationsInput | string | null;
     billing_num?: NullableStringFieldUpdateOperationsInput | string | null;
     type?: StringFieldUpdateOperationsInput | string;
-  };
-
-  export type ReviewCreateInput = {
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-    user: UserCreateNestedOneWithoutReviewInput;
-    service: ServiceCreateNestedOneWithoutReviewInput;
-  };
-
-  export type ReviewUncheckedCreateInput = {
-    id?: number;
-    user_id: number;
-    service_id: number;
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-  };
-
-  export type ReviewUpdateInput = {
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    user?: UserUpdateOneRequiredWithoutReviewNestedInput;
-    service?: ServiceUpdateOneRequiredWithoutReviewNestedInput;
-  };
-
-  export type ReviewUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    user_id?: IntFieldUpdateOperationsInput | number;
-    service_id?: IntFieldUpdateOperationsInput | number;
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type ReviewCreateManyInput = {
-    id?: number;
-    user_id: number;
-    service_id: number;
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-  };
-
-  export type ReviewUpdateManyMutationInput = {
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type ReviewUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    user_id?: IntFieldUpdateOperationsInput | number;
-    service_id?: IntFieldUpdateOperationsInput | number;
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
   };
 
   export type IntFilter<$PrismaModel = never> = {
@@ -17762,22 +14355,12 @@ export namespace Prisma {
     none?: BookingWhereInput;
   };
 
-  export type ReviewListRelationFilter = {
-    every?: ReviewWhereInput;
-    some?: ReviewWhereInput;
-    none?: ReviewWhereInput;
-  };
-
   export type SortOrderInput = {
     sort: SortOrder;
     nulls?: NullsOrder;
   };
 
   export type BookingOrderByRelationAggregateInput = {
-    _count?: SortOrder;
-  };
-
-  export type ReviewOrderByRelationAggregateInput = {
     _count?: SortOrder;
   };
 
@@ -18012,54 +14595,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>;
   };
 
-  export type BookingTalentListRelationFilter = {
-    every?: BookingTalentWhereInput;
-    some?: BookingTalentWhereInput;
-    none?: BookingTalentWhereInput;
-  };
-
-  export type BookingTalentOrderByRelationAggregateInput = {
-    _count?: SortOrder;
-  };
-
-  export type TalentCountOrderByAggregateInput = {
-    id?: SortOrder;
-    name?: SortOrder;
-    image?: SortOrder;
-    position?: SortOrder;
-    description?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-  };
-
-  export type TalentAvgOrderByAggregateInput = {
-    id?: SortOrder;
-  };
-
-  export type TalentMaxOrderByAggregateInput = {
-    id?: SortOrder;
-    name?: SortOrder;
-    image?: SortOrder;
-    position?: SortOrder;
-    description?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-  };
-
-  export type TalentMinOrderByAggregateInput = {
-    id?: SortOrder;
-    name?: SortOrder;
-    image?: SortOrder;
-    position?: SortOrder;
-    description?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-  };
-
-  export type TalentSumOrderByAggregateInput = {
-    id?: SortOrder;
-  };
-
   export type UserScalarRelationFilter = {
     is?: UserWhereInput;
     isNot?: UserWhereInput;
@@ -18076,7 +14611,17 @@ export namespace Prisma {
     none?: PaymentWhereInput;
   };
 
+  export type BookingDatesListRelationFilter = {
+    every?: BookingDatesWhereInput;
+    some?: BookingDatesWhereInput;
+    none?: BookingDatesWhereInput;
+  };
+
   export type PaymentOrderByRelationAggregateInput = {
+    _count?: SortOrder;
+  };
+
+  export type BookingDatesOrderByRelationAggregateInput = {
     _count?: SortOrder;
   };
 
@@ -18084,7 +14629,6 @@ export namespace Prisma {
     id?: SortOrder;
     user_id?: SortOrder;
     service_id?: SortOrder;
-    date?: SortOrder;
     time?: SortOrder;
     location?: SortOrder;
     is_accepted?: SortOrder;
@@ -18103,7 +14647,6 @@ export namespace Prisma {
     id?: SortOrder;
     user_id?: SortOrder;
     service_id?: SortOrder;
-    date?: SortOrder;
     time?: SortOrder;
     location?: SortOrder;
     is_accepted?: SortOrder;
@@ -18116,7 +14659,6 @@ export namespace Prisma {
     id?: SortOrder;
     user_id?: SortOrder;
     service_id?: SortOrder;
-    date?: SortOrder;
     time?: SortOrder;
     location?: SortOrder;
     is_accepted?: SortOrder;
@@ -18131,50 +14673,48 @@ export namespace Prisma {
     service_id?: SortOrder;
   };
 
+  export type BookingNullableScalarRelationFilter = {
+    is?: BookingWhereInput | null;
+    isNot?: BookingWhereInput | null;
+  };
+
+  export type BookingDatesCountOrderByAggregateInput = {
+    id?: SortOrder;
+    date?: SortOrder;
+    created_at?: SortOrder;
+    updated_at?: SortOrder;
+    booking_id?: SortOrder;
+  };
+
+  export type BookingDatesAvgOrderByAggregateInput = {
+    id?: SortOrder;
+    booking_id?: SortOrder;
+  };
+
+  export type BookingDatesMaxOrderByAggregateInput = {
+    id?: SortOrder;
+    date?: SortOrder;
+    created_at?: SortOrder;
+    updated_at?: SortOrder;
+    booking_id?: SortOrder;
+  };
+
+  export type BookingDatesMinOrderByAggregateInput = {
+    id?: SortOrder;
+    date?: SortOrder;
+    created_at?: SortOrder;
+    updated_at?: SortOrder;
+    booking_id?: SortOrder;
+  };
+
+  export type BookingDatesSumOrderByAggregateInput = {
+    id?: SortOrder;
+    booking_id?: SortOrder;
+  };
+
   export type BookingScalarRelationFilter = {
     is?: BookingWhereInput;
     isNot?: BookingWhereInput;
-  };
-
-  export type TalentScalarRelationFilter = {
-    is?: TalentWhereInput;
-    isNot?: TalentWhereInput;
-  };
-
-  export type BookingTalentCountOrderByAggregateInput = {
-    id?: SortOrder;
-    booking_id?: SortOrder;
-    talent_id?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-  };
-
-  export type BookingTalentAvgOrderByAggregateInput = {
-    id?: SortOrder;
-    booking_id?: SortOrder;
-    talent_id?: SortOrder;
-  };
-
-  export type BookingTalentMaxOrderByAggregateInput = {
-    id?: SortOrder;
-    booking_id?: SortOrder;
-    talent_id?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-  };
-
-  export type BookingTalentMinOrderByAggregateInput = {
-    id?: SortOrder;
-    booking_id?: SortOrder;
-    talent_id?: SortOrder;
-    created_at?: SortOrder;
-    updated_at?: SortOrder;
-  };
-
-  export type BookingTalentSumOrderByAggregateInput = {
-    id?: SortOrder;
-    booking_id?: SortOrder;
-    talent_id?: SortOrder;
   };
 
   export type PaymentCountOrderByAggregateInput = {
@@ -18237,47 +14777,6 @@ export namespace Prisma {
     amount?: SortOrder;
   };
 
-  export type ReviewCountOrderByAggregateInput = {
-    id?: SortOrder;
-    user_id?: SortOrder;
-    service_id?: SortOrder;
-    rating?: SortOrder;
-    comment?: SortOrder;
-    created_at?: SortOrder;
-  };
-
-  export type ReviewAvgOrderByAggregateInput = {
-    id?: SortOrder;
-    user_id?: SortOrder;
-    service_id?: SortOrder;
-    rating?: SortOrder;
-  };
-
-  export type ReviewMaxOrderByAggregateInput = {
-    id?: SortOrder;
-    user_id?: SortOrder;
-    service_id?: SortOrder;
-    rating?: SortOrder;
-    comment?: SortOrder;
-    created_at?: SortOrder;
-  };
-
-  export type ReviewMinOrderByAggregateInput = {
-    id?: SortOrder;
-    user_id?: SortOrder;
-    service_id?: SortOrder;
-    rating?: SortOrder;
-    comment?: SortOrder;
-    created_at?: SortOrder;
-  };
-
-  export type ReviewSumOrderByAggregateInput = {
-    id?: SortOrder;
-    user_id?: SortOrder;
-    service_id?: SortOrder;
-    rating?: SortOrder;
-  };
-
   export type StringFieldUpdateOperationsInput = {
     set?: string;
   };
@@ -18309,18 +14808,6 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[];
   };
 
-  export type ReviewCreateNestedManyWithoutUserInput = {
-    create?:
-      | XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
-      | ReviewCreateWithoutUserInput[]
-      | ReviewUncheckedCreateWithoutUserInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutUserInput
-      | ReviewCreateOrConnectWithoutUserInput[];
-    createMany?: ReviewCreateManyUserInputEnvelope;
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-  };
-
   export type BookingUncheckedCreateNestedManyWithoutUserInput = {
     create?:
       | XOR<
@@ -18334,18 +14821,6 @@ export namespace Prisma {
       | BookingCreateOrConnectWithoutUserInput[];
     createMany?: BookingCreateManyUserInputEnvelope;
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[];
-  };
-
-  export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
-    create?:
-      | XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
-      | ReviewCreateWithoutUserInput[]
-      | ReviewUncheckedCreateWithoutUserInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutUserInput
-      | ReviewCreateOrConnectWithoutUserInput[];
-    createMany?: ReviewCreateManyUserInputEnvelope;
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
   };
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -18380,31 +14855,6 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[];
   };
 
-  export type ReviewUpdateManyWithoutUserNestedInput = {
-    create?:
-      | XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
-      | ReviewCreateWithoutUserInput[]
-      | ReviewUncheckedCreateWithoutUserInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutUserInput
-      | ReviewCreateOrConnectWithoutUserInput[];
-    upsert?:
-      | ReviewUpsertWithWhereUniqueWithoutUserInput
-      | ReviewUpsertWithWhereUniqueWithoutUserInput[];
-    createMany?: ReviewCreateManyUserInputEnvelope;
-    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    update?:
-      | ReviewUpdateWithWhereUniqueWithoutUserInput
-      | ReviewUpdateWithWhereUniqueWithoutUserInput[];
-    updateMany?:
-      | ReviewUpdateManyWithWhereWithoutUserInput
-      | ReviewUpdateManyWithWhereWithoutUserInput[];
-    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[];
-  };
-
   export type BookingUncheckedUpdateManyWithoutUserNestedInput = {
     create?:
       | XOR<
@@ -18431,31 +14881,6 @@ export namespace Prisma {
       | BookingUpdateManyWithWhereWithoutUserInput
       | BookingUpdateManyWithWhereWithoutUserInput[];
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[];
-  };
-
-  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
-    create?:
-      | XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
-      | ReviewCreateWithoutUserInput[]
-      | ReviewUncheckedCreateWithoutUserInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutUserInput
-      | ReviewCreateOrConnectWithoutUserInput[];
-    upsert?:
-      | ReviewUpsertWithWhereUniqueWithoutUserInput
-      | ReviewUpsertWithWhereUniqueWithoutUserInput[];
-    createMany?: ReviewCreateManyUserInputEnvelope;
-    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    update?:
-      | ReviewUpdateWithWhereUniqueWithoutUserInput
-      | ReviewUpdateWithWhereUniqueWithoutUserInput[];
-    updateMany?:
-      | ReviewUpdateManyWithWhereWithoutUserInput
-      | ReviewUpdateManyWithWhereWithoutUserInput[];
-    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[];
   };
 
   export type ServiceCreateNestedManyWithoutCategoryInput = {
@@ -18568,21 +14993,6 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[];
   };
 
-  export type ReviewCreateNestedManyWithoutServiceInput = {
-    create?:
-      | XOR<
-          ReviewCreateWithoutServiceInput,
-          ReviewUncheckedCreateWithoutServiceInput
-        >
-      | ReviewCreateWithoutServiceInput[]
-      | ReviewUncheckedCreateWithoutServiceInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutServiceInput
-      | ReviewCreateOrConnectWithoutServiceInput[];
-    createMany?: ReviewCreateManyServiceInputEnvelope;
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-  };
-
   export type BookingUncheckedCreateNestedManyWithoutServiceInput = {
     create?:
       | XOR<
@@ -18596,21 +15006,6 @@ export namespace Prisma {
       | BookingCreateOrConnectWithoutServiceInput[];
     createMany?: BookingCreateManyServiceInputEnvelope;
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[];
-  };
-
-  export type ReviewUncheckedCreateNestedManyWithoutServiceInput = {
-    create?:
-      | XOR<
-          ReviewCreateWithoutServiceInput,
-          ReviewUncheckedCreateWithoutServiceInput
-        >
-      | ReviewCreateWithoutServiceInput[]
-      | ReviewUncheckedCreateWithoutServiceInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutServiceInput
-      | ReviewCreateOrConnectWithoutServiceInput[];
-    createMany?: ReviewCreateManyServiceInputEnvelope;
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
   };
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -18670,34 +15065,6 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[];
   };
 
-  export type ReviewUpdateManyWithoutServiceNestedInput = {
-    create?:
-      | XOR<
-          ReviewCreateWithoutServiceInput,
-          ReviewUncheckedCreateWithoutServiceInput
-        >
-      | ReviewCreateWithoutServiceInput[]
-      | ReviewUncheckedCreateWithoutServiceInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutServiceInput
-      | ReviewCreateOrConnectWithoutServiceInput[];
-    upsert?:
-      | ReviewUpsertWithWhereUniqueWithoutServiceInput
-      | ReviewUpsertWithWhereUniqueWithoutServiceInput[];
-    createMany?: ReviewCreateManyServiceInputEnvelope;
-    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    update?:
-      | ReviewUpdateWithWhereUniqueWithoutServiceInput
-      | ReviewUpdateWithWhereUniqueWithoutServiceInput[];
-    updateMany?:
-      | ReviewUpdateManyWithWhereWithoutServiceInput
-      | ReviewUpdateManyWithWhereWithoutServiceInput[];
-    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[];
-  };
-
   export type BookingUncheckedUpdateManyWithoutServiceNestedInput = {
     create?:
       | XOR<
@@ -18726,128 +15093,6 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[];
   };
 
-  export type ReviewUncheckedUpdateManyWithoutServiceNestedInput = {
-    create?:
-      | XOR<
-          ReviewCreateWithoutServiceInput,
-          ReviewUncheckedCreateWithoutServiceInput
-        >
-      | ReviewCreateWithoutServiceInput[]
-      | ReviewUncheckedCreateWithoutServiceInput[];
-    connectOrCreate?:
-      | ReviewCreateOrConnectWithoutServiceInput
-      | ReviewCreateOrConnectWithoutServiceInput[];
-    upsert?:
-      | ReviewUpsertWithWhereUniqueWithoutServiceInput
-      | ReviewUpsertWithWhereUniqueWithoutServiceInput[];
-    createMany?: ReviewCreateManyServiceInputEnvelope;
-    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[];
-    update?:
-      | ReviewUpdateWithWhereUniqueWithoutServiceInput
-      | ReviewUpdateWithWhereUniqueWithoutServiceInput[];
-    updateMany?:
-      | ReviewUpdateManyWithWhereWithoutServiceInput
-      | ReviewUpdateManyWithWhereWithoutServiceInput[];
-    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[];
-  };
-
-  export type BookingTalentCreateNestedManyWithoutTalentInput = {
-    create?:
-      | XOR<
-          BookingTalentCreateWithoutTalentInput,
-          BookingTalentUncheckedCreateWithoutTalentInput
-        >
-      | BookingTalentCreateWithoutTalentInput[]
-      | BookingTalentUncheckedCreateWithoutTalentInput[];
-    connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutTalentInput
-      | BookingTalentCreateOrConnectWithoutTalentInput[];
-    createMany?: BookingTalentCreateManyTalentInputEnvelope;
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-  };
-
-  export type BookingTalentUncheckedCreateNestedManyWithoutTalentInput = {
-    create?:
-      | XOR<
-          BookingTalentCreateWithoutTalentInput,
-          BookingTalentUncheckedCreateWithoutTalentInput
-        >
-      | BookingTalentCreateWithoutTalentInput[]
-      | BookingTalentUncheckedCreateWithoutTalentInput[];
-    connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutTalentInput
-      | BookingTalentCreateOrConnectWithoutTalentInput[];
-    createMany?: BookingTalentCreateManyTalentInputEnvelope;
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-  };
-
-  export type BookingTalentUpdateManyWithoutTalentNestedInput = {
-    create?:
-      | XOR<
-          BookingTalentCreateWithoutTalentInput,
-          BookingTalentUncheckedCreateWithoutTalentInput
-        >
-      | BookingTalentCreateWithoutTalentInput[]
-      | BookingTalentUncheckedCreateWithoutTalentInput[];
-    connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutTalentInput
-      | BookingTalentCreateOrConnectWithoutTalentInput[];
-    upsert?:
-      | BookingTalentUpsertWithWhereUniqueWithoutTalentInput
-      | BookingTalentUpsertWithWhereUniqueWithoutTalentInput[];
-    createMany?: BookingTalentCreateManyTalentInputEnvelope;
-    set?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    disconnect?:
-      | BookingTalentWhereUniqueInput
-      | BookingTalentWhereUniqueInput[];
-    delete?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    update?:
-      | BookingTalentUpdateWithWhereUniqueWithoutTalentInput
-      | BookingTalentUpdateWithWhereUniqueWithoutTalentInput[];
-    updateMany?:
-      | BookingTalentUpdateManyWithWhereWithoutTalentInput
-      | BookingTalentUpdateManyWithWhereWithoutTalentInput[];
-    deleteMany?:
-      | BookingTalentScalarWhereInput
-      | BookingTalentScalarWhereInput[];
-  };
-
-  export type BookingTalentUncheckedUpdateManyWithoutTalentNestedInput = {
-    create?:
-      | XOR<
-          BookingTalentCreateWithoutTalentInput,
-          BookingTalentUncheckedCreateWithoutTalentInput
-        >
-      | BookingTalentCreateWithoutTalentInput[]
-      | BookingTalentUncheckedCreateWithoutTalentInput[];
-    connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutTalentInput
-      | BookingTalentCreateOrConnectWithoutTalentInput[];
-    upsert?:
-      | BookingTalentUpsertWithWhereUniqueWithoutTalentInput
-      | BookingTalentUpsertWithWhereUniqueWithoutTalentInput[];
-    createMany?: BookingTalentCreateManyTalentInputEnvelope;
-    set?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    disconnect?:
-      | BookingTalentWhereUniqueInput
-      | BookingTalentWhereUniqueInput[];
-    delete?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    update?:
-      | BookingTalentUpdateWithWhereUniqueWithoutTalentInput
-      | BookingTalentUpdateWithWhereUniqueWithoutTalentInput[];
-    updateMany?:
-      | BookingTalentUpdateManyWithWhereWithoutTalentInput
-      | BookingTalentUpdateManyWithWhereWithoutTalentInput[];
-    deleteMany?:
-      | BookingTalentScalarWhereInput
-      | BookingTalentScalarWhereInput[];
-  };
-
   export type UserCreateNestedOneWithoutBookingInput = {
     create?: XOR<
       UserCreateWithoutBookingInput,
@@ -18866,21 +15111,6 @@ export namespace Prisma {
     connect?: ServiceWhereUniqueInput;
   };
 
-  export type BookingTalentCreateNestedManyWithoutBookingInput = {
-    create?:
-      | XOR<
-          BookingTalentCreateWithoutBookingInput,
-          BookingTalentUncheckedCreateWithoutBookingInput
-        >
-      | BookingTalentCreateWithoutBookingInput[]
-      | BookingTalentUncheckedCreateWithoutBookingInput[];
-    connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutBookingInput
-      | BookingTalentCreateOrConnectWithoutBookingInput[];
-    createMany?: BookingTalentCreateManyBookingInputEnvelope;
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-  };
-
   export type PaymentCreateNestedManyWithoutBookingInput = {
     create?:
       | XOR<
@@ -18896,19 +15126,19 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[];
   };
 
-  export type BookingTalentUncheckedCreateNestedManyWithoutBookingInput = {
+  export type BookingDatesCreateNestedManyWithoutBookingInput = {
     create?:
       | XOR<
-          BookingTalentCreateWithoutBookingInput,
-          BookingTalentUncheckedCreateWithoutBookingInput
+          BookingDatesCreateWithoutBookingInput,
+          BookingDatesUncheckedCreateWithoutBookingInput
         >
-      | BookingTalentCreateWithoutBookingInput[]
-      | BookingTalentUncheckedCreateWithoutBookingInput[];
+      | BookingDatesCreateWithoutBookingInput[]
+      | BookingDatesUncheckedCreateWithoutBookingInput[];
     connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutBookingInput
-      | BookingTalentCreateOrConnectWithoutBookingInput[];
-    createMany?: BookingTalentCreateManyBookingInputEnvelope;
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
+      | BookingDatesCreateOrConnectWithoutBookingInput
+      | BookingDatesCreateOrConnectWithoutBookingInput[];
+    createMany?: BookingDatesCreateManyBookingInputEnvelope;
+    connect?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
   };
 
   export type PaymentUncheckedCreateNestedManyWithoutBookingInput = {
@@ -18924,6 +15154,21 @@ export namespace Prisma {
       | PaymentCreateOrConnectWithoutBookingInput[];
     createMany?: PaymentCreateManyBookingInputEnvelope;
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[];
+  };
+
+  export type BookingDatesUncheckedCreateNestedManyWithoutBookingInput = {
+    create?:
+      | XOR<
+          BookingDatesCreateWithoutBookingInput,
+          BookingDatesUncheckedCreateWithoutBookingInput
+        >
+      | BookingDatesCreateWithoutBookingInput[]
+      | BookingDatesUncheckedCreateWithoutBookingInput[];
+    connectOrCreate?:
+      | BookingDatesCreateOrConnectWithoutBookingInput
+      | BookingDatesCreateOrConnectWithoutBookingInput[];
+    createMany?: BookingDatesCreateManyBookingInputEnvelope;
+    connect?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
   };
 
   export type UserUpdateOneRequiredWithoutBookingNestedInput = {
@@ -18960,38 +15205,6 @@ export namespace Prisma {
     >;
   };
 
-  export type BookingTalentUpdateManyWithoutBookingNestedInput = {
-    create?:
-      | XOR<
-          BookingTalentCreateWithoutBookingInput,
-          BookingTalentUncheckedCreateWithoutBookingInput
-        >
-      | BookingTalentCreateWithoutBookingInput[]
-      | BookingTalentUncheckedCreateWithoutBookingInput[];
-    connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutBookingInput
-      | BookingTalentCreateOrConnectWithoutBookingInput[];
-    upsert?:
-      | BookingTalentUpsertWithWhereUniqueWithoutBookingInput
-      | BookingTalentUpsertWithWhereUniqueWithoutBookingInput[];
-    createMany?: BookingTalentCreateManyBookingInputEnvelope;
-    set?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    disconnect?:
-      | BookingTalentWhereUniqueInput
-      | BookingTalentWhereUniqueInput[];
-    delete?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    update?:
-      | BookingTalentUpdateWithWhereUniqueWithoutBookingInput
-      | BookingTalentUpdateWithWhereUniqueWithoutBookingInput[];
-    updateMany?:
-      | BookingTalentUpdateManyWithWhereWithoutBookingInput
-      | BookingTalentUpdateManyWithWhereWithoutBookingInput[];
-    deleteMany?:
-      | BookingTalentScalarWhereInput
-      | BookingTalentScalarWhereInput[];
-  };
-
   export type PaymentUpdateManyWithoutBookingNestedInput = {
     create?:
       | XOR<
@@ -19020,36 +15233,32 @@ export namespace Prisma {
     deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[];
   };
 
-  export type BookingTalentUncheckedUpdateManyWithoutBookingNestedInput = {
+  export type BookingDatesUpdateManyWithoutBookingNestedInput = {
     create?:
       | XOR<
-          BookingTalentCreateWithoutBookingInput,
-          BookingTalentUncheckedCreateWithoutBookingInput
+          BookingDatesCreateWithoutBookingInput,
+          BookingDatesUncheckedCreateWithoutBookingInput
         >
-      | BookingTalentCreateWithoutBookingInput[]
-      | BookingTalentUncheckedCreateWithoutBookingInput[];
+      | BookingDatesCreateWithoutBookingInput[]
+      | BookingDatesUncheckedCreateWithoutBookingInput[];
     connectOrCreate?:
-      | BookingTalentCreateOrConnectWithoutBookingInput
-      | BookingTalentCreateOrConnectWithoutBookingInput[];
+      | BookingDatesCreateOrConnectWithoutBookingInput
+      | BookingDatesCreateOrConnectWithoutBookingInput[];
     upsert?:
-      | BookingTalentUpsertWithWhereUniqueWithoutBookingInput
-      | BookingTalentUpsertWithWhereUniqueWithoutBookingInput[];
-    createMany?: BookingTalentCreateManyBookingInputEnvelope;
-    set?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    disconnect?:
-      | BookingTalentWhereUniqueInput
-      | BookingTalentWhereUniqueInput[];
-    delete?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
-    connect?: BookingTalentWhereUniqueInput | BookingTalentWhereUniqueInput[];
+      | BookingDatesUpsertWithWhereUniqueWithoutBookingInput
+      | BookingDatesUpsertWithWhereUniqueWithoutBookingInput[];
+    createMany?: BookingDatesCreateManyBookingInputEnvelope;
+    set?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
+    disconnect?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
+    delete?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
+    connect?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
     update?:
-      | BookingTalentUpdateWithWhereUniqueWithoutBookingInput
-      | BookingTalentUpdateWithWhereUniqueWithoutBookingInput[];
+      | BookingDatesUpdateWithWhereUniqueWithoutBookingInput
+      | BookingDatesUpdateWithWhereUniqueWithoutBookingInput[];
     updateMany?:
-      | BookingTalentUpdateManyWithWhereWithoutBookingInput
-      | BookingTalentUpdateManyWithWhereWithoutBookingInput[];
-    deleteMany?:
-      | BookingTalentScalarWhereInput
-      | BookingTalentScalarWhereInput[];
+      | BookingDatesUpdateManyWithWhereWithoutBookingInput
+      | BookingDatesUpdateManyWithWhereWithoutBookingInput[];
+    deleteMany?: BookingDatesScalarWhereInput | BookingDatesScalarWhereInput[];
   };
 
   export type PaymentUncheckedUpdateManyWithoutBookingNestedInput = {
@@ -19080,55 +15289,59 @@ export namespace Prisma {
     deleteMany?: PaymentScalarWhereInput | PaymentScalarWhereInput[];
   };
 
-  export type BookingCreateNestedOneWithoutBooking_talentsInput = {
+  export type BookingDatesUncheckedUpdateManyWithoutBookingNestedInput = {
+    create?:
+      | XOR<
+          BookingDatesCreateWithoutBookingInput,
+          BookingDatesUncheckedCreateWithoutBookingInput
+        >
+      | BookingDatesCreateWithoutBookingInput[]
+      | BookingDatesUncheckedCreateWithoutBookingInput[];
+    connectOrCreate?:
+      | BookingDatesCreateOrConnectWithoutBookingInput
+      | BookingDatesCreateOrConnectWithoutBookingInput[];
+    upsert?:
+      | BookingDatesUpsertWithWhereUniqueWithoutBookingInput
+      | BookingDatesUpsertWithWhereUniqueWithoutBookingInput[];
+    createMany?: BookingDatesCreateManyBookingInputEnvelope;
+    set?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
+    disconnect?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
+    delete?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
+    connect?: BookingDatesWhereUniqueInput | BookingDatesWhereUniqueInput[];
+    update?:
+      | BookingDatesUpdateWithWhereUniqueWithoutBookingInput
+      | BookingDatesUpdateWithWhereUniqueWithoutBookingInput[];
+    updateMany?:
+      | BookingDatesUpdateManyWithWhereWithoutBookingInput
+      | BookingDatesUpdateManyWithWhereWithoutBookingInput[];
+    deleteMany?: BookingDatesScalarWhereInput | BookingDatesScalarWhereInput[];
+  };
+
+  export type BookingCreateNestedOneWithoutBooking_datesInput = {
     create?: XOR<
-      BookingCreateWithoutBooking_talentsInput,
-      BookingUncheckedCreateWithoutBooking_talentsInput
+      BookingCreateWithoutBooking_datesInput,
+      BookingUncheckedCreateWithoutBooking_datesInput
     >;
-    connectOrCreate?: BookingCreateOrConnectWithoutBooking_talentsInput;
+    connectOrCreate?: BookingCreateOrConnectWithoutBooking_datesInput;
     connect?: BookingWhereUniqueInput;
   };
 
-  export type TalentCreateNestedOneWithoutBookingTalentInput = {
+  export type BookingUpdateOneWithoutBooking_datesNestedInput = {
     create?: XOR<
-      TalentCreateWithoutBookingTalentInput,
-      TalentUncheckedCreateWithoutBookingTalentInput
+      BookingCreateWithoutBooking_datesInput,
+      BookingUncheckedCreateWithoutBooking_datesInput
     >;
-    connectOrCreate?: TalentCreateOrConnectWithoutBookingTalentInput;
-    connect?: TalentWhereUniqueInput;
-  };
-
-  export type BookingUpdateOneRequiredWithoutBooking_talentsNestedInput = {
-    create?: XOR<
-      BookingCreateWithoutBooking_talentsInput,
-      BookingUncheckedCreateWithoutBooking_talentsInput
-    >;
-    connectOrCreate?: BookingCreateOrConnectWithoutBooking_talentsInput;
-    upsert?: BookingUpsertWithoutBooking_talentsInput;
+    connectOrCreate?: BookingCreateOrConnectWithoutBooking_datesInput;
+    upsert?: BookingUpsertWithoutBooking_datesInput;
+    disconnect?: BookingWhereInput | boolean;
+    delete?: BookingWhereInput | boolean;
     connect?: BookingWhereUniqueInput;
     update?: XOR<
       XOR<
-        BookingUpdateToOneWithWhereWithoutBooking_talentsInput,
-        BookingUpdateWithoutBooking_talentsInput
+        BookingUpdateToOneWithWhereWithoutBooking_datesInput,
+        BookingUpdateWithoutBooking_datesInput
       >,
-      BookingUncheckedUpdateWithoutBooking_talentsInput
-    >;
-  };
-
-  export type TalentUpdateOneRequiredWithoutBookingTalentNestedInput = {
-    create?: XOR<
-      TalentCreateWithoutBookingTalentInput,
-      TalentUncheckedCreateWithoutBookingTalentInput
-    >;
-    connectOrCreate?: TalentCreateOrConnectWithoutBookingTalentInput;
-    upsert?: TalentUpsertWithoutBookingTalentInput;
-    connect?: TalentWhereUniqueInput;
-    update?: XOR<
-      XOR<
-        TalentUpdateToOneWithWhereWithoutBookingTalentInput,
-        TalentUpdateWithoutBookingTalentInput
-      >,
-      TalentUncheckedUpdateWithoutBookingTalentInput
+      BookingUncheckedUpdateWithoutBooking_datesInput
     >;
   };
 
@@ -19155,58 +15368,6 @@ export namespace Prisma {
         BookingUpdateWithoutPaymentsInput
       >,
       BookingUncheckedUpdateWithoutPaymentsInput
-    >;
-  };
-
-  export type UserCreateNestedOneWithoutReviewInput = {
-    create?: XOR<
-      UserCreateWithoutReviewInput,
-      UserUncheckedCreateWithoutReviewInput
-    >;
-    connectOrCreate?: UserCreateOrConnectWithoutReviewInput;
-    connect?: UserWhereUniqueInput;
-  };
-
-  export type ServiceCreateNestedOneWithoutReviewInput = {
-    create?: XOR<
-      ServiceCreateWithoutReviewInput,
-      ServiceUncheckedCreateWithoutReviewInput
-    >;
-    connectOrCreate?: ServiceCreateOrConnectWithoutReviewInput;
-    connect?: ServiceWhereUniqueInput;
-  };
-
-  export type UserUpdateOneRequiredWithoutReviewNestedInput = {
-    create?: XOR<
-      UserCreateWithoutReviewInput,
-      UserUncheckedCreateWithoutReviewInput
-    >;
-    connectOrCreate?: UserCreateOrConnectWithoutReviewInput;
-    upsert?: UserUpsertWithoutReviewInput;
-    connect?: UserWhereUniqueInput;
-    update?: XOR<
-      XOR<
-        UserUpdateToOneWithWhereWithoutReviewInput,
-        UserUpdateWithoutReviewInput
-      >,
-      UserUncheckedUpdateWithoutReviewInput
-    >;
-  };
-
-  export type ServiceUpdateOneRequiredWithoutReviewNestedInput = {
-    create?: XOR<
-      ServiceCreateWithoutReviewInput,
-      ServiceUncheckedCreateWithoutReviewInput
-    >;
-    connectOrCreate?: ServiceCreateOrConnectWithoutReviewInput;
-    upsert?: ServiceUpsertWithoutReviewInput;
-    connect?: ServiceWhereUniqueInput;
-    update?: XOR<
-      XOR<
-        ServiceUpdateToOneWithWhereWithoutReviewInput,
-        ServiceUpdateWithoutReviewInput
-      >,
-      ServiceUncheckedUpdateWithoutReviewInput
     >;
   };
 
@@ -19390,7 +15551,6 @@ export namespace Prisma {
   };
 
   export type BookingCreateWithoutUserInput = {
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -19398,22 +15558,21 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     service: ServiceCreateNestedOneWithoutBookingInput;
-    booking_talents?: BookingTalentCreateNestedManyWithoutBookingInput;
     payments?: PaymentCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingUncheckedCreateWithoutUserInput = {
     id?: number;
     service_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
     status?: string;
     created_at?: Date | string;
     updated_at?: Date | string;
-    booking_talents?: BookingTalentUncheckedCreateNestedManyWithoutBookingInput;
     payments?: PaymentUncheckedCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesUncheckedCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingCreateOrConnectWithoutUserInput = {
@@ -19426,34 +15585,6 @@ export namespace Prisma {
 
   export type BookingCreateManyUserInputEnvelope = {
     data: BookingCreateManyUserInput | BookingCreateManyUserInput[];
-    skipDuplicates?: boolean;
-  };
-
-  export type ReviewCreateWithoutUserInput = {
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-    service: ServiceCreateNestedOneWithoutReviewInput;
-  };
-
-  export type ReviewUncheckedCreateWithoutUserInput = {
-    id?: number;
-    service_id: number;
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-  };
-
-  export type ReviewCreateOrConnectWithoutUserInput = {
-    where: ReviewWhereUniqueInput;
-    create: XOR<
-      ReviewCreateWithoutUserInput,
-      ReviewUncheckedCreateWithoutUserInput
-    >;
-  };
-
-  export type ReviewCreateManyUserInputEnvelope = {
-    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[];
     skipDuplicates?: boolean;
   };
 
@@ -19492,53 +15623,12 @@ export namespace Prisma {
     id?: IntFilter<'Booking'> | number;
     user_id?: IntFilter<'Booking'> | number;
     service_id?: IntFilter<'Booking'> | number;
-    date?: DateTimeFilter<'Booking'> | Date | string;
     time?: StringFilter<'Booking'> | string;
     location?: StringFilter<'Booking'> | string;
     is_accepted?: BoolFilter<'Booking'> | boolean;
     status?: StringFilter<'Booking'> | string;
     created_at?: DateTimeFilter<'Booking'> | Date | string;
     updated_at?: DateTimeFilter<'Booking'> | Date | string;
-  };
-
-  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
-    where: ReviewWhereUniqueInput;
-    update: XOR<
-      ReviewUpdateWithoutUserInput,
-      ReviewUncheckedUpdateWithoutUserInput
-    >;
-    create: XOR<
-      ReviewCreateWithoutUserInput,
-      ReviewUncheckedCreateWithoutUserInput
-    >;
-  };
-
-  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
-    where: ReviewWhereUniqueInput;
-    data: XOR<
-      ReviewUpdateWithoutUserInput,
-      ReviewUncheckedUpdateWithoutUserInput
-    >;
-  };
-
-  export type ReviewUpdateManyWithWhereWithoutUserInput = {
-    where: ReviewScalarWhereInput;
-    data: XOR<
-      ReviewUpdateManyMutationInput,
-      ReviewUncheckedUpdateManyWithoutUserInput
-    >;
-  };
-
-  export type ReviewScalarWhereInput = {
-    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[];
-    OR?: ReviewScalarWhereInput[];
-    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[];
-    id?: IntFilter<'Review'> | number;
-    user_id?: IntFilter<'Review'> | number;
-    service_id?: IntFilter<'Review'> | number;
-    rating?: IntFilter<'Review'> | number;
-    comment?: StringNullableFilter<'Review'> | string | null;
-    created_at?: DateTimeFilter<'Review'> | Date | string;
   };
 
   export type ServiceCreateWithoutCategoryInput = {
@@ -19551,7 +15641,6 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     Booking?: BookingCreateNestedManyWithoutServiceInput;
-    Review?: ReviewCreateNestedManyWithoutServiceInput;
   };
 
   export type ServiceUncheckedCreateWithoutCategoryInput = {
@@ -19565,7 +15654,6 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     Booking?: BookingUncheckedCreateNestedManyWithoutServiceInput;
-    Review?: ReviewUncheckedCreateNestedManyWithoutServiceInput;
   };
 
   export type ServiceCreateOrConnectWithoutCategoryInput = {
@@ -19647,7 +15735,6 @@ export namespace Prisma {
   };
 
   export type BookingCreateWithoutServiceInput = {
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -19655,22 +15742,21 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     user: UserCreateNestedOneWithoutBookingInput;
-    booking_talents?: BookingTalentCreateNestedManyWithoutBookingInput;
     payments?: PaymentCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingUncheckedCreateWithoutServiceInput = {
     id?: number;
     user_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
     status?: string;
     created_at?: Date | string;
     updated_at?: Date | string;
-    booking_talents?: BookingTalentUncheckedCreateNestedManyWithoutBookingInput;
     payments?: PaymentUncheckedCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesUncheckedCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingCreateOrConnectWithoutServiceInput = {
@@ -19683,34 +15769,6 @@ export namespace Prisma {
 
   export type BookingCreateManyServiceInputEnvelope = {
     data: BookingCreateManyServiceInput | BookingCreateManyServiceInput[];
-    skipDuplicates?: boolean;
-  };
-
-  export type ReviewCreateWithoutServiceInput = {
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-    user: UserCreateNestedOneWithoutReviewInput;
-  };
-
-  export type ReviewUncheckedCreateWithoutServiceInput = {
-    id?: number;
-    user_id: number;
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-  };
-
-  export type ReviewCreateOrConnectWithoutServiceInput = {
-    where: ReviewWhereUniqueInput;
-    create: XOR<
-      ReviewCreateWithoutServiceInput,
-      ReviewUncheckedCreateWithoutServiceInput
-    >;
-  };
-
-  export type ReviewCreateManyServiceInputEnvelope = {
-    data: ReviewCreateManyServiceInput | ReviewCreateManyServiceInput[];
     skipDuplicates?: boolean;
   };
 
@@ -19775,101 +15833,6 @@ export namespace Prisma {
     >;
   };
 
-  export type ReviewUpsertWithWhereUniqueWithoutServiceInput = {
-    where: ReviewWhereUniqueInput;
-    update: XOR<
-      ReviewUpdateWithoutServiceInput,
-      ReviewUncheckedUpdateWithoutServiceInput
-    >;
-    create: XOR<
-      ReviewCreateWithoutServiceInput,
-      ReviewUncheckedCreateWithoutServiceInput
-    >;
-  };
-
-  export type ReviewUpdateWithWhereUniqueWithoutServiceInput = {
-    where: ReviewWhereUniqueInput;
-    data: XOR<
-      ReviewUpdateWithoutServiceInput,
-      ReviewUncheckedUpdateWithoutServiceInput
-    >;
-  };
-
-  export type ReviewUpdateManyWithWhereWithoutServiceInput = {
-    where: ReviewScalarWhereInput;
-    data: XOR<
-      ReviewUpdateManyMutationInput,
-      ReviewUncheckedUpdateManyWithoutServiceInput
-    >;
-  };
-
-  export type BookingTalentCreateWithoutTalentInput = {
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    booking: BookingCreateNestedOneWithoutBooking_talentsInput;
-  };
-
-  export type BookingTalentUncheckedCreateWithoutTalentInput = {
-    id?: number;
-    booking_id: number;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-  };
-
-  export type BookingTalentCreateOrConnectWithoutTalentInput = {
-    where: BookingTalentWhereUniqueInput;
-    create: XOR<
-      BookingTalentCreateWithoutTalentInput,
-      BookingTalentUncheckedCreateWithoutTalentInput
-    >;
-  };
-
-  export type BookingTalentCreateManyTalentInputEnvelope = {
-    data:
-      | BookingTalentCreateManyTalentInput
-      | BookingTalentCreateManyTalentInput[];
-    skipDuplicates?: boolean;
-  };
-
-  export type BookingTalentUpsertWithWhereUniqueWithoutTalentInput = {
-    where: BookingTalentWhereUniqueInput;
-    update: XOR<
-      BookingTalentUpdateWithoutTalentInput,
-      BookingTalentUncheckedUpdateWithoutTalentInput
-    >;
-    create: XOR<
-      BookingTalentCreateWithoutTalentInput,
-      BookingTalentUncheckedCreateWithoutTalentInput
-    >;
-  };
-
-  export type BookingTalentUpdateWithWhereUniqueWithoutTalentInput = {
-    where: BookingTalentWhereUniqueInput;
-    data: XOR<
-      BookingTalentUpdateWithoutTalentInput,
-      BookingTalentUncheckedUpdateWithoutTalentInput
-    >;
-  };
-
-  export type BookingTalentUpdateManyWithWhereWithoutTalentInput = {
-    where: BookingTalentScalarWhereInput;
-    data: XOR<
-      BookingTalentUpdateManyMutationInput,
-      BookingTalentUncheckedUpdateManyWithoutTalentInput
-    >;
-  };
-
-  export type BookingTalentScalarWhereInput = {
-    AND?: BookingTalentScalarWhereInput | BookingTalentScalarWhereInput[];
-    OR?: BookingTalentScalarWhereInput[];
-    NOT?: BookingTalentScalarWhereInput | BookingTalentScalarWhereInput[];
-    id?: IntFilter<'BookingTalent'> | number;
-    booking_id?: IntFilter<'BookingTalent'> | number;
-    talent_id?: IntFilter<'BookingTalent'> | number;
-    created_at?: DateTimeFilter<'BookingTalent'> | Date | string;
-    updated_at?: DateTimeFilter<'BookingTalent'> | Date | string;
-  };
-
   export type UserCreateWithoutBookingInput = {
     name: string;
     email: string;
@@ -19878,7 +15841,6 @@ export namespace Prisma {
     role?: string;
     created_at?: Date | string;
     updated_at?: Date | string;
-    Review?: ReviewCreateNestedManyWithoutUserInput;
   };
 
   export type UserUncheckedCreateWithoutBookingInput = {
@@ -19890,7 +15852,6 @@ export namespace Prisma {
     role?: string;
     created_at?: Date | string;
     updated_at?: Date | string;
-    Review?: ReviewUncheckedCreateNestedManyWithoutUserInput;
   };
 
   export type UserCreateOrConnectWithoutBookingInput = {
@@ -19911,7 +15872,6 @@ export namespace Prisma {
     created_at?: Date | string;
     updated_at?: Date | string;
     category: CategoryCreateNestedOneWithoutServiceInput;
-    Review?: ReviewCreateNestedManyWithoutServiceInput;
   };
 
   export type ServiceUncheckedCreateWithoutBookingInput = {
@@ -19925,7 +15885,6 @@ export namespace Prisma {
     available?: boolean;
     created_at?: Date | string;
     updated_at?: Date | string;
-    Review?: ReviewUncheckedCreateNestedManyWithoutServiceInput;
   };
 
   export type ServiceCreateOrConnectWithoutBookingInput = {
@@ -19934,34 +15893,6 @@ export namespace Prisma {
       ServiceCreateWithoutBookingInput,
       ServiceUncheckedCreateWithoutBookingInput
     >;
-  };
-
-  export type BookingTalentCreateWithoutBookingInput = {
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    talent: TalentCreateNestedOneWithoutBookingTalentInput;
-  };
-
-  export type BookingTalentUncheckedCreateWithoutBookingInput = {
-    id?: number;
-    talent_id: number;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-  };
-
-  export type BookingTalentCreateOrConnectWithoutBookingInput = {
-    where: BookingTalentWhereUniqueInput;
-    create: XOR<
-      BookingTalentCreateWithoutBookingInput,
-      BookingTalentUncheckedCreateWithoutBookingInput
-    >;
-  };
-
-  export type BookingTalentCreateManyBookingInputEnvelope = {
-    data:
-      | BookingTalentCreateManyBookingInput
-      | BookingTalentCreateManyBookingInput[];
-    skipDuplicates?: boolean;
   };
 
   export type PaymentCreateWithoutBookingInput = {
@@ -20006,6 +15937,34 @@ export namespace Prisma {
     skipDuplicates?: boolean;
   };
 
+  export type BookingDatesCreateWithoutBookingInput = {
+    date: Date | string;
+    created_at?: Date | string;
+    updated_at?: Date | string;
+  };
+
+  export type BookingDatesUncheckedCreateWithoutBookingInput = {
+    id?: number;
+    date: Date | string;
+    created_at?: Date | string;
+    updated_at?: Date | string;
+  };
+
+  export type BookingDatesCreateOrConnectWithoutBookingInput = {
+    where: BookingDatesWhereUniqueInput;
+    create: XOR<
+      BookingDatesCreateWithoutBookingInput,
+      BookingDatesUncheckedCreateWithoutBookingInput
+    >;
+  };
+
+  export type BookingDatesCreateManyBookingInputEnvelope = {
+    data:
+      | BookingDatesCreateManyBookingInput
+      | BookingDatesCreateManyBookingInput[];
+    skipDuplicates?: boolean;
+  };
+
   export type UserUpsertWithoutBookingInput = {
     update: XOR<
       UserUpdateWithoutBookingInput,
@@ -20034,7 +15993,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    Review?: ReviewUpdateManyWithoutUserNestedInput;
   };
 
   export type UserUncheckedUpdateWithoutBookingInput = {
@@ -20046,7 +16004,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    Review?: ReviewUncheckedUpdateManyWithoutUserNestedInput;
   };
 
   export type ServiceUpsertWithoutBookingInput = {
@@ -20079,7 +16036,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     category?: CategoryUpdateOneRequiredWithoutServiceNestedInput;
-    Review?: ReviewUpdateManyWithoutServiceNestedInput;
   };
 
   export type ServiceUncheckedUpdateWithoutBookingInput = {
@@ -20093,35 +16049,6 @@ export namespace Prisma {
     available?: BoolFieldUpdateOperationsInput | boolean;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    Review?: ReviewUncheckedUpdateManyWithoutServiceNestedInput;
-  };
-
-  export type BookingTalentUpsertWithWhereUniqueWithoutBookingInput = {
-    where: BookingTalentWhereUniqueInput;
-    update: XOR<
-      BookingTalentUpdateWithoutBookingInput,
-      BookingTalentUncheckedUpdateWithoutBookingInput
-    >;
-    create: XOR<
-      BookingTalentCreateWithoutBookingInput,
-      BookingTalentUncheckedCreateWithoutBookingInput
-    >;
-  };
-
-  export type BookingTalentUpdateWithWhereUniqueWithoutBookingInput = {
-    where: BookingTalentWhereUniqueInput;
-    data: XOR<
-      BookingTalentUpdateWithoutBookingInput,
-      BookingTalentUncheckedUpdateWithoutBookingInput
-    >;
-  };
-
-  export type BookingTalentUpdateManyWithWhereWithoutBookingInput = {
-    where: BookingTalentScalarWhereInput;
-    data: XOR<
-      BookingTalentUpdateManyMutationInput,
-      BookingTalentUncheckedUpdateManyWithoutBookingInput
-    >;
   };
 
   export type PaymentUpsertWithWhereUniqueWithoutBookingInput = {
@@ -20171,8 +16098,46 @@ export namespace Prisma {
     type?: StringFilter<'Payment'> | string;
   };
 
-  export type BookingCreateWithoutBooking_talentsInput = {
-    date: Date | string;
+  export type BookingDatesUpsertWithWhereUniqueWithoutBookingInput = {
+    where: BookingDatesWhereUniqueInput;
+    update: XOR<
+      BookingDatesUpdateWithoutBookingInput,
+      BookingDatesUncheckedUpdateWithoutBookingInput
+    >;
+    create: XOR<
+      BookingDatesCreateWithoutBookingInput,
+      BookingDatesUncheckedCreateWithoutBookingInput
+    >;
+  };
+
+  export type BookingDatesUpdateWithWhereUniqueWithoutBookingInput = {
+    where: BookingDatesWhereUniqueInput;
+    data: XOR<
+      BookingDatesUpdateWithoutBookingInput,
+      BookingDatesUncheckedUpdateWithoutBookingInput
+    >;
+  };
+
+  export type BookingDatesUpdateManyWithWhereWithoutBookingInput = {
+    where: BookingDatesScalarWhereInput;
+    data: XOR<
+      BookingDatesUpdateManyMutationInput,
+      BookingDatesUncheckedUpdateManyWithoutBookingInput
+    >;
+  };
+
+  export type BookingDatesScalarWhereInput = {
+    AND?: BookingDatesScalarWhereInput | BookingDatesScalarWhereInput[];
+    OR?: BookingDatesScalarWhereInput[];
+    NOT?: BookingDatesScalarWhereInput | BookingDatesScalarWhereInput[];
+    id?: IntFilter<'BookingDates'> | number;
+    date?: DateTimeFilter<'BookingDates'> | Date | string;
+    created_at?: DateTimeFilter<'BookingDates'> | Date | string;
+    updated_at?: DateTimeFilter<'BookingDates'> | Date | string;
+    booking_id?: IntFilter<'BookingDates'> | number;
+  };
+
+  export type BookingCreateWithoutBooking_datesInput = {
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -20184,11 +16149,10 @@ export namespace Prisma {
     payments?: PaymentCreateNestedManyWithoutBookingInput;
   };
 
-  export type BookingUncheckedCreateWithoutBooking_talentsInput = {
+  export type BookingUncheckedCreateWithoutBooking_datesInput = {
     id?: number;
     user_id: number;
     service_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -20198,63 +16162,35 @@ export namespace Prisma {
     payments?: PaymentUncheckedCreateNestedManyWithoutBookingInput;
   };
 
-  export type BookingCreateOrConnectWithoutBooking_talentsInput = {
+  export type BookingCreateOrConnectWithoutBooking_datesInput = {
     where: BookingWhereUniqueInput;
     create: XOR<
-      BookingCreateWithoutBooking_talentsInput,
-      BookingUncheckedCreateWithoutBooking_talentsInput
+      BookingCreateWithoutBooking_datesInput,
+      BookingUncheckedCreateWithoutBooking_datesInput
     >;
   };
 
-  export type TalentCreateWithoutBookingTalentInput = {
-    name: string;
-    image: string;
-    position: string;
-    description: string;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-  };
-
-  export type TalentUncheckedCreateWithoutBookingTalentInput = {
-    id?: number;
-    name: string;
-    image: string;
-    position: string;
-    description: string;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-  };
-
-  export type TalentCreateOrConnectWithoutBookingTalentInput = {
-    where: TalentWhereUniqueInput;
-    create: XOR<
-      TalentCreateWithoutBookingTalentInput,
-      TalentUncheckedCreateWithoutBookingTalentInput
-    >;
-  };
-
-  export type BookingUpsertWithoutBooking_talentsInput = {
+  export type BookingUpsertWithoutBooking_datesInput = {
     update: XOR<
-      BookingUpdateWithoutBooking_talentsInput,
-      BookingUncheckedUpdateWithoutBooking_talentsInput
+      BookingUpdateWithoutBooking_datesInput,
+      BookingUncheckedUpdateWithoutBooking_datesInput
     >;
     create: XOR<
-      BookingCreateWithoutBooking_talentsInput,
-      BookingUncheckedCreateWithoutBooking_talentsInput
+      BookingCreateWithoutBooking_datesInput,
+      BookingUncheckedCreateWithoutBooking_datesInput
     >;
     where?: BookingWhereInput;
   };
 
-  export type BookingUpdateToOneWithWhereWithoutBooking_talentsInput = {
+  export type BookingUpdateToOneWithWhereWithoutBooking_datesInput = {
     where?: BookingWhereInput;
     data: XOR<
-      BookingUpdateWithoutBooking_talentsInput,
-      BookingUncheckedUpdateWithoutBooking_talentsInput
+      BookingUpdateWithoutBooking_datesInput,
+      BookingUncheckedUpdateWithoutBooking_datesInput
     >;
   };
 
-  export type BookingUpdateWithoutBooking_talentsInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+  export type BookingUpdateWithoutBooking_datesInput = {
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -20266,11 +16202,10 @@ export namespace Prisma {
     payments?: PaymentUpdateManyWithoutBookingNestedInput;
   };
 
-  export type BookingUncheckedUpdateWithoutBooking_talentsInput = {
+  export type BookingUncheckedUpdateWithoutBooking_datesInput = {
     id?: IntFieldUpdateOperationsInput | number;
     user_id?: IntFieldUpdateOperationsInput | number;
     service_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -20280,47 +16215,7 @@ export namespace Prisma {
     payments?: PaymentUncheckedUpdateManyWithoutBookingNestedInput;
   };
 
-  export type TalentUpsertWithoutBookingTalentInput = {
-    update: XOR<
-      TalentUpdateWithoutBookingTalentInput,
-      TalentUncheckedUpdateWithoutBookingTalentInput
-    >;
-    create: XOR<
-      TalentCreateWithoutBookingTalentInput,
-      TalentUncheckedCreateWithoutBookingTalentInput
-    >;
-    where?: TalentWhereInput;
-  };
-
-  export type TalentUpdateToOneWithWhereWithoutBookingTalentInput = {
-    where?: TalentWhereInput;
-    data: XOR<
-      TalentUpdateWithoutBookingTalentInput,
-      TalentUncheckedUpdateWithoutBookingTalentInput
-    >;
-  };
-
-  export type TalentUpdateWithoutBookingTalentInput = {
-    name?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    position?: StringFieldUpdateOperationsInput | string;
-    description?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type TalentUncheckedUpdateWithoutBookingTalentInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    name?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    position?: StringFieldUpdateOperationsInput | string;
-    description?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
   export type BookingCreateWithoutPaymentsInput = {
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -20329,21 +16224,20 @@ export namespace Prisma {
     updated_at?: Date | string;
     user: UserCreateNestedOneWithoutBookingInput;
     service: ServiceCreateNestedOneWithoutBookingInput;
-    booking_talents?: BookingTalentCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingUncheckedCreateWithoutPaymentsInput = {
     id?: number;
     user_id: number;
     service_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
     status?: string;
     created_at?: Date | string;
     updated_at?: Date | string;
-    booking_talents?: BookingTalentUncheckedCreateNestedManyWithoutBookingInput;
+    booking_dates?: BookingDatesUncheckedCreateNestedManyWithoutBookingInput;
   };
 
   export type BookingCreateOrConnectWithoutPaymentsInput = {
@@ -20375,7 +16269,6 @@ export namespace Prisma {
   };
 
   export type BookingUpdateWithoutPaymentsInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -20384,183 +16277,25 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     user?: UserUpdateOneRequiredWithoutBookingNestedInput;
     service?: ServiceUpdateOneRequiredWithoutBookingNestedInput;
-    booking_talents?: BookingTalentUpdateManyWithoutBookingNestedInput;
+    booking_dates?: BookingDatesUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingUncheckedUpdateWithoutPaymentsInput = {
     id?: IntFieldUpdateOperationsInput | number;
     user_id?: IntFieldUpdateOperationsInput | number;
     service_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
     status?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    booking_talents?: BookingTalentUncheckedUpdateManyWithoutBookingNestedInput;
-  };
-
-  export type UserCreateWithoutReviewInput = {
-    name: string;
-    email: string;
-    password: string;
-    phone?: string | null;
-    role?: string;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    Booking?: BookingCreateNestedManyWithoutUserInput;
-  };
-
-  export type UserUncheckedCreateWithoutReviewInput = {
-    id?: number;
-    name: string;
-    email: string;
-    password: string;
-    phone?: string | null;
-    role?: string;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    Booking?: BookingUncheckedCreateNestedManyWithoutUserInput;
-  };
-
-  export type UserCreateOrConnectWithoutReviewInput = {
-    where: UserWhereUniqueInput;
-    create: XOR<
-      UserCreateWithoutReviewInput,
-      UserUncheckedCreateWithoutReviewInput
-    >;
-  };
-
-  export type ServiceCreateWithoutReviewInput = {
-    title: string;
-    image: string;
-    price: number;
-    discount?: number | null;
-    description: string;
-    available?: boolean;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    category: CategoryCreateNestedOneWithoutServiceInput;
-    Booking?: BookingCreateNestedManyWithoutServiceInput;
-  };
-
-  export type ServiceUncheckedCreateWithoutReviewInput = {
-    id?: number;
-    title: string;
-    image: string;
-    price: number;
-    discount?: number | null;
-    description: string;
-    category_id: number;
-    available?: boolean;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-    Booking?: BookingUncheckedCreateNestedManyWithoutServiceInput;
-  };
-
-  export type ServiceCreateOrConnectWithoutReviewInput = {
-    where: ServiceWhereUniqueInput;
-    create: XOR<
-      ServiceCreateWithoutReviewInput,
-      ServiceUncheckedCreateWithoutReviewInput
-    >;
-  };
-
-  export type UserUpsertWithoutReviewInput = {
-    update: XOR<
-      UserUpdateWithoutReviewInput,
-      UserUncheckedUpdateWithoutReviewInput
-    >;
-    create: XOR<
-      UserCreateWithoutReviewInput,
-      UserUncheckedCreateWithoutReviewInput
-    >;
-    where?: UserWhereInput;
-  };
-
-  export type UserUpdateToOneWithWhereWithoutReviewInput = {
-    where?: UserWhereInput;
-    data: XOR<
-      UserUpdateWithoutReviewInput,
-      UserUncheckedUpdateWithoutReviewInput
-    >;
-  };
-
-  export type UserUpdateWithoutReviewInput = {
-    name?: StringFieldUpdateOperationsInput | string;
-    email?: StringFieldUpdateOperationsInput | string;
-    password?: StringFieldUpdateOperationsInput | string;
-    phone?: NullableStringFieldUpdateOperationsInput | string | null;
-    role?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    Booking?: BookingUpdateManyWithoutUserNestedInput;
-  };
-
-  export type UserUncheckedUpdateWithoutReviewInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    name?: StringFieldUpdateOperationsInput | string;
-    email?: StringFieldUpdateOperationsInput | string;
-    password?: StringFieldUpdateOperationsInput | string;
-    phone?: NullableStringFieldUpdateOperationsInput | string | null;
-    role?: StringFieldUpdateOperationsInput | string;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    Booking?: BookingUncheckedUpdateManyWithoutUserNestedInput;
-  };
-
-  export type ServiceUpsertWithoutReviewInput = {
-    update: XOR<
-      ServiceUpdateWithoutReviewInput,
-      ServiceUncheckedUpdateWithoutReviewInput
-    >;
-    create: XOR<
-      ServiceCreateWithoutReviewInput,
-      ServiceUncheckedCreateWithoutReviewInput
-    >;
-    where?: ServiceWhereInput;
-  };
-
-  export type ServiceUpdateToOneWithWhereWithoutReviewInput = {
-    where?: ServiceWhereInput;
-    data: XOR<
-      ServiceUpdateWithoutReviewInput,
-      ServiceUncheckedUpdateWithoutReviewInput
-    >;
-  };
-
-  export type ServiceUpdateWithoutReviewInput = {
-    title?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    price?: IntFieldUpdateOperationsInput | number;
-    discount?: NullableIntFieldUpdateOperationsInput | number | null;
-    description?: StringFieldUpdateOperationsInput | string;
-    available?: BoolFieldUpdateOperationsInput | boolean;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    category?: CategoryUpdateOneRequiredWithoutServiceNestedInput;
-    Booking?: BookingUpdateManyWithoutServiceNestedInput;
-  };
-
-  export type ServiceUncheckedUpdateWithoutReviewInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    title?: StringFieldUpdateOperationsInput | string;
-    image?: StringFieldUpdateOperationsInput | string;
-    price?: IntFieldUpdateOperationsInput | number;
-    discount?: NullableIntFieldUpdateOperationsInput | number | null;
-    description?: StringFieldUpdateOperationsInput | string;
-    category_id?: IntFieldUpdateOperationsInput | number;
-    available?: BoolFieldUpdateOperationsInput | boolean;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    Booking?: BookingUncheckedUpdateManyWithoutServiceNestedInput;
+    booking_dates?: BookingDatesUncheckedUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingCreateManyUserInput = {
     id?: number;
     service_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -20569,16 +16304,7 @@ export namespace Prisma {
     updated_at?: Date | string;
   };
 
-  export type ReviewCreateManyUserInput = {
-    id?: number;
-    service_id: number;
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-  };
-
   export type BookingUpdateWithoutUserInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -20586,57 +16312,32 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     service?: ServiceUpdateOneRequiredWithoutBookingNestedInput;
-    booking_talents?: BookingTalentUpdateManyWithoutBookingNestedInput;
     payments?: PaymentUpdateManyWithoutBookingNestedInput;
+    booking_dates?: BookingDatesUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number;
     service_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
     status?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    booking_talents?: BookingTalentUncheckedUpdateManyWithoutBookingNestedInput;
     payments?: PaymentUncheckedUpdateManyWithoutBookingNestedInput;
+    booking_dates?: BookingDatesUncheckedUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number;
     service_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
     status?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type ReviewUpdateWithoutUserInput = {
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    service?: ServiceUpdateOneRequiredWithoutReviewNestedInput;
-  };
-
-  export type ReviewUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    service_id?: IntFieldUpdateOperationsInput | number;
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type ReviewUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    service_id?: IntFieldUpdateOperationsInput | number;
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
   };
 
   export type ServiceCreateManyCategoryInput = {
@@ -20661,7 +16362,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     Booking?: BookingUpdateManyWithoutServiceNestedInput;
-    Review?: ReviewUpdateManyWithoutServiceNestedInput;
   };
 
   export type ServiceUncheckedUpdateWithoutCategoryInput = {
@@ -20675,7 +16375,6 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     Booking?: BookingUncheckedUpdateManyWithoutServiceNestedInput;
-    Review?: ReviewUncheckedUpdateManyWithoutServiceNestedInput;
   };
 
   export type ServiceUncheckedUpdateManyWithoutCategoryInput = {
@@ -20693,7 +16392,6 @@ export namespace Prisma {
   export type BookingCreateManyServiceInput = {
     id?: number;
     user_id: number;
-    date: Date | string;
     time: string;
     location: string;
     is_accepted?: boolean;
@@ -20702,16 +16400,7 @@ export namespace Prisma {
     updated_at?: Date | string;
   };
 
-  export type ReviewCreateManyServiceInput = {
-    id?: number;
-    user_id: number;
-    rating: number;
-    comment?: string | null;
-    created_at?: Date | string;
-  };
-
   export type BookingUpdateWithoutServiceInput = {
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
@@ -20719,91 +16408,32 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     user?: UserUpdateOneRequiredWithoutBookingNestedInput;
-    booking_talents?: BookingTalentUpdateManyWithoutBookingNestedInput;
     payments?: PaymentUpdateManyWithoutBookingNestedInput;
+    booking_dates?: BookingDatesUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingUncheckedUpdateWithoutServiceInput = {
     id?: IntFieldUpdateOperationsInput | number;
     user_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
     status?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    booking_talents?: BookingTalentUncheckedUpdateManyWithoutBookingNestedInput;
     payments?: PaymentUncheckedUpdateManyWithoutBookingNestedInput;
+    booking_dates?: BookingDatesUncheckedUpdateManyWithoutBookingNestedInput;
   };
 
   export type BookingUncheckedUpdateManyWithoutServiceInput = {
     id?: IntFieldUpdateOperationsInput | number;
     user_id?: IntFieldUpdateOperationsInput | number;
-    date?: DateTimeFieldUpdateOperationsInput | Date | string;
     time?: StringFieldUpdateOperationsInput | string;
     location?: StringFieldUpdateOperationsInput | string;
     is_accepted?: BoolFieldUpdateOperationsInput | boolean;
     status?: StringFieldUpdateOperationsInput | string;
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type ReviewUpdateWithoutServiceInput = {
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    user?: UserUpdateOneRequiredWithoutReviewNestedInput;
-  };
-
-  export type ReviewUncheckedUpdateWithoutServiceInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    user_id?: IntFieldUpdateOperationsInput | number;
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type ReviewUncheckedUpdateManyWithoutServiceInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    user_id?: IntFieldUpdateOperationsInput | number;
-    rating?: IntFieldUpdateOperationsInput | number;
-    comment?: NullableStringFieldUpdateOperationsInput | string | null;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type BookingTalentCreateManyTalentInput = {
-    id?: number;
-    booking_id: number;
-    created_at?: Date | string;
-    updated_at?: Date | string;
-  };
-
-  export type BookingTalentUpdateWithoutTalentInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    booking?: BookingUpdateOneRequiredWithoutBooking_talentsNestedInput;
-  };
-
-  export type BookingTalentUncheckedUpdateWithoutTalentInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    booking_id?: IntFieldUpdateOperationsInput | number;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type BookingTalentUncheckedUpdateManyWithoutTalentInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    booking_id?: IntFieldUpdateOperationsInput | number;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type BookingTalentCreateManyBookingInput = {
-    id?: number;
-    talent_id: number;
-    created_at?: Date | string;
-    updated_at?: Date | string;
   };
 
   export type PaymentCreateManyBookingInput = {
@@ -20821,24 +16451,11 @@ export namespace Prisma {
     type?: string;
   };
 
-  export type BookingTalentUpdateWithoutBookingInput = {
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    talent?: TalentUpdateOneRequiredWithoutBookingTalentNestedInput;
-  };
-
-  export type BookingTalentUncheckedUpdateWithoutBookingInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    talent_id?: IntFieldUpdateOperationsInput | number;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-  };
-
-  export type BookingTalentUncheckedUpdateManyWithoutBookingInput = {
-    id?: IntFieldUpdateOperationsInput | number;
-    talent_id?: IntFieldUpdateOperationsInput | number;
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+  export type BookingDatesCreateManyBookingInput = {
+    id?: number;
+    date: Date | string;
+    created_at?: Date | string;
+    updated_at?: Date | string;
   };
 
   export type PaymentUpdateWithoutBookingInput = {
@@ -20883,6 +16500,26 @@ export namespace Prisma {
     redirect_url?: NullableStringFieldUpdateOperationsInput | string | null;
     billing_num?: NullableStringFieldUpdateOperationsInput | string | null;
     type?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type BookingDatesUpdateWithoutBookingInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+  };
+
+  export type BookingDatesUncheckedUpdateWithoutBookingInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+  };
+
+  export type BookingDatesUncheckedUpdateManyWithoutBookingInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    date?: DateTimeFieldUpdateOperationsInput | Date | string;
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string;
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string;
   };
 
   /**

@@ -70,6 +70,7 @@ interface BookingData {
   updated_at: string;
   service: Service;
   payments: Payment[];
+  booking_dates: { date: string }[];
 }
 
 export default async function BookingView({ id }: { id: string }) {
@@ -133,7 +134,8 @@ export default async function BookingView({ id }: { id: string }) {
     .reduce((sum, payment) => sum + payment.amount, 0);
 
   // Calculate remaining payment
-  const remainingPayment = data.service.price - totalPaid;
+  const remainingPayment =
+    data.service.price * data.booking_dates.length - totalPaid;
 
   return (
     <HomeLayout>
@@ -186,14 +188,20 @@ export default async function BookingView({ id }: { id: string }) {
                       <Calendar className="mr-2 mt-0.5 h-5 w-5 text-blue-600" />
                       <div>
                         <p className="font-medium">Tanggal</p>
-                        <p>{format(new Date(data.date), 'dd MMMM yyyy')}</p>
+                        <ul className="list-disc pl-5">
+                          {data.booking_dates.map((date, index) => (
+                            <li key={index}>
+                              {format(new Date(date.date), 'dd MMMM yyyy')}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
 
                     <div className="flex items-start">
                       <Clock className="mr-2 mt-0.5 h-5 w-5 text-blue-600" />
                       <div>
-                        <p className="font-medium">Waktu</p>
+                        <p className="font-medium">Waktu Acara</p>
                         <p>{data.time}</p>
                       </div>
                     </div>
@@ -220,7 +228,9 @@ export default async function BookingView({ id }: { id: string }) {
                   <div className="flex justify-between">
                     <span>Harga Layanan</span>
                     <span className="font-medium">
-                      {formatCurrency(data.service.price)}
+                      {formatCurrency(
+                        data.service.price * data.booking_dates.length
+                      )}
                     </span>
                   </div>
 
@@ -237,7 +247,8 @@ export default async function BookingView({ id }: { id: string }) {
                     <span>Total</span>
                     <span className="font-medium">
                       {formatCurrency(
-                        data.service.price - (data.service.discount || 0)
+                        data.service.price * data.booking_dates.length -
+                          (data.service.discount || 0)
                       )}
                     </span>
                   </div>

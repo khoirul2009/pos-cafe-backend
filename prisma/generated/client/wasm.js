@@ -161,21 +161,10 @@ exports.Prisma.ServiceScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
-exports.Prisma.TalentScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  image: 'image',
-  position: 'position',
-  description: 'description',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-};
-
 exports.Prisma.BookingScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   service_id: 'service_id',
-  date: 'date',
   time: 'time',
   location: 'location',
   is_accepted: 'is_accepted',
@@ -184,12 +173,12 @@ exports.Prisma.BookingScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
-exports.Prisma.BookingTalentScalarFieldEnum = {
+exports.Prisma.BookingDatesScalarFieldEnum = {
   id: 'id',
-  booking_id: 'booking_id',
-  talent_id: 'talent_id',
+  date: 'date',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  booking_id: 'booking_id'
 };
 
 exports.Prisma.PaymentScalarFieldEnum = {
@@ -206,15 +195,6 @@ exports.Prisma.PaymentScalarFieldEnum = {
   redirect_url: 'redirect_url',
   billing_num: 'billing_num',
   type: 'type'
-};
-
-exports.Prisma.ReviewScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  service_id: 'service_id',
-  rating: 'rating',
-  comment: 'comment',
-  created_at: 'created_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -238,11 +218,9 @@ exports.Prisma.ModelName = {
   Gallery: 'Gallery',
   Category: 'Category',
   Service: 'Service',
-  Talent: 'Talent',
   Booking: 'Booking',
-  BookingTalent: 'BookingTalent',
-  Payment: 'Payment',
-  Review: 'Review'
+  BookingDates: 'BookingDates',
+  Payment: 'Payment'
 };
 
 /**

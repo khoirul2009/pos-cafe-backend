@@ -56,7 +56,8 @@ export default class PaymentService {
     const booking = await prisma.booking.findUnique({
       where: { id: data.booking_id },
       include: {
-        service: true
+        service: true,
+        booking_dates: true
       }
     });
     const payment_uuid = uuid();
@@ -69,7 +70,9 @@ export default class PaymentService {
       payment_type: data.payment_method,
       transaction_details: {
         order_id: payment_uuid,
-        gross_amount: booking.service.price - booking.service.price * 0.5
+        gross_amount:
+          booking?.service.price! * booking?.booking_dates.length! -
+          booking?.service.price! * booking?.booking_dates.length! * 0.5
       },
       customer_details: {
         email: data.email,
@@ -79,7 +82,9 @@ export default class PaymentService {
       },
       item_details: {
         id: booking.id,
-        price: booking.service.price - booking.service.price * 0.5,
+        price:
+          booking?.service.price! * booking?.booking_dates.length! -
+          booking?.service.price! * booking?.booking_dates.length! * 0.5,
         quantity: 1,
         name: booking.service.title
       }
