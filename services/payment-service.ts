@@ -123,7 +123,7 @@ export default class PaymentService {
       }
     );
 
-    if (reqPayment.status == 201) {
+    if (reqPayment.status !== 200) {
       throw new HttpException(
         parseInt(reqPayment.data.status_code),
         reqPayment.data.status_message
